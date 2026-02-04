@@ -53,14 +53,14 @@ export default function ProductList() {
   const handlePrevBanner = () => {
     if (displayBanners.length <= 1) return;
     setBannerIndex((prev) =>
-      prev === 0 ? displayBanners.length - 1 : prev - 1
+      prev === 0 ? displayBanners.length - 1 : prev - 1,
     );
   };
 
   const handleNextBanner = () => {
     if (displayBanners.length <= 1) return;
     setBannerIndex((prev) =>
-      prev === displayBanners.length - 1 ? 0 : prev + 1
+      prev === displayBanners.length - 1 ? 0 : prev + 1,
     );
   };
 
@@ -73,7 +73,7 @@ export default function ProductList() {
 
     const interval = setInterval(() => {
       setBannerIndex((prev) =>
-        prev === displayBanners.length - 1 ? 0 : prev + 1
+        prev === displayBanners.length - 1 ? 0 : prev + 1,
       );
     }, 5000);
 

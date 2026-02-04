@@ -9,7 +9,7 @@ import { CartContext } from '../../App';
 export default function ProductInfo() {
   const { id } = useParams();
   const product = products.find(
-    (item: Product) => item.id === parseInt(id || '0')
+    (item: Product) => item.id === parseInt(id || '0'),
   );
 
   const [selectedPhoto, setSelectedPhoto] = useState<number>(0);
@@ -84,7 +84,7 @@ export default function ProductInfo() {
     <>
       <div className="container">
         <Link to={'/'}>
-          <button className="back-btn">назад</button>
+          <button className="back-btn"></button>
         </Link>
 
         <div className="content">
