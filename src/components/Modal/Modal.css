@@ -1,0 +1,156 @@
+/* Modal.css */
+
+.modal-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal img {
+  width: 2px;
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-text h3 {
+  margin: 0 0 20px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+.modal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  gap: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-item:last-child {
+  border-bottom: none;
+}
+
+.modal-item span {
+  font-size: 1rem;
+  color: #333;
+  flex: 1;
+  margin-right: 16px;
+}
+
+.modal-item img {
+  width: 20%;
+}
+
+.modal-item button {
+  background: #ff4444;
+  color: white;
+  border: none;
+
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.modal-item button:hover {
+  background: #cc0000;
+}
+
+.modal-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.modal-btn button {
+  background: #666;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+
+.modal-btn button:hover {
+  background: #555;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .modal {
+    width: 95%;
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .modal-text h3 {
+    font-size: 1.3rem;
+  }
+
+  .modal-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .modal-item span {
+    margin-right: 0;
+  }
+
+  .modal-item button {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 16px;
+  }
+
+  .modal-text h3 {
+    font-size: 1.2rem;
+  }
+
+  .modal-item button {
+    width: 100%;
+  }
+
+  .modal-btn button {
+    width: 100%;
+    max-width: 200px;
+  }
+}

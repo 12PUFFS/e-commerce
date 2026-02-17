@@ -1,0 +1,301 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  /* border: 1px solid; */
+  /* padding: 0 20px; */
+}
+
+li {
+  list-style: none;
+  align-items: center;
+  display: flex;
+  margin-right: auto;
+}
+
+.pre-header {
+  background: #000;
+  justify-content: center;
+  height: 40px;
+  color: white;
+  align-items: center;
+  display: flex;
+  /* padding: 10px; */
+}
+
+.list {
+  /* display: flex; */
+}
+
+.hearti-img {
+  padding: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.hearti {
+  width: 30px;
+  height: 30px;
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+}
+
+.heart {
+  width: 40px;
+  height: 40px;
+  list-style: none;
+  /* margin-right: 20px; */
+  cursor: pointer;
+  display: flex;
+  padding: 5px;
+  /* margin: 5px; */
+}
+
+.cartinochka {
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.menu .list {
+  display: flex;
+}
+
+/* .list {
+  display: flex;
+} */
+
+/* li {
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+} */
+
+/* ul img {
+  width: 30%;
+} */
+
+.header {
+  display: flex;
+  justify-content: end;
+  padding: 20px 20px;
+  align-items: center;
+  /* border-bottom: 1px solid #e9ecef; */
+  /* margin: 0 auto; */
+  height: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 10000000000000000000;
+  background: #ffffffac;
+  backdrop-filter: blur(15px);
+  /* z-index: 1000; */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  /* background: rgb(0, 0, 0); */
+  /* max-width: 1400px; */
+}
+
+/* Добавьте отступ для body чтобы контент не скрывался под хедером */
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  margin-right: auto;
+  /* font-family: 'Playwrite NO', cursive; */
+}
+
+.cartinochka {
+  /* background: black; */
+  color: white;
+  /* padding: 15px; */
+  /* position: relative; */
+  cursor: pointer;
+}
+
+a {
+  display: flex;
+  gap: 20px;
+}
+
+.cart {
+  position: relative;
+}
+
+.rtrtyr {
+  border: 1px solid red;
+}
+
+.cart-count {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  color: #ffffff;
+  background: rgb(0, 0, 0);
+  border-radius: 50%;
+  width: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  height: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.cart-btns {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.ty {
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  width: 500px;
+  background: #ffffff;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  display: none;
+}
+
+.ol {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.rr {
+  background: #000;
+  color: white;
+}
+
+.empty-cart {
+  /* position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+}
+
+.ty.active {
+  display: flex;
+  flex-direction: column;
+  /* position: sticky; */
+  /* top: -50px; */
+  z-index: 20000000000000000000000000000000;
+}
+
+.ty.active ul {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  margin: 50px 0;
+  padding: 0;
+  /* overflow-y: auto; 
+  overflow-x: hidden;
+  padding-right: 5px;  */
+}
+
+.empty {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ll {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Стилизация скроллбара */
+.ty.active ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ty.active ul::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.ty.active ul::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.ty.active ul::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Для Firefox */
+.ty.active ul {
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f1f1f1;
+}
+
+.empty-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ty.active li {
+  list-style: none;
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  gap: 15px;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  margin-right: 10px;
+  align-items: center;
+  flex-shrink: 0; /* Предотвращаем сжатие элементов */
+}
+
+.close-btn {
+  margin-left: auto;
+  display: flex;
+  padding: 20px;
+  border-radius: 100%;
+  background: #000;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.pii {
+  max-width: 20%;
+  padding: 0;
+}
+
+button {
+  height: fit-content;
+  padding: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.tt p {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .ty {
+    width: fit-content;
+    right: 0;
+    height: fit-content;
+  }
+}

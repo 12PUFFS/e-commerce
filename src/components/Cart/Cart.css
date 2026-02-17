@@ -1,0 +1,32 @@
+.cart__list {
+  margin: 50px 0;
+  gap: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart__card {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border: 1px solid;
+}
+
+.cart__card img {
+  width: 25%;
+  height: 300px;
+}
+
+.back-btn {
+  top: 120px;
+  padding: 5px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 120px;
+  gap: 10px;
+}
