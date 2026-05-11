@@ -1,5 +1,9 @@
 /* ProductList.css - Минималистичный элегантный дизайн */
 
+* {
+  transition: all 0.7s ease;
+}
+
 .container {
   max-width: 1500px;
   margin: 0 auto;

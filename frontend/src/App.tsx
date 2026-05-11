@@ -5,8 +5,8 @@ import ProductList from './components/ProductList/ProductList';
 import ProductInfo from './components/ProductInfo/ProductInfo';
 import { createContext, useState, useEffect } from 'react';
 import Cart from './components/Cart/Cart';
+import Heart from './components/Heart/Heart';
 
-// Тип товара
 interface Product {
   id: number;
   title: string;
@@ -16,22 +16,25 @@ interface Product {
   photos?: string[];
   description?: string;
   selectedSize?: number | null;
+  isCheked?: boolean;
 }
 
 interface SetCart {
   cart: Product[];
   setCart: React.Dispatch<React.SetStateAction<Product[]>>;
-  addCart: (id: number) => void;
-  removeFromCart: (id: number) => void;
+  addCart: (id: number, size: number | null) => void;
+  removeFromCart: (id: number, size: number | null) => void;
   deleteAllCart: () => void;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   modal: boolean;
   currentSize: number | null;
   setCurrentSize: React.Dispatch<React.SetStateAction<number | null>>;
   newProductBanner: Product | undefined;
+  toggleCheck: (id: number, size: number | null) => void;
 }
 
 export const CartContext = createContext<SetCart>({
+  toggleCheck: () => {},
   cart: [],
   setCart: () => {},
   addCart: () => {},
@@ -41,6 +44,7 @@ export const CartContext = createContext<SetCart>({
   modal: false,
   currentSize: null,
   setCurrentSize: () => {},
+  // selectedSize,
   newProductBanner: undefined,
 });
 
@@ -52,6 +56,21 @@ export default function App() {
   const [items, setItems] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentSize, setCurrentSize] = useState<number | null>(null);
+  const [favorite, setFavorite] = useState<Product[]>([]);
+
+  const handleToFavorite = (id: number) => {
+    setFavorite((favor) => {
+      const isFavor = favor.some((item) => item.id === id);
+
+      if (isFavor) {
+        return favor.filter((i) => i.id !== id);
+      } else {
+        const toFavor = items.find((i) => i.id === id);
+        return toFavor ? [...favor, toFavor] : favor;
+      }
+    });
+  };
+  ``;
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/')
@@ -67,51 +86,77 @@ export default function App() {
       });
   }, []);
 
-  // ✅ Загружаем корзину из localStorage при запуске
+  // useEffect(() => {
+  //   if (cart.length > 0) {
+  //     localStorage.setItem('cart', JSON.stringify(cart));
+  //   } else {
+  //     localStorage.removeItem('cart');
+  //   }
+  // }, [cart]);
+
   useEffect(() => {
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
-      setCart(JSON.parse(savedCart));
+      try {
+        setCart(JSON.parse(savedCart));
+      } catch (e) {
+        console.error('проблема -', e);
+      }
     }
   }, []);
 
-  // ✅ Сохраняем корзину в localStorage при каждом изменении
   useEffect(() => {
-    if (cart.length > 0) {
+    if (cart && cart.length > 0) {
       localStorage.setItem('cart', JSON.stringify(cart));
     } else {
-      localStorage.removeItem('cart'); // очищаем, если корзина пуста
+      localStorage.removeItem('cart');
     }
   }, [cart]);
 
   const addCart = (id: number) => {
-    const product = items.find((i) => i.id === id); // ✅ ищем в items
+    const product = items.find((i) => i.id === id);
     if (!product) return;
 
     const productWithSize = {
       ...product,
       selectedSize: currentSize,
+      isChecked: false,
     };
     setCart((prev: Product[]) => {
-      if (!prev.find((item) => item.id === id)) {
+      // ИСПРАВЛЕНО: используем some для проверки
+      const isExist = prev.some(
+        (item) => item.id === id && item.selectedSize === currentSize,
+      );
+
+      if (!isExist) {
         return [...prev, productWithSize];
       }
       return prev;
     });
+
+    setModal(true);
   };
 
-  const newProductBanner = items.find((i) => i.status === 'new'); // ✅ ищем в items
+  const toggleCheck = (id: number, currentSize: number) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id && item.selectedSize === currentSize
+          ? { ...item, isChecked: !item.isChecked }
+          : item,
+      ),
+    );
+  };
 
-  const removeFromCart = (id: number) => {
-    setCart((prev) => prev.filter((p) => p.id !== id));
-    if (cart.length === 1) {
-      setModal(false);
-    }
+  const newProductBanner = items.find((i) => i.status === 'new');
+  const removeFromCart = (id: number, sizeToRemove: number | null) => {
+    setCart((prev) =>
+      prev.filter((p) => p.id !== id || p.selectedSize !== sizeToRemove),
+    );
   };
 
   const deleteAllCart = () => {
     setCart([]);
-    setModal(false);
+    // setModal(false);
   };
 
   if (loading) {
@@ -128,10 +173,13 @@ export default function App() {
           removeFromCart,
           deleteAllCart,
           setModal,
+          favorite,
+          toggleCheck,
           modal,
           currentSize,
           setCurrentSize,
           newProductBanner,
+          handleToFavorite,
         }}
       >
         <HashRouter>
@@ -140,6 +188,7 @@ export default function App() {
             <Route path="/" element={<ProductList />} />
             <Route path="/item/:id" element={<ProductInfo />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/heart" element={<Heart />} />
           </Routes>
         </HashRouter>
       </CartContext.Provider>

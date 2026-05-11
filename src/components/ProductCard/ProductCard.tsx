@@ -23,9 +23,9 @@ export default function ProductCard({ product }: TypeOfProduct) {
           {/* <button>Подробнее</button> */}
         </div>
 
-        <h4 className="rating">
+        {/* <h4 className="rating">
           <img src={heartIcon} alt="" />
-        </h4>
+        </h4> */}
 
         <div className="product-card-info">
           <h2 className="product-card-price">{product.price} ₽</h2>

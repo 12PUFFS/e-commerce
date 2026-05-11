@@ -2,57 +2,35 @@ import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../ProductCard/ProductCard';
 import './ProductList.css';
-// import products from '../../data';
-// import type { Product } from '../../data';
-// import Loading from '../Loading/Loading';
-// import EmptyProductList from './EmptyProductList';
 import { ProductsContext } from '../../App';
 
 export default function ProductList() {
   const products = useContext(ProductsContext);
-  // const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+
   const [active, setActive] = useState('all');
-  // const [searchValue, setSearchValue] = useState('');
   const [bannerIndex, setBannerIndex] = useState(0);
-  // const [status, setStatus] = useState('all');
-
-  // Первый useEffect - всегда выполняется
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setItems(products);
-  //     setLoading(false);
-  //   }, 500);
-  // }, []);
-
-  // useEffect(() => {
-  //   fetch('http://127.0.0.1:8000/')
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setItems(data.products || data);
-  //       setLoading(false);
-  //     });
-  // }, []);
+  const [value, setValue] = useState('');
 
   const filteredItems = products.filter((item) => {
-    if (active === 'all') return true;
-    if (active === 'hits') return item.status === 'hit';
-    if (active === 'new') return item.status === 'new';
-    return true;
+    const filterByTag =
+      active === 'all' ||
+      (active === 'hits' && item.status === 'hit') ||
+      (active === 'new' && item.status === 'new');
+
+    const filterByinput = item.title
+      .toLowerCase()
+      .includes(value.toLowerCase());
+
+    return filterByTag && filterByinput;
   });
 
-  // Баннеры - все товары со статусом 'new'
   const bannerProducts = products.filter((i) => i.status === 'new');
 
-  // Если нет новых товаров, берем первые 3
   const displayBanners =
     bannerProducts.length > 0 ? bannerProducts : products.slice(0, 3);
 
-  // Текущий баннер для показа
   const currentBanner = displayBanners[bannerIndex];
 
-  // Навигация по баннерам
   const handlePrevBanner = () => {
     if (displayBanners.length <= 1) return;
     setBannerIndex((prev) =>
@@ -67,9 +45,7 @@ export default function ProductList() {
     );
   };
 
-  // Второй useEffect - всегда выполняется
   useEffect(() => {
-    // Если баннеров 1 или меньше, не запускаем интервал
     if (displayBanners.length <= 1) {
       return;
     }
@@ -80,19 +56,10 @@ export default function ProductList() {
       );
     }, 5000);
 
-    // Функция очистки - всегда выполняется
     return () => {
       clearInterval(interval);
     };
-  }, [displayBanners.length]); // Зависимости
-
-  // if (loading) {
-  //   return <Loading setActive={setActive} active={active} />;
-  // }
-
-  // if (products.length === 0) {
-  //   return <EmptyProductList setActive={setActive} active={active} />;
-  // }
+  }, [displayBanners.length]);
 
   return (
     <>
@@ -109,9 +76,6 @@ export default function ProductList() {
                 <h2>{currentBanner.title}</h2>
                 <p className="banner-price">{currentBanner.price} ₽</p>
               </div>
-              {/* <div className="banner-title">
-          <h3>Новинки</h3>
-        </div> */}
 
               {displayBanners.length > 1 && (
                 <div className="options">
@@ -142,10 +106,10 @@ export default function ProductList() {
           <div className="list">
             <div className="indiv">
               <input
-                // onChange={handleSearch}
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
                 type="text"
                 placeholder="Что ищем?"
-                // value={searchValue}
               />
               <p
                 onClick={() => setActive('all')}
@@ -175,11 +139,15 @@ export default function ProductList() {
             </div>
 
             <ul className="card-list">
-              {filteredItems.map((item, index: number) => (
-                <li key={item.id}>
-                  <ProductCard product={item} index={index} />
-                </li>
-              ))}
+              {filteredItems.length === 0 ? (
+                <div>нет результата</div>
+              ) : (
+                filteredItems.map((item, index: number) => (
+                  <li key={item.id}>
+                    <ProductCard product={item} index={index} />
+                  </li>
+                ))
+              )}
             </ul>
           </div>
         </div>

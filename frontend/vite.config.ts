@@ -6,6 +6,10 @@ export default defineConfig({
   plugins: [react()],
   base: '/react_router/',
   server: {
+    watch: {
+      usePolling: true,
+      interval: 1000,
+    },
     port: 8000,
     open: true,
   },

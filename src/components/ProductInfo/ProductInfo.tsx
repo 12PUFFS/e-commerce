@@ -21,25 +21,14 @@ export default function ProductInfo() {
     return <div>Товар не найден</div>;
   }
 
-  // const back = () => {
-  //   navigate(-1);
-  // };
-
-  // 🔥 НОВАЯ ФУНКЦИЯ для добавления в корзину
   const handleAddToCart = () => {
     if (!currentSize) {
       alert('Выберите размер');
       return;
     }
-    // ⚠️ ВНИМАНИЕ: addCart должен быть обновлён в App.tsx
-    // чтобы принимать 2 параметра: (id, size)
+
     addCart(product.id);
   };
-
-  // // 🔥 Выбираем первую фотографию при загрузке
-  // if (!selectedPhoto && product.photos.length > 0) {
-  //   setSelectedPhoto(product.photos[0]);
-  // }
 
   if (!product.photos) {
     return (
@@ -58,20 +47,17 @@ export default function ProductInfo() {
 
   const handlePrevPhoto = () => {
     if (selectedPhoto === 0) {
-      // Если на первом фото - переходим к последнему
       setSelectedPhoto(product.photos.length - 1);
     } else {
-      // Иначе - к предыдущему
+      у;
       setSelectedPhoto(selectedPhoto - 1);
     }
   };
 
   const handleNextPhoto = () => {
     if (selectedPhoto === product.photos.length - 1) {
-      // Если на последнем фото - переходим к первому
       setSelectedPhoto(0);
     } else {
-      // Иначе - к следующему
       setSelectedPhoto(selectedPhoto + 1);
     }
   };

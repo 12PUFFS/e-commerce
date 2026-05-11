@@ -10,24 +10,27 @@ export default function EmptyProductList({ setActive, active }: Props) {
       <div className="list">
         <div className="indiv">
           <input type="text" placeholder="Что ищем?" />
-          <p
+          <buttom
+            key="all"
             onClick={() => setActive('all')}
             className={`f ${active === 'all' ? 'active' : ''}`}
           >
             все
-          </p>
-          <p
+          </buttom>
+          <buttom
+            key="hits"
             onClick={() => setActive('hits')}
             className={`f ${active === 'hits' ? 'active' : ''}`}
           >
             хиты
-          </p>
-          <p
+          </buttom>
+          <buttom
+            key="new"
             onClick={() => setActive('new')}
             className={`f ${active === 'new' ? 'active' : ''}`}
           >
             новое
-          </p>
+          </buttom>
         </div>
         <div className="empty">сории список пустой</div>
       </div>

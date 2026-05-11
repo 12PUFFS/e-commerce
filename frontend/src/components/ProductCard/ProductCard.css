@@ -14,6 +14,11 @@
   border-color: #667eea;
 }
 
+.product-link {
+  display: flex;
+  flex-direction: column;
+}
+
 .product-card::before {
   content: '';
   position: absolute;
@@ -53,27 +58,53 @@
   position: absolute;
   top: 15px;
   right: 15px;
-  background: white; /* color: #333; */
+
+  /* Скрываем по умолчанию */
   display: none;
   align-items: center;
-  padding: 10px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  /* backdrop-filter: blur(5px); */
+  justify-content: center; /* Центрируем иконку */
+
+  padding: 8px;
+  border-radius: 50%; /* Делаем круглой */
+  background: white;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Показываем кнопку при наведении на карточку */
 .product-card:hover .rating {
   display: flex;
+}
+
+/* Если кнопка активна (лайкнута) - показываем её ВСЕГДА, даже без наведения */
+.rating.active {
+  display: flex;
+  background-color: #000000; /* Красный фон */
+}
+
+/* При наведении на НЕактивную кнопку - красим фон в красный */
+.rating:not(.active):hover {
+  background-color: #000000;
+}
+
+/* Делаем иконку БЕЛОЙ, если кнопка активна ИЛИ если на неё навели мышку */
+.rating.active img,
+.rating:hover img {
+  filter: brightness(0) invert(1); /* Превращает черную иконку в белую */
 }
 
 .rating img {
   width: 20px;
   height: 20px;
+  display: block;
 }
 
-.rating:hover {
-  box-shadow: 0 4px 15px rgba(34, 34, 32, 0.3);
+a {
+  text-decoration: none;
 }
 
 .product-card-info {
@@ -84,11 +115,8 @@
 .product-card-price {
   font-size: 1.8rem;
   font-weight: 800;
-  color: #667eea;
+  color: #000000;
   margin-bottom: 10px;
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .product-card-title {

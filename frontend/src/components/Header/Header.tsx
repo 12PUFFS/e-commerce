@@ -7,16 +7,23 @@ import cartIcon from '../../assets/Bag (1).svg';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
-  const { cart } = useContext(CartContext);
+  const { cart, favorite } = useContext(CartContext);
   return (
     <>
       <div className="pre-header">Найди свою идеальную пару</div>
       <header className="header">
         <div className="menu">
           <ul className="list">
-            <li className="hearti-img">
-              <img className="hearti" src={heartIcon} alt="" />
-            </li>
+            <Link className="rr" to={'/heart'}>
+              <p className="hearti-img">
+                <img className="hearti" src={heartIcon} alt="" />
+              </p>
+              {favorite.length > 0 ? (
+                <span className="cart-count">{favorite.length}</span>
+              ) : (
+                ''
+              )}
+            </Link>
             <li>
               <Link to={'/cart'}>
                 <div className="cartinochka">
@@ -24,7 +31,11 @@ export default function Header() {
                     <img className="heart" src={cartIcon} alt="" />
                   </p>
                 </div>
-                <span className="cart-count">{cart.length}</span>
+                {cart.length > 0 ? (
+                  <span className="cart-count">{cart.length}</span>
+                ) : (
+                  ''
+                )}
               </Link>
             </li>
           </ul>

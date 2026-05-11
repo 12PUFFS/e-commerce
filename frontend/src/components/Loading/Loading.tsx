@@ -29,7 +29,7 @@ export default function Loading({ setActive, active }: LoadingProps) {
               <img src={newProductBanner.image} alt={newProductBanner.title} />
             </Link>
           ) : (
-            <div>Нет баннера</div> // или просто ничего не рендери
+            <div>Нет баннера</div>
           )}
         </div>
         <div className="wrapper">

@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import './ProductInfo.css';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { CartContext, ProductsContext } from '../../App';
 
 export default function ProductInfo() {
@@ -13,8 +13,24 @@ export default function ProductInfo() {
   const [selectedPhoto, setSelectedPhoto] = useState<number>(0);
   // const [selectedModel, setSelectedModel] = useState<number>(0);
   const [openItem, setOpenItem] = useState(false);
-  const { addCart, currentSize, setCurrentSize } = useContext(CartContext);
+  const {
+    addCart,
+    currentSize,
+    setCurrentSize,
+    handleToFavorite,
+    favorite,
+    cart,
+  } = useContext(CartContext);
 
+  // ... остальные хуки
+
+  // 🔥 Сбрасываем выбранный размер при загрузке новой страницы товара
+  useEffect(() => {
+    setCurrentSize(null); // ✅ Сбрасываем выбор
+    setSelectedPhoto(0); // ✅ Сбрасываем фото на первое
+  }, [id, setCurrentSize]);
+
+  const isFavor = favorite.some((i) => i.id === product.id);
   if (!product) {
     return <div>Товар не найден</div>;
   }
@@ -22,18 +38,6 @@ export default function ProductInfo() {
   // const back = () => {
   //   navigate(-1);
   // };
-
-  // 🔥 НОВАЯ ФУНКЦИЯ для добавления в корзину
-  const handleAddToCart = () => {
-    if (!currentSize) {
-      alert('Выберите размер');
-      return;
-    }
-    // ⚠️ ВНИМАНИЕ: addCart должен быть обновлён в App.tsx
-    // чтобы принимать 2 параметра: (id, size)
-    addCart(product.id);
-    setCurrentSize();
-  };
 
   // // 🔥 Выбираем первую фотографию при загрузке
   // if (!selectedPhoto && product.photos.length > 0) {
@@ -65,6 +69,27 @@ export default function ProductInfo() {
     }
   };
 
+  const sizesInCart = cart
+    .filter((item) => item.id === product.id)
+    .map((item) => item.selectedSize);
+
+  const handleAddToCart = () => {
+    if (!currentSize) {
+      alert('Пожалуйста, выберите размер');
+      return;
+    }
+
+    if (sizesInCart.includes(currentSize)) {
+      alert('Этот размер уже в корзине!');
+      return;
+    }
+
+    addCart(product.id, currentSize);
+    setCurrentSize(null);
+  };
+
+  // Опционально: можно запрет
+
   const handleNextPhoto = () => {
     if (selectedPhoto === product.photos.length - 1) {
       // Если на последнем фото - переходим к первому
@@ -80,7 +105,7 @@ export default function ProductInfo() {
   });
 
   return (
-    <>
+    <div className="root-wrapper">
       <div className="container">
         <Link to={'/'}>
           <button className="back-btn"></button>
@@ -110,9 +135,6 @@ export default function ProductInfo() {
                   </ul>
                 </div>
                 <div className="o">
-                  <div className="o-title">
-                    <h2>{product.title}</h2>
-                  </div>
                   <img
                     src={product.photos[selectedPhoto]}
                     alt={`${product.title} - основное изображение`}
@@ -132,44 +154,53 @@ export default function ProductInfo() {
                 </div>
               </div>
 
-              <div className="full-desc">
-                <ul>
-                  <div className="open-lock">
-                    <p>Описание</p>
-                    <button
-                      onClick={() => setOpenItem(!openItem)}
-                      className="open"
-                      aria-label={
-                        openItem ? 'Скрыть описание' : 'Показать описание'
-                      }
-                    >
-                      {openItem ? '−' : '+'}
-                    </button>
-                  </div>
-
-                  {product.desc.map((item, index: number) => {
-                    return (
-                      <li
-                        className={`item ${openItem ? 'active' : 'hide'}`}
-                        key={index}
+              <div className="desc-wrapper">
+                <div className="full-desc">
+                  <ul>
+                    <div className="open-lock">
+                      <p>Описание</p>
+                      <button
+                        onClick={() => setOpenItem(!openItem)}
+                        className="open"
+                        aria-label={
+                          openItem ? 'Скрыть описание' : 'Показать описание'
+                        }
                       >
-                        - {item}
-                      </li>
-                    );
-                  })}
-                </ul>
+                        {openItem ? '−' : '+'}
+                      </button>
+                    </div>
+
+                    {product.desc.map((item) => {
+                      return (
+                        <li
+                          className={`item ${openItem ? 'active' : 'hide'}`}
+                          key={item.id}
+                        >
+                          - {item}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </div>
             </div>
 
             <div className="full-info">
+              <h1>{product.title}</h1>
               <h3>доступные размеры</h3>
               <ul className="current-size">
                 {product.availableSizes.map((size, index: number) => {
+                  const isCurrentlySelected =
+                    String(currentSize) === String(size);
+
+                  const isInCart = sizesInCart.includes(size);
+
+                  const isActive = isCurrentlySelected || isInCart;
                   return (
                     <button
                       onClick={() => setCurrentSize(size)}
                       className={`current-size-item ${
-                        currentSize === size ? 'active' : ''
+                        isActive ? 'active' : ''
                       }`}
                       key={index}
                     >
@@ -180,7 +211,7 @@ export default function ProductInfo() {
               </ul>
 
               <div className="current-color">
-                <p>текущая расцветка:</p>
+                <p>Цвет</p>
                 {/* <img
               className="current-color-img"
               src={product.variants}
@@ -198,7 +229,6 @@ export default function ProductInfo() {
                           }`}
                           src={variant.image}
                           alt=""
-                          onClick={() => {}}
                         />
                       </Link>
                     );
@@ -206,23 +236,18 @@ export default function ProductInfo() {
                 </div>
               </div>
               <div className="main-btn">
-                {/* <button
-                  onClick={() => {
-                    if (!currentSize) {
-                      alert('Выберите размер');
-                      return;
-                    }
-                    alert(`Ура, ты купил ${product.title}`);
-                  }}
-                  className="to-buy"
-                ></button> */}
-
                 <div className="price">
                   <button>{product.price} ₽</button>
                 </div>
                 <button onClick={handleAddToCart} className="to-cart">
                   В корзину
                   {currentSize && <p>Размер: {currentSize}</p>}
+                </button>
+                <button
+                  onClick={() => handleToFavorite(product.id)}
+                  className="to_favorite"
+                >
+                  {!isFavor ? 'Добавить в избранное' : 'Удалить из избранного'}
                 </button>
               </div>
             </div>
@@ -254,6 +279,6 @@ export default function ProductInfo() {
         </div>
       </div>
       <footer className="footer">Магазин кроссовок © 2025</footer>
-    </>
+    </div>
   );
 }
