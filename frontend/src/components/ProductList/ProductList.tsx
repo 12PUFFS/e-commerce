@@ -1,3 +1,4 @@
+// @ts-ignore
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../ProductCard/ProductCard';
@@ -142,9 +143,9 @@ export default function ProductList() {
               {filteredItems.length === 0 ? (
                 <div>нет результата</div>
               ) : (
-                filteredItems.map((item, index: number) => (
+                filteredItems.map((item) => (
                   <li key={item.id}>
-                    <ProductCard product={item} index={index} />
+                    <ProductCard product={item} />
                   </li>
                 ))
               )}

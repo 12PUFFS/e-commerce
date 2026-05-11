@@ -1,4 +1,4 @@
-// src/components/Modal/Modal.tsx
+// @ts-ignore
 import { useContext } from 'react';
 import { CartContext } from '../../App';
 import './Modal.css';
@@ -23,7 +23,11 @@ export default function Modal() {
                       <strong>Размер: {item.selectedSize}</strong>
                     </p>
                   )}
-                  <button onClick={() => removeFromCart(item.id)}>
+                  <button
+                    onClick={() =>
+                      removeFromCart(item.id, item.selectedSize ?? null)
+                    }
+                  >
                     Удалить
                   </button>
                 </div>

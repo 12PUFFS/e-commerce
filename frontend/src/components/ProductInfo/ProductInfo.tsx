@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import './ProductInfo.css';
 import { useContext, useState, useEffect } from 'react';
 import { CartContext, ProductsContext } from '../../App';
+import type { Product } from '../../App';
 
 export default function ProductInfo() {
   const products = useContext(ProductsContext);
@@ -9,6 +10,10 @@ export default function ProductInfo() {
   const product = products.find(
     (item: Product) => item.id === parseInt(id || '0'),
   );
+
+  if (!product) {
+    return <div>Товар не найден</div>;
+  }
 
   const [selectedPhoto, setSelectedPhoto] = useState<number>(0);
   // const [selectedModel, setSelectedModel] = useState<number>(0);
@@ -60,6 +65,7 @@ export default function ProductInfo() {
   // }
 
   const handlePrevPhoto = () => {
+    if (!product.photos || product.photos.length === 0) return;
     if (selectedPhoto === 0) {
       // Если на первом фото - переходим к последнему
       setSelectedPhoto(product.photos.length - 1);
@@ -91,6 +97,7 @@ export default function ProductInfo() {
   // Опционально: можно запрет
 
   const handleNextPhoto = () => {
+    if (!product.photos || product.photos.length === 0) return;
     if (selectedPhoto === product.photos.length - 1) {
       // Если на последнем фото - переходим к первому
       setSelectedPhoto(0);
@@ -117,7 +124,7 @@ export default function ProductInfo() {
               <div className="main">
                 <div className="photo">
                   <ul>
-                    {product.photos.slice(0, 5).map((photo, index: number) => {
+                    {product.photos?.slice(0, 5).map((photo, index: number) => {
                       return (
                         <li
                           className={`${
@@ -136,7 +143,7 @@ export default function ProductInfo() {
                 </div>
                 <div className="o">
                   <img
-                    src={product.photos[selectedPhoto]}
+                    src={product.photos?.[selectedPhoto]}
                     alt={`${product.title} - основное изображение`}
                   />
                   <div className="options">
@@ -170,11 +177,11 @@ export default function ProductInfo() {
                       </button>
                     </div>
 
-                    {product.desc.map((item) => {
+                    {product.desc?.map((item, index) => {
                       return (
                         <li
                           className={`item ${openItem ? 'active' : 'hide'}`}
-                          key={item.id}
+                          key={index}
                         >
                           - {item}
                         </li>
@@ -189,7 +196,7 @@ export default function ProductInfo() {
               <h1>{product.title}</h1>
               <h3>доступные размеры</h3>
               <ul className="current-size">
-                {product.availableSizes.map((size, index: number) => {
+                {product.availableSizes?.map((size, index: number) => {
                   const isCurrentlySelected =
                     String(currentSize) === String(size);
 
@@ -261,7 +268,10 @@ export default function ProductInfo() {
                   <Link key={item.id} to={`/item/${item.id}`}>
                     <div className="sneaker-card">
                       <div className="sneaker-image">
-                        <img src={item.photos[0]} alt={item.title} />
+                        <img
+                          src={item.photos?.[0] || product.image}
+                          alt={item.title}
+                        />
                       </div>
                       <div className="sneaker-info">
                         <h3 className="sneaker-title">{item.title}</h3>

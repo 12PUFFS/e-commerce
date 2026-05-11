@@ -1,3 +1,4 @@
+// @ts-ignore
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
@@ -7,7 +8,7 @@ import { createContext, useState, useEffect } from 'react';
 import Cart from './components/Cart/Cart';
 import Heart from './components/Heart/Heart';
 
-interface Product {
+export interface Product {
   id: number;
   title: string;
   price: string;
@@ -36,6 +37,8 @@ interface SetCart {
   setCurrentSize: React.Dispatch<React.SetStateAction<number | null>>;
   newProductBanner: Product | undefined;
   toggleCheck: (id: number, size: number | null) => void;
+  favorite: Product[];
+  handleToFavorite: (id: number) => void;
 }
 
 export const CartContext = createContext<SetCart>({
@@ -49,8 +52,9 @@ export const CartContext = createContext<SetCart>({
   modal: false,
   currentSize: null,
   setCurrentSize: () => {},
-  // selectedSize,
   newProductBanner: undefined,
+  favorite: [], // Заглушка
+  handleToFavorite: () => {},
 });
 
 export const ProductsContext = createContext<Product[]>([]);
@@ -75,7 +79,6 @@ export default function App() {
       }
     });
   };
-  ``;
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/')
@@ -142,10 +145,10 @@ export default function App() {
     setModal(true);
   };
 
-  const toggleCheck = (id: number, currentSize: number) => {
+  const toggleCheck = (id: number, size: number | null) => {
     setCart((prev) =>
       prev.map((item) =>
-        item.id === id && item.selectedSize === currentSize
+        item.id === id && item.selectedSize === size
           ? { ...item, isChecked: !item.isChecked }
           : item,
       ),

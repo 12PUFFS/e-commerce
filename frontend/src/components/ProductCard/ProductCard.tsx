@@ -1,6 +1,6 @@
 import './ProductCard.css';
-import type { Product } from '../../data';
-import { useContext, useState } from 'react';
+import type { Product } from '../../App';
+import { useContext } from 'react';
 import { CartContext } from '../../App';
 import { Link } from 'react-router-dom';
 
@@ -12,13 +12,6 @@ interface TypeOfProduct {
 
 export default function ProductCard({ product }: TypeOfProduct) {
   const { handleToFavorite, favorite } = useContext(CartContext);
-
-  // const [activeFavor, setActiveFavor] = useState('');
-
-  // const handleLikeClick = (e: React.MouseEvent) => {
-  //   e.stopPropagation();
-  //   handleToFavorite(product.id);
-  // };
 
   const isLiked = favorite.some((i) => i.id === product.id);
 

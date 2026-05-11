@@ -45,9 +45,7 @@ export default function Cart() {
             <button className="choseAll" onClick={choseAll}>
               выбрать все {cart.length}
             </button>
-            <button onClick={() => deleteSelected(cart.id)}>
-              Удалить выбранные
-            </button>
+            <button onClick={deleteSelected}>Удалить выбранные</button>
           </div>
         </div>
         {cart.length === 0 ? (
@@ -61,7 +59,9 @@ export default function Cart() {
                     type="checkbox"
                     className="cart-checkbox"
                     checked={item.isChecked || false}
-                    onChange={() => toggleCheck(item.id, item.selectedSize)}
+                    onChange={() =>
+                      toggleCheck(item.id, item.selectedSize ?? null)
+                    }
                   />
                   <div>
                     <Link to={`/item/${item.id}`}>
@@ -73,7 +73,7 @@ export default function Cart() {
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        removeFromCart(item.id, item.selectedSize);
+                        removeFromCart(item.id, item.selectedSize ?? null);
                       }}
                     >
                       удалить
