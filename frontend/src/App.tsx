@@ -13,10 +13,15 @@ interface Product {
   price: string;
   image?: string;
   status?: 'new' | 'hit';
-  photos?: string[];
-  description?: string;
+  photos?: string[]; // Добавлено
+  description?: string; // Добавлено
+  desc?: string[]; // Добавлено (для списка особенностей)
+  fulldesc?: string; // Добавлено (для текста о товаре)
   selectedSize?: number | null;
-  isCheked?: boolean;
+  isChecked?: boolean; // ИСПРАВЛЕНО: было isCheked
+  availableSizes?: number[]; // Добавлено
+  models?: string; // Добавлено (для фильтрации похожих)
+  variants?: string[];
 }
 
 interface SetCart {
