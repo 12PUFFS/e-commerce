@@ -45,10 +45,7 @@ INSTALLED_APPS = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",   # 👈 Vite по умолчанию
     "http://127.0.0.1:5173",
-    "http://localhost:8000",   # Django
-    "http://127.0.0.1:8000",
-    "http://localhost:8001",   # Если используешь этот порт
-    "http://127.0.0.1:8001",
+    'https://react-router-three-teal.vercel.app/'
 ]
 
 MIDDLEWARE = [
@@ -127,10 +124,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
+ALLOWED_HOSTS = ['*']
+
+DEBUG = False
+
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_DIRS = [
     os.path.join(BASE_DIR, '../frontend/dist')
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
