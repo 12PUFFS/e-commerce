@@ -80,7 +80,9 @@ export default function App() {
   };
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/products/')
+    const API_BASE =
+      import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
+    fetch(`${API_BASE}/products/`)
       .then((response) => response.json())
       .then((data) => {
         console.log('Данные с сервера:', data);
