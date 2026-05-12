@@ -76,21 +76,21 @@ products = [
 
   {
     'id': 3,
-    'title': 'Nike Dunk Low Retro',
-    'price': '14 912',
-    'image':'http://localhost:8001/react_router/src/images/dunk-brown.png',
+    'title': 'Nike Blazer Mid `77 Vintage',
+    'price': '9 699',
+    'image':'https://static.street-beat.ru/upload/resize_cache/iblock/27c/666_666_1/drv0siaqm7nwxi0k5ji10attkmvy8vc1.jpg',
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
     'category': 'shoes',
     'fulldesc':
       'Кроссовки NIKE Air Force 1 - это стильная и универсальная модель...',
     'rating': 4.4,
     'photos': [
-      'https://ir.ozone.ru/s3/multimedia-1-4/wc1000/8074155424.jpg',
-      'https://avatars.mds.yandex.net/get-mpic/7498982/2a00000192ec444afff52f3268a308a3451b/900x1200',
-      'https://avatars.mds.yandex.net/get-mpic/5287649/2a00000192ec444af665834f9da2c09a506f/900x1200',
-      'https://avatars.mds.yandex.net/get-mpic/5220415/2a00000192ec444aed6abd3be0c1a6228a02/900x1200',
-      'https://avatars.mds.yandex.net/get-mpic/5235334/2a00000192ec444af4d009ee1b28571e9053/900x1200',
-      'https://ir.ozone.ru/s3/multimedia-1-l/wc1000/7435891605.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/27c/666_666_1/drv0siaqm7nwxi0k5ji10attkmvy8vc1.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/23d/666_666_1/a0rg86gw4rs0lrcvmi20r8tuh17m0kr4.jpg',
+      'https://static.street-beat.ru/upload/iblock/e3c/8hjkmz54h3qogkgeedq6dzb3eyeabaad.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/47d/666_666_1/gwmnilvf09zxjikrnvdntuoxrp7q1uzk.jpg',
+      'https://static.street-beat.ru/upload/iblock/e3e/bdp12329mnbzm1hkv32qz32xcy5d47gl.jpg',
+      
     ],
     'desc': [
       'Цвет товара - белый',
@@ -107,7 +107,7 @@ products = [
       'https://ir.ozone.ru/s3/multimedia-1-4/wc1000/7695221116.jpg',
     ],
     'availableSizes': [38, 39, 40, 41],
-    'models': 'dunk',
+    # 'models': 'dunk',
     'status': 'new',
   },
 

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,12 +43,17 @@ INSTALLED_APPS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8001',
+    "http://localhost:5173",   # 👈 Vite по умолчанию
+    "http://127.0.0.1:5173",
+    "http://localhost:8000",   # Django
+    "http://127.0.0.1:8000",
+    "http://localhost:8001",   # Если используешь этот порт
+    "http://127.0.0.1:8001",
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
     'corsheaders.middleware.CorsMiddleware', 
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -122,3 +128,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_DIRS = [
+    os.path.join(BASE_DIR, '../frontend/dist')
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
