@@ -873,7 +873,7 @@ a {
   }
 
   .photo li {
-    width: 100px;
+    width: 70px;
     height: 80px;
   }
 }
@@ -896,11 +896,11 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: fit-content;
+    /* width: fit-content; */
   }
 
   .photo li {
-    flex-shrink: 0;
+    flex-shrink: 1;
   }
 
   .main {
