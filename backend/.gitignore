@@ -50,3 +50,8 @@ config/
 __pycache__/
 *.pyc
 db.sqlite3
+venv/
+config/
+__pycache__/
+*.pyc
+db.sqlite3
