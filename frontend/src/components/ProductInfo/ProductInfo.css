@@ -1,355 +1,177 @@
-/* ProductInfo.css - Улучшенная версия */
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+  --bg-color: #f5f5f7;
+  --card-bg: #ffffff;
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --accent-color: #000000;
+  --accent-hover: #333333;
+  --border-color: #e5e5e5;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 8px;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
 
 .root-wrapper {
-  background: #f5f5f5;
-}
-
-.container {
-  min-height: 100vh; /* РАСКОММЕНТИРУЙТЕ ЭТУ СТРОКУ! */
-  display: flex;
-  flex-direction: column;
-  box-shadow: none;
-  max-width: 1200px;
-  margin: 0 auto;
-  /* position: relative; */
-}
-
-.back-btn {
-  background: black;
-  /* border: 2px solid #000; */
-  border-radius: 12px;
-  padding: 12px 24px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  /* position: sticky; */
-  /* top: 100px;
-
-  left: 20px; */
-  width: fit-content;
-  /* z-index: 2; */
-  backdrop-filter: blur(10px);
-  /* background: rgba(255, 255, 255, 0.9); */
-  color: #ffffff;
-  margin: 10px 0;
-  /* position: absolute; */
-}
-
-/* ProductInfo.css - Исправленная версия для back-btn */
-
-.container {
+  background-color: var(--bg-color);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--text-primary);
+}
 
-  max-width: 1500px;
+/* =========================================
+   2. LAYOUT & CONTAINER
+   ========================================= */
+.container {
+  max-width: 1280px;
   margin: 0 auto;
-  position: relative;
-  padding-top: 30px; /* Добавляем отступ сверху для кнопки */
-}
-
-.back-btn {
-  background: rgba(0, 0, 0, 0.9);
-  border: none;
-  border-radius: 0 12px 12px 0;
-  padding: 12px 24px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  color: #ffffff;
-  margin: 0;
-
-  /* Фиксированная позиция в левом верхнем углу */
-  position: fixed;
-  /* position: absolute; */
-  top: 90px;
-  left: 0;
-  z-index: 1000;
-
-  /* Эффект стекла */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background: rgba(0, 0, 0, 0.85);
-
-  /* Тень */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-
-  /* Для плавного появления */
-  transform: translateX(0);
-  animation: slideInLeft 0.4s ease-out;
-}
-
-@keyframes slideInLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.back-btn:hover {
-  background: rgba(0, 0, 0, 1);
-  color: white;
-  transform: translateX(10px);
-  padding-left: 32px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-}
-
-/* Добавляем иконку стрелки */
-.back-btn::before {
-  content: '←';
-  margin-right: 8px;
-  font-weight: 700;
-  transition: all 0.3s ease;
-}
-
-.back-btn:hover::before {
-  transform: translateX(-5px);
-}
-
-/* Для мобильных устройств */
-@media (max-width: 768px) {
-  .back-btn {
-    position: fixed;
-    margin-bottom: 20px;
-    top: 50%;
-  }
-
-  .container {
-    padding-top: 70px;
-  }
-}
-
-@media (max-width: 480px) {
-  .back-btn {
-    top: 50%;
-    padding: 8px 16px;
-    font-size: 13px;
-    position: fixed;
-  }
-
-  .container {
-    padding-top: 60px;
-  }
-}
-
-/* Остальные стили остаются без изменений... */
-
-/* Обновляем позицию миниатюр, чтобы не перекрывались */
-.photo {
-  position: sticky;
-  top: 90px; /* Увеличиваем отступ сверху */
-  height: fit-content;
-}
-
-/* Обновляем позицию .full-info */
-.full-info {
-  /* background: white; */
-  /* border-radius: 24px; */
-  padding: 32px;
-  position: sticky;
-  flex: 1;
-  top: 120px;
-
-  /* border: 1px solid #eee; */
-  /* box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06); */
-}
-
-/* Для мобильной версии корректируем позиции */
-@media (max-width: 992px) {
-  .photo {
-    position: static;
-    order: 3;
-    top: auto;
-  }
-
-  .full-info {
-    position: static;
-    top: auto;
-  }
-}
-
-a {
-  width: fit-content;
-}
-
-.back-btn:hover {
-  background: #000;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-/* Основной контейнер */
-.info-wrapper {
-  flex-wrap: wrap;
-  /* display: grid;
-  grid-template-columns: 100px 1fr 400px; */
-  /* gap: 20px; */
-  display: flex;
-  justify-content: space-between;
-
-  /* margin-bottom: 50px; */
-
-  /* min-height: calc(100vh - 200px); */
-
-  /* align-items: start; */
-}
-
-/* Миниатюры */
-.photo {
-  position: sticky;
-  top: 90px;
-  height: fit-content;
-}
-
-.photo ul {
-  display: flex;
-  flex-direction: column;
-  /* gap: 20px;
-  padding: 10px; */
-}
-
-.o {
-  position: relative;
-  /* transition: transform 0.8s; */
-}
-
-/* .o img:hover {
-  overflow: hidden;
-  transform: scale(1.5);
-} */
-
-.o-title {
-  position: absolute;
-  top: 0px;
-  width: fit-content;
-  z-index: 1;
   padding: 20px;
-}
-
-.o-title h2 {
-  color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  font-size: 35px;
-}
-
-.photo li {
-  width: 100px;
-  height: 100px;
-  /* border-radius: 12px; */
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  /* border: 2px solid transparent; */
-  opacity: 0.5;
-}
-
-.photo .active {
-  opacity: 1;
-  /* transform: scale(1.2); */
-  /* border: 1px solid rgb(0, 0, 0); */
-  /* box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5); */
-}
-
-.photo li:hover {
-  opacity: 1;
-  /* transform: scale(1.2); */
-  /* border: 1px solid rgb(0, 0, 0); */
-  /* box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5); */
-}
-
-.photo li:has(img[src*='']) {
-  opacity: 1;
-  border-color: #000;
-}
-
-.main-content {
-  gap: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  flex: 4;
-  width: 100%;
-  background: white;
-  /* position: sticky; */
-  top: 0;
+  position: relative;
 }
 
 .content {
-  margin-bottom: 50px;
-  flex: 1;
+  margin-top: 60px; /* Отступ для фиксированной кнопки назад */
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
-.inter {
-  /* height: 50vh; */
-  width: auto;
-  /* background: black; */
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-  padding: 20px;
-  margin-top: 20px;
-  background: white;
-}
+/* =========================================
+   3. BACK BUTTON (Fixed)
+   ========================================= */
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
 
-.qa {
-  width: 100%;
-  height: 200px;
-  /* background: black; */
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
   display: flex;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.photo img {
+.back-btn::before {
+  content: '←';
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.back-btn:hover {
+  background: black;
+  transform: translateX(5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.back-btn:hover::before {
+  transform: translateX(-3px);
+}
+
+/* =========================================
+   4. PRODUCT GRID (Main Layout)
+   ========================================= */
+.info-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 400px; /* Галерея слева, инфо справа */
+  gap: 40px;
+  align-items: start;
+}
+
+/* --- Gallery Section --- */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main {
+  display: flex;
+  gap: 20px;
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Thumbnails (Left side) */
+.photo ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.photo li {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.photo li:hover,
+.photo li.active {
+  opacity: 1;
+  border-color: var(--accent-color);
+  transform: scale(1.05);
+}
+
+.photo li img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
-.desc-wrapper {
-  background: white;
-  padding: 20px;
-}
-
-/* Основное изображение */
-.main {
-  position: relative;
-  border-radius: 24px;
-  /* overflow: hidden; */
-  /* gap: 30px; */
-  max-height: fit-content;
-  /* background: #f5f5f5; */
-  background: white;
-  height: fit-content;
-  display: flex;
-  /* align-items: center; */
-  justify-content: center;
-  flex: 2;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-}
-
+/* Main Image Area */
 .o {
   position: relative;
-  width: 100%;
-  height: fit-content;
+  flex: 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 1 / 1; /* Квадратное соотношение */
+  background: #fff;
 }
 
 .o img {
-  max-height: 1000px;
-  object-fit: cover;
-  display: block;
-  /* border-radius: 20px; */
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-  width: stretch;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Показываем кроссовок целиком */
+  transition: transform 0.5s ease;
 }
 
+.o:hover img {
+  transform: scale(1.05);
+}
+
+/* Navigation Arrows */
 .options {
   position: absolute;
   top: 0;
@@ -359,8 +181,8 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  pointer-events: none;
+  padding: 0 20px;
+  pointer-events: none; /* Чтобы клики проходили сквозь контейнер */
 }
 
 .div-prev,
@@ -370,265 +192,89 @@ a {
 
 .prev,
 .next {
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.235);
-  /* border: 2px solid #000; */
-  color: #000;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
   font-size: 24px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(10px);
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .o:hover .prev,
 .o:hover .next {
   opacity: 1;
   transform: translateY(0);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.372);
 }
 
 .prev:hover,
 .next:hover {
-  background: #0000007d;
-  color: white;
-  transform: scale(1.1);
-}
-
-/* Информация о товаре */
-.full-info {
-  /* background: white; */
-  /* border-radius: 24px; */
-  padding: 32px;
-  position: sticky;
-  flex: 1;
-  top: 90px;
-  height: fit-content;
-  /* /* border: 1px solid #eee; */
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-}
-
-.full-info h1 {
-  font-size: 30px;
-  margin-bottom: 20px;
-}
-
-.full-info h3 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 16px;
-}
-
-/* Размеры */
-.current-size {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 32px;
-  /* justify-content: space-between; */
-}
-
-.current-size-item button {
-  padding: 10px;
-}
-
-.current-size-item {
-  /* padding: 12px 50px; */
-  background: white;
-  border: 2px solid #eee;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 60px;
-  text-align: center;
-}
-
-.current-size-item:hover {
-  background: #e8e8e8;
-  border-color: #ddd;
-}
-
-.current-size-item.active {
-  /* background: #000;
-  color: white; */
-  border-color: #000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Кнопки действий */
-.main-btn {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 32px 0;
-}
-
-.to-buy {
-  background: #000;
-  color: white;
-  border: none;
-  padding: 20px;
-  border-radius: 14px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.to-buy:hover {
-  background: #333;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}
-
-.to-cart {
   background: black;
-  color: #ffffff;
-  padding: 18px;
-  border-radius: 14px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.7s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
+  color: white;
 }
 
-.to-cart:hover {
-  border: 2px solid #000;
-  background: #ffffff;
-  color: rgb(0, 0, 0);
-  transform: translateY(-2px);
+/* --- Description Accordion --- */
+.desc-wrapper {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
 }
-
-.to-cart p {
-  font-size: 12px;
-  font-weight: 500;
-  color: inherit;
-  opacity: 0.9;
-  margin: 0;
-}
-
-.price {
-  border-radius: 14px;
-  /* padding: 35px; */
-  text-align: center;
-}
-
-.price button {
-  background: transparent;
-  border: none;
-  font-size: 30px;
-  /* font-weight: 800; */
-  color: #000;
-  cursor: default;
-  font-family: 'Inter', sans-serif;
-  letter-spacing: -0.5px;
-}
-
-/* Варианты цветов */
-.current-color {
-  margin-top: 50px;
-  /* padding: 24px 0; */
-  /* border-top: 1px solid #eee; */
-  /* border-bottom: 1px solid #eee; */
-}
-
-.current-color p {
-  font-size: 14px;
-  font-weight: 500;
-  color: #666;
-  margin-bottom: 16px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.variants {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.current-color-img {
-  width: 64px;
-  height: 64px;
-  border-radius: 8px;
-  border: 2px solid #eee;
-  object-fit: cover;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.current-color-img.active {
-  border-color: #000;
-  transform: scale(1.05);
-}
-
-/* Описание */
-/* .full-desc {
-  margin-top: 32px;
-} */
 
 .open-lock {
   display: flex;
   justify-content: space-between;
-  background: #f5f5f5;
   align-items: center;
-  padding: 20px;
-  /* box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06); */
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .open-lock p {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
   margin: 0;
-  color: #000;
 }
 
 .open {
-  background: white;
-  border: 2px solid #eee;
-  border-radius: 8px;
-  width: 40px;
-  height: 40px;
+  background: #f0f0f0;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   font-size: 20px;
-  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: var(--transition);
 }
 
 .open:hover {
-  background: #000;
-  color: white;
-  border-color: #000;
+  background: #e0e0e0;
+}
+
+.full-desc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .item {
   font-size: 15px;
   line-height: 1.6;
-  color: #444;
+  color: var(--text-secondary);
   padding: 8px 0;
-  margin-left: 8px;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid var(--border-color);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
   transition: all 0.3s ease;
 }
 
@@ -636,392 +282,367 @@ a {
   border-bottom: none;
 }
 
-.item.hide {
-  display: none;
-}
-
 .item.active {
-  display: list-item;
-  animation: fadeIn 0.3s ease;
+  opacity: 1;
+  max-height: 100px; /* Достаточно для одной строки */
+  padding: 12px 0;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* =========================================
+   5. PRODUCT INFO (Right Sidebar)
+   ========================================= */
+.full-info {
+  background: var(--card-bg);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 100px; /* Липкий блок при скролле */
 }
 
-/* Сообщение об ошибке */
-._error {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 120px;
-  font-weight: 900;
-  color: #ff3b30;
-  opacity: 0.1;
-  font-family: 'Inter', sans-serif;
+.full-info h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
 }
 
-.line {
+.full-info h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  margin: 24px 0 16px 0;
+  font-weight: 600;
+}
+
+/* Size Selector */
+.current-size {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.current-size-item {
+  min-width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.current-size-item:hover {
+  border-color: var(--text-primary);
+}
+
+/* Состояние: Выбрано пользователем прямо сейчас */
+.current-size-item.selected-bg {
+  background: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Состояние: Уже в корзине (серый/неактивный) */
+.current-size-item.active:not(.selected-bg) {
+  background: #f9f9f9;
+  color: #999;
+  border-color: #eee;
+  cursor: default;
+}
+
+/* Variants / Colors */
+.variants {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.current-color-img {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.current-color-img:hover {
+  transform: scale(1.05);
+}
+
+.current-color-img.active {
+  border-color: var(--accent-color);
+}
+
+/* Actions & Price */
+.main-btn {
+  margin-top: 32px;
+  display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+}
+
+.price button {
+  background: transparent;
+  border: none;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-primary);
+  width: 100%;
+  text-align: left;
+  padding: 0;
+  cursor: default;
+}
+
+.to-cart {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.to-cart:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.to-cart p {
+  font-size: 12px;
+  font-weight: 400;
+  margin: 4px 0 0 0;
+  opacity: 0.8;
+}
+
+.to_favorite {
+  background: white;
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.to_favorite:hover {
+  border-color: var(--accent-color);
+  background: #fafafa;
+}
+
+/* =========================================
+   6. RECOMMENDATIONS SECTION
+   ========================================= */
+.inter {
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-top: 20px;
 }
 
 .section-title {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 800;
+  margin: 0 0 32px 0;
   text-align: center;
-  margin-bottom: 50px;
-  color: #000;
-  position: relative;
 }
 
 .all-sneakers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 30px;
-  padding-top: 50px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
 }
 
 .sneaker-card {
-  /* background: white; */
-  border-radius: 20px;
+  background: white;
+  border-radius: var(--radius-md);
   overflow: hidden;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  /* border: 1px solid rgba(0, 0, 0, 0.05); */
-  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); */
-  position: relative;
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
   display: flex;
-  justify-content: space-between;
-
-  align-items: center;
   flex-direction: column;
 }
 
-.sneaker-card button {
-  background: #0000007d;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, 15%);
-  width: 100%;
-  color: white;
-  display: none;
-}
-
-.sneaker-card:hover button {
-  display: flex;
-  justify-content: center;
-  padding: 30px;
-  text-align: center;
-}
-
 .sneaker-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.15),
-    0 8px 32px rgba(102, 126, 234, 0.1);
-  border-color: rgba(102, 126, 234, 0.2);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: transparent;
 }
 
 .sneaker-image {
-  width: 100%;
-  height: 300px;
-  /* overflow: hidden;
-  background: #f9f9f7;
+  aspect-ratio: 1 / 1;
+  background: #f9f9f9;
   display: flex;
   align-items: center;
-  
-  justify-content: center; */
-  /* padding: 20px; */
-  position: relative;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .sneaker-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
   transition: transform 0.5s ease;
 }
 
 .sneaker-card:hover .sneaker-image img {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .sneaker-info {
-  padding: 24px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .sneaker-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
-  margin-bottom: 12px;
-  color: #000;
-  line-height: 1.4;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sneaker-description {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 16px;
-  line-height: 1.5;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.current-size-item.selected-bg {
-  background: rgb(0, 0, 0);
-  color: white;
-}
-
-.footer {
-  background: #000;
-  height: 300px;
-  color: white;
-  margin-top: auto; /* Это прижмет футер к низу */
-  padding: 50px;
-}
-
 .sneaker-price {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 800;
-  color: #000;
-  background: linear-gradient(135deg, #f9f9f7, #ffffff);
-  padding: 12px 20px;
-  border-radius: 12px;
+  margin-top: auto; /* Прижимает цену к низу карточки */
+}
+
+/* =========================================
+   7. FOOTER
+   ========================================= */
+.footer {
+  background: #111;
+  color: #888;
+  padding: 40px 20px;
   text-align: center;
-  border: 2px solid rgba(0, 0, 0, 0.05);
+  margin-top: 60px;
+  font-size: 14px;
 }
 
-@media (max-width: 990px) {
-  .main-content {
-    flex-direction: column-reverse;
-  }
-}
+/* =========================================
+   8. RESPONSIVE DESIGN
+   ========================================= */
 
-/* Адаптивность */
-@media (max-width: 1200px) {
-  .all-sneakers-grid {
-    /* grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); */
-    gap: 25px;
-  }
-}
-
-@media (max-width: 768px) {
-  .all-sneakers-section {
-    margin-top: 60px;
-    padding-top: 40px;
-  }
-
-  .main-content {
-    flex-direction: column-reverse;
-  }
-
-  .section-title {
-    font-size: 24px;
-    margin-bottom: 30px;
-  }
-
-  .all-sneakers-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-  }
-
-  .sneaker-image {
-    height: 200px;
-  }
-
-  .sneaker-info {
-    padding: 20px;
-  }
-}
-
-@media (max-width: 576px) {
-  .all-sneakers-grid {
-    grid-template-columns: 1fr;
-    display: flex;
-    overflow: scroll;
-  }
-
-  .section-title {
-    font-size: 20px;
-  }
-}
-
-/* Убираем старый блок inter если он есть */
-
-/* Адаптивность */
-@media (max-width: 1200px) {
+/* Tablet & Small Laptop */
+@media (max-width: 1024px) {
   .info-wrapper {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: 1fr; /* Одна колонка */
     gap: 30px;
   }
 
-  .photo li {
-    width: 70px;
-    height: 80px;
-  }
-}
-
-@media (max-width: 992px) {
-  .info-wrapper {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    /* display: grid; */
-  }
-
-  .photo {
-    position: static;
-    order: 3;
-  }
-
-  .photo ul {
-    overflow: scroll;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /* width: fit-content; */
-  }
-
-  .photo li {
-    flex-shrink: 1;
+  .full-info {
+    position: static; /* Убираем липкость на планшетах */
+    width: 100%;
   }
 
   .main {
-    order: 1;
-    position: static;
-    display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse; /* Миниатюры под главным фото */
+  }
+
+  .photo ul {
+    flex-direction: row;
+    justify-content: center;
     width: 100%;
   }
 
-  .full-info {
-    order: 2;
-    position: static;
-    max-width: -webkit-fill-available;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  .prev,
-  .next {
-    opacity: 1;
-    transform: none;
+  .photo li {
+    width: 60px;
+    height: 60px;
   }
 }
 
+/* Mobile */
 @media (max-width: 768px) {
   .container {
     padding: 16px;
   }
 
-  .back-btn {
-    /* position: sticky; */
-    margin-bottom: 20px;
-    top: 14%;
+  .content {
+    margin-top: 80px; /* Больше отступ для кнопки на мобильном */
   }
 
-  .sneaker-image {
-    height: 170px;
+  .back-btn {
+    top: 16px;
+    left: 16px;
+    padding: 10px 16px;
+    font-size: 13px;
   }
 
   .full-info {
     padding: 24px;
-    /* width: auto;
-     */
-    display: grid;
+  }
+
+  .full-info h1 {
+    font-size: 24px;
   }
 
   .price button {
     font-size: 28px;
   }
 
-  /* .ty.active {
-    top: -50px;
-    left: 50%;
-    max-width: 400px;
-    transform: translate(-50%, 50%);
-  } */
-
-  /* .ty {
-    height: fit-content;
-    width: max-content;
-  }  */
-
-  .prev,
-  .next {
-    width: 48px;
-    height: 48px;
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .info-wrapper {
-    gap: 30px;
-    display: flex;
-    flex-direction: column;
+  .inter {
+    padding: 24px 16px;
   }
 
-  .sneaker-card {
-    width: 200px;
-  }
-
-  .main-btn {
+  .all-sneakers-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки на мобильном */
     gap: 12px;
   }
 
-  .photo ul {
-    gap: 0;
-    padding: 0;
+  .sneaker-info {
+    padding: 12px;
   }
 
-  .to-buy,
-  .to-cart {
-    padding: 16px;
+  .sneaker-title {
     font-size: 14px;
-  }
-
-  .current-size-item {
-    padding: 10px 16px;
-    font-size: 14px;
-    min-width: 50px;
-  }
-
-  .current-color-img {
-    width: 56px;
-    height: 56px;
-  }
-
-  .price {
-    padding: 20px;
-  }
-
-  .price button {
-    font-size: 24px;
   }
 }
 
-/* Плавные переходы */
-* {
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Very Small Mobile */
+@media (max-width: 480px) {
+  .all-sneakers-grid {
+    grid-template-columns: 1fr; /* 1 колонка на очень маленьких экранах */
+  }
+
+  .current-size-item {
+    min-width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
 }
