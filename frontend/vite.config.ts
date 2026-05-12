@@ -1,16 +1,21 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/react_router/',
+
+  // 👇 ВАЖНО: Для локальной разработки оставь пустым или '/'
+  base: '/',
+
   server: {
-    watch: {
-      usePolling: true,
-      interval: 1000,
+    port: 5173, // 👇 Явно укажи порт 5173
+    strictPort: true, // Если порт занят, Vite упадет с ошибкой, а не займет другой
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:8000', // Перенаправляем API-запросы на Django
+        changeOrigin: true,
+      },
     },
-    port: 8000,
     open: true,
   },
 });

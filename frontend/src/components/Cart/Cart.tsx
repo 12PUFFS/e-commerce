@@ -39,13 +39,12 @@ export default function Cart() {
             <p>Всего товаров : {cart.length}</p>
           </div>
           <div className="cart-right">
-            <p>
-              выбрано товаров: {cart.filter((item) => item.isChecked).length}
-            </p>
-            <button className="choseAll" onClick={choseAll}>
-              выбрать все {cart.length}
-            </button>
-            <button onClick={deleteSelected}>Удалить выбранные</button>
+            <div className="right-btn">
+              <button className="choseAll" onClick={choseAll}>
+                выбрать все {cart.length}
+              </button>
+              <button onClick={deleteSelected}>Удалить выбранные</button>
+            </div>
           </div>
         </div>
         {cart.length === 0 ? (
@@ -54,7 +53,7 @@ export default function Cart() {
           <div className="cart-layout">
             <div className="cart__list">
               {cart.map((item) => (
-                <div className="cart__card" key={item.id}>
+                <div className="oir">
                   <input
                     type="checkbox"
                     className="cart-checkbox"
@@ -63,21 +62,23 @@ export default function Cart() {
                       toggleCheck(item.id, item.selectedSize ?? null)
                     }
                   />
-                  <div>
-                    <Link to={`/item/${item.id}`}>
-                      <img src={item.image} alt="" />
-                    </Link>
-                    <p>{item.title}</p>
-                    <p>{item.selectedSize}</p>
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        removeFromCart(item.id, item.selectedSize ?? null);
-                      }}
-                    >
-                      удалить
-                    </button>
+                  <div className="cart__card" key={item.id}>
+                    <div className="card-i">
+                      <Link to={`/item/${item.id}`}>
+                        <img src={item.image} alt="" />
+                      </Link>
+                      <p>{item.title}</p>
+                      <p>{item.selectedSize}</p>
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          removeFromCart(item.id, item.selectedSize ?? null);
+                        }}
+                      >
+                        удалить
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}

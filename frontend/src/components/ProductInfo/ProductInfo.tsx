@@ -197,8 +197,7 @@ export default function ProductInfo() {
               <h3>доступные размеры</h3>
               <ul className="current-size">
                 {product.availableSizes?.map((size, index: number) => {
-                  const isCurrentlySelected =
-                    String(currentSize) === String(size);
+                  const isCurrentlySelected = currentSize === size;
 
                   const isInCart = sizesInCart.includes(size);
 
@@ -208,7 +207,7 @@ export default function ProductInfo() {
                       onClick={() => setCurrentSize(size)}
                       className={`current-size-item ${
                         isActive ? 'active' : ''
-                      }`}
+                      } ${isCurrentlySelected ? 'selected-bg' : ''}`}
                       key={index}
                     >
                       {size}

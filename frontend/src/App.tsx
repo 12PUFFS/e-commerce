@@ -1,4 +1,3 @@
-// @ts-ignore
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
@@ -81,7 +80,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/')
+    fetch('http://127.0.0.1:8000/api/products/')
       .then((response) => response.json())
       .then((data) => {
         console.log('Данные с сервера:', data);
@@ -121,21 +120,23 @@ export default function App() {
     }
   }, [cart]);
 
-  const addCart = (id: number) => {
+  const addCart = (id: number, size: number | null) => {
+    // Если размер не передан — берём из стейта currentSize
+    const finalSize = size ?? currentSize;
+
     const product = items.find((i) => i.id === id);
     if (!product) return;
 
     const productWithSize = {
       ...product,
-      selectedSize: currentSize,
+      selectedSize: finalSize,
       isChecked: false,
     };
-    setCart((prev: Product[]) => {
-      // ИСПРАВЛЕНО: используем some для проверки
-      const isExist = prev.some(
-        (item) => item.id === id && item.selectedSize === currentSize,
-      );
 
+    setCart((prev: Product[]) => {
+      const isExist = prev.some(
+        (item) => item.id === id && item.selectedSize === finalSize,
+      );
       if (!isExist) {
         return [...prev, productWithSize];
       }
