@@ -211,8 +211,8 @@ a {
 .photo ul {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 10px;
+  /* gap: 20px;
+  padding: 10px; */
 }
 
 .o {
@@ -252,7 +252,7 @@ a {
 
 .photo .active {
   opacity: 1;
-  transform: scale(1.2);
+  /* transform: scale(1.2); */
   /* border: 1px solid rgb(0, 0, 0); */
   /* box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5); */
 }
@@ -984,6 +984,11 @@ a {
 
   .main-btn {
     gap: 12px;
+  }
+
+  .photo ul {
+    gap: 0;
+    padding: 0;
   }
 
   .to-buy,
