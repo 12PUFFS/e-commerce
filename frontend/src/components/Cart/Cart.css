@@ -233,7 +233,7 @@
 
   .cart__card {
     flex-direction: column;
-    text-align: center;
+    text-align: justify;
     gap: 15px;
   }
 
@@ -249,8 +249,21 @@
 }
 
 @media (max-width: 480px) {
-  .cart__card {
+  /* .cart__card {
     padding: 15px;
+  } */
+
+  .back-btn {
+    height: 100vh;
+  }
+
+  .back-btn::before {
+    margin: 2px;
+    content: '';
+  }
+
+  .back-btn::before:hover {
+    content: '←';
   }
 
   .cart__card img {

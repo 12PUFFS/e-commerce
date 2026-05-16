@@ -125,8 +125,4 @@
   .favorite-link {
     width: 100%;
   }
-
-  .favorite-remove {
-    align-self: flex-end;
-  }
 }

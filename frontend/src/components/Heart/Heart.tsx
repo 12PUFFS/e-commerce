@@ -28,35 +28,37 @@ export default function Heart() {
 
               return (
                 <li key={uniqueKey} className="favorite-item">
-                  <Link to={`/item/${item.id}`} className="favorite-link">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="favorite-img"
-                    />
-                    <div className="favorite-info">
-                      <h4 className="favorite-title-text">{item.title}</h4>
-                      <p className="favorite-price">{item.price} ₽</p>
+                  <div className="favor-list">
+                    <Link to={`/item/${item.id}`} className="favorite-link">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="favorite-img"
+                      />
+                      <div className="favorite-info">
+                        <h4 className="favorite-title-text">{item.title}</h4>
+                        <p className="favorite-price">{item.price} ₽</p>
 
-                      {/* 👇 Показываем размер, если он выбран */}
-                      {item.selectedSize && (
-                        <span className="favorite-size">
-                          Размер: {item.selectedSize}
-                        </span>
-                      )}
-                    </div>
-                  </Link>
+                        {/* 👇 Показываем размер, если он выбран */}
+                        {item.selectedSize && (
+                          <span className="favorite-size">
+                            Размер: {item.selectedSize}
+                          </span>
+                        )}
+                      </div>
 
-                  {/* 👇 Кнопка удаления с правильным selectedSize */}
-                  <button
-                    className="favorite-remove"
-                    onClick={() =>
-                      handleToFavorite(item.id, item.selectedSize ?? null)
-                    }
-                    aria-label={`Удалить ${item.title} из избранного`}
-                  >
-                    ✕
-                  </button>
+                      {/* 👇 Кнопка удаления с правильным selectedSize */}
+                      <button
+                        className="favorite-remove"
+                        onClick={() =>
+                          handleToFavorite(item.id, item.selectedSize ?? null)
+                        }
+                        aria-label={`Удалить ${item.title} из избранного`}
+                      >
+                        ✕
+                      </button>
+                    </Link>
+                  </div>
                 </li>
               );
             })}

@@ -45,6 +45,8 @@ export default function Cart() {
               <button className="choseAll" onClick={choseAll}>
                 выбрать все {cart.length}
               </button>
+            </div>
+            <div className="delete-all">
               <button onClick={deleteSelected}>Удалить выбранные</button>
             </div>
           </div>
