@@ -3,7 +3,7 @@ import './ProductInfo.css';
 import { useContext, useState, useEffect } from 'react';
 import { CartContext, ProductsContext } from '../../App';
 import type { Product } from '../../App';
-
+// import toHome from '../../images/toHome.png';
 export default function ProductInfo() {
   const products = useContext(ProductsContext);
   const { id } = useParams();
@@ -108,14 +108,16 @@ export default function ProductInfo() {
   };
 
   const sameModel = products.filter((model) => {
-    return model.models === product.models;
+    return model.models && model.models === product.models;
   });
 
   return (
     <div className="root-wrapper">
       <div className="container">
         <Link to={'/'}>
-          <button className="back-btn"></button>
+          <button className="back-btn">
+            {/* <img src={toHome} alt="" /> */}
+          </button>
         </Link>
 
         <div className="content">
@@ -124,7 +126,7 @@ export default function ProductInfo() {
               <div className="main">
                 <div className="photo">
                   <ul>
-                    {product.photos?.slice(0, 5).map((photo, index: number) => {
+                    {product.photos.map((photo, index: number) => {
                       return (
                         <li
                           className={`${
@@ -250,7 +252,16 @@ export default function ProductInfo() {
                   {currentSize && <p>Размер: {currentSize}</p>}
                 </button>
                 <button
-                  onClick={() => handleToFavorite(product.id)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    if (!currentSize) {
+                      alert('Выберите размер');
+                      return;
+                    }
+                    handleToFavorite(product.id, currentSize);
+                  }}
                   className="to_favorite"
                 >
                   {!isFavor ? 'Добавить в избранное' : 'Удалить из избранного'}

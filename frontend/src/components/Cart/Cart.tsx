@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 
 import './Cart.css';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from '../../App';
+import Modal from '../Modal/Modal'; // ✅ Без .tsx
 
 export default function Cart() {
   const { cart, removeFromCart, toggleCheck, setCart } =
     useContext(CartContext);
+  const [modal, setModal] = useState(false);
   // const { setCart } = useContext(ProductsContext);
   // <button className="back-btn"></button>;
 
@@ -65,29 +67,46 @@ export default function Cart() {
                   <div className="cart__card" key={item.id}>
                     <div className="card-i">
                       <Link to={`/item/${item.id}`}>
-                        <img src={item.image} alt="" />
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="favorite-img"
+                        />
+                        <div className="favorite-info">
+                          <h4 className="favorite-title-text">{item.title}</h4>
+                          <p className="favorite-price">{item.price} ₽</p>
+
+                          {/* 👇 Показываем размер, если он выбран */}
+                          {item.selectedSize && (
+                            <span className="favorite-size">
+                              Размер: {item.selectedSize}
+                            </span>
+                          )}
+                        </div>
+
+                        <button
+                          className="favorite-remove"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            removeFromCart(item.id, item.selectedSize ?? null);
+                          }}
+                          aria-label={`Удалить ${item.title} из избранного`}
+                        >
+                          ✕
+                        </button>
                       </Link>
-                      <p>{item.title}</p>
-                      <p>{item.selectedSize}</p>
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          removeFromCart(item.id, item.selectedSize ?? null);
-                        }}
-                      >
-                        удалить
-                      </button>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
             <div className="pay-block">
-              <button className="pay">
+              <button onClick={() => setModal(true)} className="pay">
                 <h5>Перейти к оформлению</h5>
               </button>
             </div>
+            {modal && <Modal onClose={() => setModal(false)} cart={cart} />}
           </div>
         )}
       </div>

@@ -1,10 +1,11 @@
 import './ProductCard.css';
 import type { Product } from '../../App';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from '../../App';
 import { Link } from 'react-router-dom';
 
 import heartIcon from '../../assets/heart.png';
+// import Modal from '../Modal/Modal';
 
 interface TypeOfProduct {
   product: Product;
@@ -12,7 +13,8 @@ interface TypeOfProduct {
 
 export default function ProductCard({ product }: TypeOfProduct) {
   const { handleToFavorite, favorite } = useContext(CartContext);
-
+  // const [modal, setModal] = useState(false);
+  const [selectedSize, setSelectedSize] = useState<number | null>(null);
   const isLiked = favorite.some((i) => i.id === product.id);
 
   return (
@@ -22,20 +24,43 @@ export default function ProductCard({ product }: TypeOfProduct) {
         <div className="product-card-img">
           <img src={product.image} alt={product.title} />
         </div>
-        <div className="product-card-info">
-          <h2 className="product-card-price">{product.price} ₽</h2>
-          <h3 className="product-card-title">{product.title}</h3>
-        </div>
       </Link>
+      <div className="product-card-info">
+        {product.availableSizes && product.availableSizes.length > 0 && (
+          <div className="size-group">
+            {product.availableSizes.slice(0, 5).map((size, index) => {
+              const isActive = selectedSize === size;
+              return (
+                <span
+                  key={`${product.id}-${size}-${index}`}
+                  className={`size-tag ${isActive ? 'active' : ''}`}
+                  onClick={() => setSelectedSize(size)}
+                >
+                  {size}
+                </span>
+              );
+            })}
+          </div>
+        )}
+        <h2 className="product-card-price">{product.price} ₽</h2>
+        <h3 className="product-card-title">{product.title}</h3>
+        <button
+          className={`rating ${isLiked ? 'active' : ''}`}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
 
-      {/* Кнопка лайка ОТДЕЛЬНО. Используем button для семантики */}
-      <button
-        className={`rating ${isLiked ? 'active' : ''}`}
-        onClick={() => handleToFavorite(product.id)}
-        aria-label="Добавить в избранное"
-      >
-        <img src={heartIcon} alt="" />
-      </button>
+            if (!selectedSize) {
+              alert('Выберите размер');
+              return;
+            }
+            handleToFavorite(product.id, selectedSize);
+          }}
+          aria-label="Добавить в избранное"
+        >
+          <img src={heartIcon} alt="" />
+        </button>
+      </div>
     </div>
   );
 }

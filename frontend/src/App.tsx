@@ -37,7 +37,7 @@ interface SetCart {
   newProductBanner: Product | undefined;
   toggleCheck: (id: number, size: number | null) => void;
   favorite: Product[];
-  handleToFavorite: (id: number) => void;
+  handleToFavorite: (id: number, size: number | null) => void;
 }
 
 export const CartContext = createContext<SetCart>({
@@ -66,15 +66,17 @@ export default function App() {
   const [currentSize, setCurrentSize] = useState<number | null>(null);
   const [favorite, setFavorite] = useState<Product[]>([]);
 
-  const handleToFavorite = (id: number) => {
+  const handleToFavorite = (id: number, size: number | null) => {
     setFavorite((favor) => {
-      const isFavor = favor.some((item) => item.id === id);
+      const isFavor = favor.some(
+        (item) => item.id === id && item.selectedSize === size,
+      );
 
       if (isFavor) {
-        return favor.filter((i) => i.id !== id);
+        return favor.filter((i) => i.id !== id || i.selectedSize !== size);
       } else {
         const toFavor = items.find((i) => i.id === id);
-        return toFavor ? [...favor, toFavor] : favor;
+        return toFavor ? [...favor, { ...toFavor, selectedSize: size }] : favor;
       }
     });
   };

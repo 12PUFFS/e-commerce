@@ -16,6 +16,6 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
-    open: true,
+    // open: true,
   },
 });
