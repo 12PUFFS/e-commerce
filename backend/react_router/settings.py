@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",   # 👈 Vite по умолчанию
     "http://127.0.0.1:5173",
-    'https://react-router-three-teal.vercel.app/'
+    'https://react-router-three-teal.vercel.app'
 ]
 
 MIDDLEWARE = [

@@ -107,7 +107,7 @@ products = [
       'https://ir.ozone.ru/s3/multimedia-1-4/wc1000/7695221116.jpg',
     ],
     'availableSizes': [38, 39, 40, 41],
-    # 'models': 'dunk',
+    'models': 'https://ir.ozone.ru/s3/multimedia-1-k/wc1000/7435891604.jpg',
     'status': 'new',
   },
 
@@ -164,12 +164,12 @@ products = [
     'rating': 4.4,
     'photos': [
       'https://static.street-beat.ru/upload/resize_cache/iblock/48b/666_666_1/y5z4vrwq6r1ehugbc5x8vehpko4hxl68.jpg',
-      'https://avatars.mds.yandex.net/get-mpic/5258494/2a00000192ec444afaa701355e71b8433da9/900x1200',
-      'https://avatars.mds.yandex.net/get-mpic/7498982/2a00000192ec444afff52f3268a308a3451b/900x1200',
-      'https://avatars.mds.yandex.net/get-mpic/5287649/2a00000192ec444af665834f9da2c09a506f/900x1200',
-      'https://avatars.mds.yandex.net/get-mpic/5220415/2a00000192ec444aed6abd3be0c1a6228a02/900x1200',
-      'https://avatars.mds.yandex.net/get-mpic/5235334/2a00000192ec444af4d009ee1b28571e9053/900x1200',
-      'https://ir.ozone.ru/s3/multimedia-1-l/wc1000/7435891605.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/7a6/666_666_1/hv7jxcz3jtrdy52esxol5xm00rn0ecao.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/0de/666_666_1/qkvywgjhfhvkxzuh5fnvfh4vnnev8xk1.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/627/666_666_1/fwxvdr1sxuyzc2hrm1di1obfdu8eer3x.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/7a3/666_666_1/12wrw8ahh8c8c56inx23ivl1kr0feuad.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/b1d/666_666_1/7c0wt3lhs68yq4ne3mco2nzmchmeu4x8.jpg',
+      
     ],
     'desc': [
       'Низкий силуэт',
@@ -181,12 +181,11 @@ products = [
       'Swoosh на боковой стороне модели',
       'Брендинг Nike',
     ],
-    # 'variants': [
-    #   'https://ir.ozone.ru/s3/multimedia-1-k/wc1000/7435891604.jpg',
-    #   'https://ir.ozone.ru/s3/multimedia-1-4/wc1000/7695221116.jpg',
-    # ],
+    'variants': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/48b/666_666_1/y5z4vrwq6r1ehugbc5x8vehpko4hxl68.jpg'
+    ],
     'availableSizes': [38, 39, 40, 41],
-    'models': 'force',
+    'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/48b/666_666_1/y5z4vrwq6r1ehugbc5x8vehpko4hxl68.jpg',
     'status': 'hit',
   },
       {
@@ -203,28 +202,64 @@ products = [
     'photos': [
       'https://static.street-beat.ru/upload/resize_cache/iblock/7ea/666_666_1/rh90t0d1q00d372jlofbp57kdhbcbztw.jpg',
       'https://static.street-beat.ru/upload/resize_cache/iblock/3a4/666_666_1/yb6zmsryhjudipr9m5m98tj8yly3tt91.jpg',
-      'https://avatars.mds.yandex.net/get-mpic/7498982/2a00000192ec444afff52f3268a308a3451b/900x1200',
-      'https://avatars.mds.yandex.net/get-mpic/5287649/2a00000192ec444af665834f9da2c09a506f/900x1200',
-      'https://avatars.mds.yandex.net/get-mpic/5220415/2a00000192ec444aed6abd3be0c1a6228a02/900x1200',
-      'https://avatars.mds.yandex.net/get-mpic/5235334/2a00000192ec444af4d009ee1b28571e9053/900x1200',
-      'https://ir.ozone.ru/s3/multimedia-1-l/wc1000/7435891605.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/b82/666_666_1/gycjlprpgx9ceu3a41egae4a4nvw7e1y.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/474/666_666_1/50clpuipkb39j8i8ro8110f8vqdr9f86.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/b81/666_666_1/ud0ttbj9be5y3mhtflz5093ln5j1xgy7.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/a34/666_666_1/vz9qjb6jl6m7wkusn346p7102e9y569a.jpg',
+      
     ],
     'desc': [
       'Низкий силуэт',
-      'Верх из текстиля и кожи',
-      'Дышащая внутренняя подкладка',
-      'Шнуровка с дополнительными отверстиями',
-      'Технология Nike Air для усиленной амортизации',
-      'Резиновая подошва с протектором',
-      'Swoosh на боковой стороне модели',
-      'Брендинг Nike',
+      'Кожаный верх',
+      'Текстильная внутренняя подкладка',
+      'Перфорация для циркуляции воздуха',
+      'Резиновая подошва с зигзагообразным протектором',
+      'Брендинг adidas',
     ],
     'variants': [
-      'https://static.street-beat.ru/upload/resize_cache/iblock/7ea/666_666_1/rh90t0d1q00d372jlofbp57kdhbcbztw.jpg',
-      'https://ir.ozone.ru/s3/multimedia-1-4/wc1000/7695221116.jpg',
+      '',
     ],
     'availableSizes': [38, 39, 40, 41],
-    'models': 'force',
+    'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/7ea/666_666_1/rh90t0d1q00d372jlofbp57kdhbcbztw.jpg',
+    'status': 'hit',
+  },
+   {
+    'id': 7,
+    'title': 'adidas Drop Step Low 2.0',
+    'price': '12 199',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/f1d/666_666_1/o9qpmny0f4rtu8uhrw5cbz0i35mhit0z.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'shoes',
+    'fulldesc':
+      'Кроссовки adidas Superstar впервые вышли на баскетбольные площадки в 1970 году. Прошло совсем немного времени, прежде чем они превратились из обуви для спортсменов в икону уличной моды. Модель adidas Superstar II выполнена в том же стиле, с теми же пропорциями и из тех же материалов, которые сделали оригинальную модель легендой. Верх из гладкой кожи дополнен спортивными тремя полосками и накладкой на пятке. Финальный штрих — классический резиновый мысок-ракушка.',
+    'rating': 4.4,
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/f1d/666_666_1/o9qpmny0f4rtu8uhrw5cbz0i35mhit0z.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/c6f/666_666_1/d3yqhcky0ze4zzzcxz5nqvkietb4bsxx.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/9d8/666_666_1/o1r3ot3ois2452qe85biy10pnthidt83.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/507/666_666_1/ztd3vd8avkba8mjmw1eohzon6icsq4lk.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/f85/666_666_1/dk39hrp72ordctcwnwpkdk3cwnxjrziu.jpg',
+      # 'https://static.street-beat.ru/upload/resize_cache/iblock/b81/666_666_1/ud0ttbj9be5y3mhtflz5093ln5j1xgy7.jpg',
+      # 'https://static.street-beat.ru/upload/resize_cache/iblock/a34/666_666_1/vz9qjb6jl6m7wkusn346p7102e9y569a.jpg',
+      
+    ],
+    'desc': [
+    'Низкий силуэт',
+    'Верх из искусственной кожи',
+    'Текстильная внутренняя подкладка',
+    'Мягкий язычок',
+    'Перфорация на мыске и щиколотке',
+    'Шнуровка с дополнительными отверстиями',
+    'Технология Adiprene',
+    'Резиновая подошва с цепким протектором',
+    'Брендинг adidas'
+    ],
+    'variants': [
+      '',
+    ],
+    'availableSizes': [38, 39, 40, 41],
+    'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/f1d/666_666_1/o9qpmny0f4rtu8uhrw5cbz0i35mhit0z.jpg',
     'status': 'hit',
   },
 ]
