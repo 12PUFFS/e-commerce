@@ -50,9 +50,11 @@ export default function Heart() {
                       {/* 👇 Кнопка удаления с правильным selectedSize */}
                       <button
                         className="favorite-remove"
-                        onClick={() =>
-                          handleToFavorite(item.id, item.selectedSize ?? null)
-                        }
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          handleToFavorite(item.id, item.selectedSize ?? null);
+                        }}
                         aria-label={`Удалить ${item.title} из избранного`}
                       >
                         ✕

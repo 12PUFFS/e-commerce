@@ -411,7 +411,7 @@
   }
 
   .card-list {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     gap: 16px;
   }
 
@@ -437,6 +437,15 @@
     padding-right: 0;
   } */
 
+  .content-images {
+    width: 100%;
+    min-width: 225px;
+  }
+
+  .back-btn {
+    display: none;
+  }
+
   .product-card-price {
     background: black;
     color: white;
@@ -458,18 +467,23 @@
 
   .banner {
     width: auto;
+    padding: 0;
     /* border: 1px solid; */
   }
 
+  .banner img {
+    height: 200px;
+  }
+
   .banner-content {
-    width: 345px;
+    width: 385px;
     padding: 10px;
     /* height: 160px; */
     gap: 10px;
   }
 
   .content-images img {
-    width: 250px;
+    width: auto;
   }
 
   .title-desc {
@@ -573,6 +587,7 @@
 
   .banner-counter {
     top: 60px;
+    right: 50px;
   }
 }
 
