@@ -23,7 +23,7 @@ export default function Header() {
                 <img className="hearti" src={heartIcon} alt="" />
               </p>
               {favorite.length > 0 ? (
-                <span className="cart-count">{favorite.length}</span>
+                <span className="carti-count">{favorite.length}</span>
               ) : (
                 ''
               )}

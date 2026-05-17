@@ -17,6 +17,18 @@ export default function ProductCard({ product }: TypeOfProduct) {
   const [selectedSize, setSelectedSize] = useState<number | null>(null);
   const isLiked = favorite.some((i) => i.id === product.id);
 
+  // useEffect(() => {
+  //   const savedSize = localStorage.getItem(`item-${product.id}`);
+  //   if (savedSize) {
+  //     setSelectedSize(savedSize);
+  //   }
+  // }, [product.id]);
+
+  // const handleSavedSize = (size: number)=> {
+  //   setSelectedSize(size)
+  //   localStorage.setItem(``)
+  // }
+
   return (
     <div className="product-card">
       {/* Ссылка только на изображение и текст */}

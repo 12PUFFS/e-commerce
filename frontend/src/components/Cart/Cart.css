@@ -226,6 +226,24 @@
   }
 }
 
+.choseAll,
+.delete-all {
+  height: fit-content;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.delete-all {
+  background: none;
+  border: 1px solid;
+  border-radius: 12px;
+}
+
 @media (max-width: 768px) {
   .cartw h1 {
     font-size: 32px;

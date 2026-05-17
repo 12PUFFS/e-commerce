@@ -367,11 +367,12 @@ body {
     width: auto;
     height: auto;
     margin: 0;
+    gap: 30px;
   }
 
   .banner img {
     width: 300px;
-    height: auto;
+    /* height: auto; */
   }
 
   .wrapper {
@@ -468,6 +469,12 @@ body {
     padding: 32px 0;
     font-size: 13px;
   }
+
+  .content-images {
+    height: auto;
+    overflow: clip;
+    border-radius: 12px;
+  }
 }
 
 /* 📱 Small Mobile (≤480px) */
@@ -496,6 +503,7 @@ body {
 
   .banner img {
     width: 200px;
+    height: auto;
   }
 
   .title-desc {

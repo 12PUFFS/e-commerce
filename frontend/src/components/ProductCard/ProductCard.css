@@ -71,7 +71,7 @@
 /* Если кнопка активна (лайкнута) - показываем её ВСЕГДА, даже без наведения */
 .rating.active {
   display: flex;
-  background-color: #000000; /* Красный фон */
+  background-color: #ff3b30; /* Красный фон */
 }
 
 /* При наведении на НЕактивную кнопку - красим фон в красный */
@@ -86,7 +86,7 @@
 }
 
 .size-tag.active {
-  background: #000;
+  background: #ff3b30;
   color: #fff;
   border-color: #000;
   font-weight: 600;

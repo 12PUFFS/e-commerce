@@ -35,31 +35,31 @@ export default function Heart() {
                         alt={item.title}
                         className="favorite-img"
                       />
-                      <div className="favorite-info">
-                        <h4 className="favorite-title-text">{item.title}</h4>
-                        <p className="favorite-price">{item.price} ₽</p>
-
-                        {/* 👇 Показываем размер, если он выбран */}
-                        {item.selectedSize && (
-                          <span className="favorite-size">
-                            Размер: {item.selectedSize}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* 👇 Кнопка удаления с правильным selectedSize */}
-                      <button
-                        className="favorite-remove"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          handleToFavorite(item.id, item.selectedSize ?? null);
-                        }}
-                        aria-label={`Удалить ${item.title} из избранного`}
-                      >
-                        ✕
-                      </button>
                     </Link>
+                    <div className="favorite-info">
+                      <h4 className="favorite-title-text">{item.title}</h4>
+                      <p className="favorite-price">{item.price} ₽</p>
+
+                      {/* 👇 Показываем размер, если он выбран */}
+                      {item.selectedSize && (
+                        <span className="favorite-size">
+                          Размер: {item.selectedSize}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* 👇 Кнопка удаления с правильным selectedSize */}
+                    <button
+                      className="favorite-remove"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleToFavorite(item.id, item.selectedSize ?? null);
+                      }}
+                      aria-label={`Удалить ${item.title} из избранного`}
+                    >
+                      ✕
+                    </button>
                   </div>
                 </li>
               );

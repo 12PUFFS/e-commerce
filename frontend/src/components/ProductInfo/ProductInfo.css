@@ -1046,3 +1046,29 @@ a {
     border-color 0.3s ease,
     transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Размер в избранном (обычный) */
+.current-size-item.infavor {
+  border-color: #ff3b30;
+  color: #ff3b30;
+  position: relative;
+}
+
+/* Размер ВЫБРАН + в избранном */
+.current-size-item.selected-bg.infavor {
+  background: #ff3b30 !important;
+  color: #fff !important;
+  border-color: #ff3b30 !important;
+  box-shadow: 0 4px 12px rgba(255, 59, 48, 0.3);
+}
+
+/* Сердечко-индикатор */
+.current-size-item.infavor span {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: inherit; /* Белый на красном, красный на белом */
+  line-height: 1;
+}

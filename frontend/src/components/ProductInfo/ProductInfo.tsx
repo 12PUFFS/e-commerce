@@ -35,7 +35,9 @@ export default function ProductInfo() {
     setSelectedPhoto(0); // ✅ Сбрасываем фото на первое
   }, [id, setCurrentSize]);
 
-  const isFavor = favorite.some((i) => i.id === product.id);
+  const isFavor = favorite.some(
+    (i) => i.id === product.id && i.selectedSize === currentSize,
+  );
   if (!product) {
     return <div>Товар не найден</div>;
   }
@@ -198,21 +200,25 @@ export default function ProductInfo() {
               <h1>{product.title}</h1>
               <h3>доступные размеры</h3>
               <ul className="current-size">
-                {product.availableSizes?.map((size, index: number) => {
+                {product.availableSizes?.map((size) => {
                   const isCurrentlySelected = currentSize === size;
 
                   const isInCart = sizesInCart.includes(size);
-
+                  const inFavorite = favorite.some(
+                    (item) =>
+                      item.id === product.id && item.selectedSize === size,
+                  );
                   const isActive = isCurrentlySelected || isInCart;
                   return (
                     <button
                       onClick={() => setCurrentSize(size)}
                       className={`current-size-item ${
                         isActive ? 'active' : ''
-                      } ${isCurrentlySelected ? 'selected-bg' : ''}`}
-                      key={index}
+                      } ${isCurrentlySelected ? 'selected-bg' : ''} ${inFavorite ? 'infavor' : ''}`}
+                      key={size}
                     >
                       {size}
+                      {/* {inFavorite && <span>♥</span>} */}
                     </button>
                   );
                 })}
@@ -264,7 +270,7 @@ export default function ProductInfo() {
                   }}
                   className="to_favorite"
                 >
-                  {!isFavor ? 'Добавить в избранное' : 'Удалить из избранного'}
+                  {isFavor ? 'Удалить из избранного' : 'Добавить в избранное'}
                 </button>
               </div>
             </div>
