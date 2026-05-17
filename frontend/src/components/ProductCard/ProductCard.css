@@ -248,3 +248,37 @@ a {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
 }
+
+@media (max-width: 1024px) {
+  .product-card-price {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card-info {
+    margin: 10px;
+    gap: 8px;
+    justify-content: start;
+  }
+
+  .product-card-img img {
+    width: 150px;
+    height: 200px;
+  }
+
+  .product-card-img {
+    height: 200px;
+  }
+
+  .size-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 5px;
+  }
+
+  .product-card-price {
+    width: stretch;
+  }
+}

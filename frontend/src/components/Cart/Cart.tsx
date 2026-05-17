@@ -42,9 +42,12 @@ export default function Cart() {
           </div>
           <div className="cart-right">
             <div className="right-btn">
-              <button className="choseAll" onClick={choseAll}>
-                выбрать все {cart.length}
-              </button>
+              <div className="rerer">
+                <button className="choseAll" onClick={choseAll}>
+                  выбрать все
+                </button>
+                <div>Выбрано {cart.filter((i) => i.isChecked).length}</div>
+              </div>
             </div>
             <div className="delete-all">
               <button onClick={deleteSelected}>Удалить выбранные</button>

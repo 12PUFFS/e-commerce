@@ -326,3 +326,9 @@ button {
     height: fit-content;
   }
 }
+
+@media (max-width: 480px) {
+  .empty-favorite {
+    top: 60%;
+  }
+}

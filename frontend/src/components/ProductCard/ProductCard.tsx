@@ -40,8 +40,12 @@ export default function ProductCard({ product }: TypeOfProduct) {
       <div className="product-card-info">
         {product.availableSizes && product.availableSizes.length > 0 && (
           <div className="size-group">
-            {product.availableSizes.slice(0, 5).map((size, index) => {
-              const isActive = selectedSize === size;
+            {product.availableSizes.map((size, index) => {
+              const IsCurrentSize = selectedSize === size;
+              const isInFavorite = favorite.some(
+                (i) => i.id === product.id && i.selectedSize === size,
+              );
+              const isActive = IsCurrentSize || isInFavorite;
               return (
                 <span
                   key={`${product.id}-${size}-${index}`}

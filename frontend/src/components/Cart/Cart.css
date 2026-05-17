@@ -62,7 +62,7 @@
 .cart-right {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   /* border: 1px solid; */
 }
 
@@ -244,6 +244,14 @@
   border-radius: 12px;
 }
 
+.rerer {
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: flex-start;
+}
+
 @media (max-width: 768px) {
   .cartw h1 {
     font-size: 32px;
@@ -296,5 +304,8 @@
   .oir {
     flex-wrap: wrap;
     gap: 10px;
+  }
+  .empty {
+    top: 70%;
   }
 }
