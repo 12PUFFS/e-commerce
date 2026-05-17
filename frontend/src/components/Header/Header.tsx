@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { CartContext } from '../../App';
 import cartIcon from '../../assets/Bag (1).svg';
 import { Link } from 'react-router-dom';
+// import logo from '../../../src/images/logo.png';
 
 export default function Header() {
   const { cart, favorite } = useContext(CartContext);
@@ -12,6 +13,9 @@ export default function Header() {
     <>
       <div className="pre-header">Найди свою идеальную пару</div>
       <header className="header">
+        {/* <a href="">
+          <img src={logo} alt="" />
+        </a> */}
         <div className="menu">
           <ul className="list">
             <Link className="rr" to={'/heart'}>
