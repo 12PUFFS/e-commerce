@@ -185,11 +185,11 @@ a {
   }
 }
 
-.modal-content {
+/* .modal-content {
   padding: 40px;
   overflow-y: auto;
   max-height: calc(90vh - 80px);
-}
+} */
 
 .cart-item {
   display: grid;
@@ -203,10 +203,10 @@ a {
   transition: all 0.3s ease;
 }
 
-.cart-item:hover {
+/* .cart-item:hover {
   transform: translateX(5px);
   border-color: #667eea;
-}
+} */
 
 .cart-item img {
   width: 100px;

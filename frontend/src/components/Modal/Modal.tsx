@@ -13,9 +13,16 @@ interface ModalType {
 export default function Modal({ cart, onClose }: ModalType) {
   return (
     <div className="modal-wrapper">
-      <div className="modal">
-        <div className="modal-content">
-          <div>
+      <div className="modal-content">
+        <div className="modal-title">
+          <h1></h1>
+          <button className="close" onClick={onClose}>
+            ✕
+          </button>
+        </div>
+        <div className="modal-main">
+          <div className="form">Форма</div>
+          <div className="selected-item">
             {cart.filter((item) => item.isChecked).length > 0 ? (
               cart
                 .filter((item) => item.isChecked)
@@ -40,8 +47,6 @@ export default function Modal({ cart, onClose }: ModalType) {
               <p>Выбери товар</p>
             )}
           </div>
-          <h1>hi</h1>
-          <button onClick={onClose}>close</button>
         </div>
       </div>
     </div>
