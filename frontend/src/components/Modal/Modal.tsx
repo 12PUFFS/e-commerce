@@ -4,31 +4,255 @@
 import { Link } from 'react-router-dom';
 import './Modal.css';
 import type { Product } from '../../App';
+import { useState } from 'react';
 
 interface ModalType {
   cart: Product[];
   onClose: () => void;
+  onSubmit?: (data: CheckoutData) => void;
 }
 
-export default function Modal({ cart, onClose }: ModalType) {
+interface CheckoutData {
+  email: string;
+  name: string;
+  phone: string;
+  address: string;
+  delivery: 'courier' | 'pickup' | 'post';
+  payment: 'card' | 'cash' | 'online';
+  comment?: string;
+  items: Array<{ id: number; size: number | null; price: string }>;
+  total: string;
+}
+
+type ErrorsType = {
+  name?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+};
+
+export default function Modal({ cart, onClose, onSubmit }: ModalType) {
+  const [name, setCorrrectName] = useState('');
+  const [email, setCorrectEmail] = useState('');
+  const [phone, setCorrectPhone] = useState('');
+  const [active, setActive] = useState('courier');
+  const [activePay, setActivePay] = useState('card');
+  const [error, setError] = useState<ErrorsType>({
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+  });
+  const checkedItems = cart.filter((item) => item.isChecked);
+  const total = checkedItems.reduce(
+    (sum, item) => sum + parseInt(item.price.replace(/\s/g, '')),
+    0,
+  );
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const phoneData = (formData.get('phone') as string)?.trim() ?? '';
+    const nameData = (formData.get('name') as string)?.trim() ?? '';
+    const emailData = (formData.get('email') as string)?.trim() ?? '';
+
+    const anyErrors: ErrorsType = {};
+
+    if (nameData === '') {
+      anyErrors.name = 'Введите имя';
+    }
+
+    if (emailData === '') {
+      anyErrors.email = 'Введите email';
+    }
+
+    if (phoneData === '') {
+      anyErrors.phone = 'Введите номер телефона';
+    }
+
+    if (Object.keys(anyErrors).length > 0) {
+      setError(anyErrors);
+      return;
+    }
+
+    setError({});
+    const addressData = (formData.get('address') as string)?.trim() ?? '';
+    const deliveryData = ((formData.get('delivery') as string)?.trim() ??
+      '') as CheckoutData['delivery'];
+
+    const currentItems = checkedItems.map((i) => ({
+      id: i.id,
+      size: i.selectedSize || null,
+      price: i.price,
+    }));
+
+    const comment = (formData.get('comment') as string)?.trim() ?? '';
+    const paymentData = ((formData.get('payment') as string)?.trim() ??
+      '') as CheckoutData['payment'];
+
+    // const comment = formData.get('comment') ?? undefined;
+
+    const mainObj = {
+      email: emailData,
+      address: addressData,
+      delivery: deliveryData,
+      items: currentItems,
+      name: nameData,
+      phone: phoneData,
+      payment: paymentData,
+      total: `${total} ₽`,
+      comment: comment,
+    };
+    if (onSubmit) {
+      onSubmit(mainObj);
+    }
+    onClose();
+  };
+
   return (
     <div className="modal-wrapper">
       <div className="modal-content">
         <div className="modal-title">
-          <h1></h1>
+          <h1>Оформление заказа</h1>
           <button className="close" onClick={onClose}>
             ✕
           </button>
         </div>
         <div className="modal-main">
-          <div className="form">Форма</div>
+          <div className="form">
+            <form onSubmit={handleSubmit}>
+              <fieldset>
+                <label htmlFor="name">Имя *</label>
+                {error.name && <span className="error-text">{error.name}</span>}
+                <input
+                  name="name"
+                  value={name}
+                  onChange={(e) => setCorrrectName(e.target.value)}
+                  id="name"
+                  type="text"
+                  className={`${error.name ? 'error' : ''} ${name.trim() ? 'green' : ''}`}
+                />
+                <label htmlFor="email">email *</label>
+                {error.name && (
+                  <span className="error-text">{error.email}</span>
+                )}
+                <input
+                  name="email"
+                  id="email"
+                  type="text"
+                  value={email}
+                  onChange={(e) => setCorrectEmail(e.target.value)}
+                  className={`${error.email ? 'error' : ''} ${email.trim() ? 'green' : ''}`}
+                />
+
+                <label htmlFor="address">адрес</label>
+                <input name="address" id="address" type="text" />
+                <label htmlFor="phone">телефон *</label>
+                {error.name && (
+                  <span className="error-text">{error.phone}</span>
+                )}
+                <input
+                  name="phone"
+                  id="phone"
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setCorrectPhone(e.target.value)}
+                  placeholder="+7(000)000-00-00"
+                  className={`${error.phone ? 'error' : ''} ${phone.trim() ? 'green' : ''}`}
+                />
+                <p>Доставка</p>
+                <div className="info-wrapperr">
+                  <div
+                    className={`div ${active === 'courier' ? 'active' : ''}`}
+                    onClick={() => setActive('courier')}
+                  >
+                    <label htmlFor="courier">курьером</label>
+                    <input
+                      id="courier"
+                      type="radio"
+                      name="delivery"
+                      value="courier"
+                      defaultChecked
+                    />
+                  </div>
+                  <div
+                    className={`div ${active === 'pickup' ? 'active' : ''}`}
+                    onClick={() => setActive('pickup')}
+                  >
+                    <label htmlFor="pickup">пункт выдачи</label>
+                    <input
+                      id="pickup"
+                      type="radio"
+                      name="delivery"
+                      value="pickup"
+                    />
+                  </div>
+                  <div
+                    className={`div ${active === 'post' ? 'active' : ''}`}
+                    onClick={() => setActive('post')}
+                  >
+                    <label htmlFor="post">почта</label>
+                    <input
+                      id="post"
+                      type="radio"
+                      name="delivery"
+                      value="post"
+                    />
+                  </div>
+                </div>
+                <p>Оплата</p>
+                <div className="info-wrapperr">
+                  <div
+                    className={`div ${activePay === 'card' ? 'active' : ''}`}
+                    onClick={() => setActivePay('card')}
+                  >
+                    <label htmlFor="card">картой</label>
+                    <input
+                      defaultChecked
+                      id="card"
+                      name="payment"
+                      value="card"
+                      type="radio"
+                    />
+                  </div>
+                  <div
+                    className={`div ${activePay === 'cash' ? 'active' : ''}`}
+                    onClick={() => setActivePay('cash')}
+                  >
+                    <label htmlFor="cash">наличными</label>
+                    <input id="cash" name="payment" value="cash" type="radio" />
+                  </div>
+                  <div
+                    className={`div ${activePay === 'online' ? 'active' : ''}`}
+                    onClick={() => setActivePay('online')}
+                  >
+                    <label htmlFor="online">онлайн</label>
+                    <input
+                      id="online"
+                      name="payment"
+                      value="online"
+                      type="radio"
+                    />
+                  </div>
+                </div>
+                <label htmlFor="comment">Комментарий к заказу</label>
+                <textarea
+                  name="comment"
+                  id="comment"
+                  placeholder="Введите комментарий"
+                ></textarea>
+              </fieldset>
+              <button>отправить</button>
+            </form>
+          </div>
           <div className="selected-item">
             {cart.filter((item) => item.isChecked).length > 0 ? (
               cart
                 .filter((item) => item.isChecked)
                 .map((item) => (
-                  <Link to={`/item/${item.id}`}>
-                    <div key={item.id} className="cart-item">
+                  <Link key={item.id} to={`/item/${item.id}`}>
+                    <div className="cart-item">
                       <img src={item.image} alt={item.title} />
                       <div>
                         <h4>{item.title}</h4>
@@ -46,25 +270,14 @@ export default function Modal({ cart, onClose }: ModalType) {
             ) : (
               <p>Выбери товар</p>
             )}
+            <div className="yu">{`${total} руб.`}</div>
           </div>
         </div>
+        {/* <div className="ffff"></div> */}
       </div>
     </div>
   );
 }
 
 {
-  /* <div key={item.id} className="cart-item">
-   <img src={item.image} alt={item.title} />
-   <div>
-     <h4>{item.title}</h4>
-    <p>Цена: {item.price} руб.</p>
-
-     {item.selectedSize && (
-      <p>
-        <strong>Размер: {item.selectedSize}</strong>
-      </p>
-    )}
-  </div>
-</div> */
 }
