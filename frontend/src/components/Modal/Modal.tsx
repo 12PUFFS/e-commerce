@@ -11,45 +11,86 @@ interface ModalType {
   onClose: () => void;
   onSubmit?: (data: CheckoutData) => void;
 }
-export function CardPay() {
-  const [cardValue, setCardValue] = useState('');
-  const [dateValue, setDateValue] = useState('');
-  const [cvvValue, setCvvValue] = useState('');
+
+interface CardData {
+  number: string;
+  expiry: string;
+  cvv: string;
+}
+
+interface CardType {
+  value: CardData;
+  onChange: (newValue: CardData) => void;
+}
+
+export function CardPay({ value, onChange }: CardType) {
+  // const [cardValue, setCardValue] = useState('');
+  // const [dateValue, setDateValue] = useState('');
+  // const [cvvValue, setCvvValue] = useState('');
+
+  const formatCardNumber = (input: string) => {
+    const onlyDigit = input.replace(/\D/g, '');
+    const trimmed = onlyDigit.slice(0, 16);
+    const spases = trimmed.replace(/(\d{4})/g, '$1 ');
+
+    return spases.trim();
+  };
+
+  const handleNumberInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatCardNumber(e.target.value);
+    onChange({ ...value, number: formatted });
+  };
+
   return (
-    <div className="card-wrapper">
-      <div className="line-card"></div>
-      <div className="card-numbers">
-        <input
-          className="card-input"
-          onChange={(e) => setCardValue(e.target.value)}
-          value={cardValue}
-          type="number"
-          placeholder="0000 0000 0000 0000"
-        />
-        <div className="date-cvv">
-          <div className="date">
-            <p className="date-desc">Срок</p>
+    <>
+      <div className="warning">
+        <p>Введите вашу карту</p>
+      </div>
+      <div className="card-wrapper">
+        <div className="line-card"></div>
+        <div className="card-numbers">
+          <div className="input-wrapper">
             <input
-              className="card-input-date"
-              value={dateValue}
-              placeholder="00/00"
-              onChange={(e) => setDateValue(e.target.value)}
-              type="number"
+              className="card-input"
+              onChange={handleNumberInput}
+              value={value.number}
+              type="text"
+              inputMode="numeric"
+              pattern="\d*"
             />
+            <span
+              className={`placeholder-guide ${value.number ? 'is-hidden' : ''}`}
+            >
+              0000 0000 0000 0000
+            </span>
           </div>
-          <div className="cvv">
-            <p className="cvv-desc">CVV</p>
-            <input
-              className="card-input-cvv"
-              value={cvvValue}
-              placeholder="000"
-              onChange={(e) => setCvvValue(e.target.value)}
-              type="number"
-            />
+          <div className="date-cvv">
+            <div className="date">
+              <p className="date-desc">Срок</p>
+              <input
+                className="card-input-date"
+                value={value.expiry}
+                placeholder="00/00"
+                onChange={(e) => onChange({ ...value, expiry: e.target.value })}
+                type="text"
+                inputMode="numeric"
+              />
+            </div>
+            <div className="cvv">
+              <p className="cvv-desc">CVV</p>
+              <input
+                className="card-input-cvv"
+                value={value.cvv}
+                placeholder="000"
+                onChange={(e) => onChange({ ...value, cvv: e.target.value })}
+                type="text"
+                inputMode="numeric"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -63,6 +104,11 @@ interface CheckoutData {
   comment?: string;
   items: Array<{ id: number; size: number | null; price: string }>;
   total: string;
+  card?: {
+    number: string;
+    expiry: string;
+    cvv: string;
+  };
 }
 
 type ErrorsType = {
@@ -73,6 +119,11 @@ type ErrorsType = {
 };
 
 export default function Modal({ cart, onClose, onSubmit }: ModalType) {
+  const [cardPay, setCardPay] = useState({
+    number: '',
+    expiry: '',
+    cvv: '',
+  });
   const [name, setCorrrectName] = useState('');
   const [email, setCorrectEmail] = useState('');
   const [phone, setCorrectPhone] = useState('');
@@ -134,7 +185,20 @@ export default function Modal({ cart, onClose, onSubmit }: ModalType) {
 
     // const comment = formData.get('comment') ?? undefined;
 
+    let cardInfo: CheckoutData['card'] = undefined;
+
+    if (activePay === 'online') {
+      cardInfo = {
+        number: cardPay.number,
+        expiry: cardPay.expiry,
+        cvv: cardPay.cvv,
+      };
+    } else {
+      cardInfo = undefined;
+    }
+
     const mainObj = {
+      card: cardInfo,
       email: emailData,
       address: addressData,
       delivery: deliveryData,
@@ -276,7 +340,9 @@ export default function Modal({ cart, onClose, onSubmit }: ModalType) {
                       type="radio"
                     />
                   </div>
-                  {activePay === 'online' && <CardPay />}
+                  {activePay === 'online' && (
+                    <CardPay onChange={setCardPay} value={cardPay} />
+                  )}
                 </div>
                 <label htmlFor="comment">Комментарий к заказу</label>
                 <textarea
