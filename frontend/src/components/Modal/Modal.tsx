@@ -11,6 +11,47 @@ interface ModalType {
   onClose: () => void;
   onSubmit?: (data: CheckoutData) => void;
 }
+export function CardPay() {
+  const [cardValue, setCardValue] = useState('');
+  const [dateValue, setDateValue] = useState('');
+  const [cvvValue, setCvvValue] = useState('');
+  return (
+    <div className="card-wrapper">
+      <div className="line-card"></div>
+      <div className="card-numbers">
+        <input
+          className="card-input"
+          onChange={(e) => setCardValue(e.target.value)}
+          value={cardValue}
+          type="number"
+          placeholder="0000 0000 0000 0000"
+        />
+        <div className="date-cvv">
+          <div className="date">
+            <p className="date-desc">Срок</p>
+            <input
+              className="card-input-date"
+              value={dateValue}
+              placeholder="00/00"
+              onChange={(e) => setDateValue(e.target.value)}
+              type="number"
+            />
+          </div>
+          <div className="cvv">
+            <p className="cvv-desc">CVV</p>
+            <input
+              className="card-input-cvv"
+              value={cvvValue}
+              placeholder="000"
+              onChange={(e) => setCvvValue(e.target.value)}
+              type="number"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 interface CheckoutData {
   email: string;
@@ -234,17 +275,8 @@ export default function Modal({ cart, onClose, onSubmit }: ModalType) {
                       value="online"
                       type="radio"
                     />
-                    <div className="card-wrapper">
-                      <div className="line-card"></div>
-                      <div className="card-numbers">
-                        <p>0000 0000 0000 0000</p>
-                        <div className="date">
-                          <p>00/00</p>
-                          <p>000</p>
-                        </div>
-                      </div>
-                    </div>
                   </div>
+                  {activePay === 'online' && <CardPay />}
                 </div>
                 <label htmlFor="comment">Комментарий к заказу</label>
                 <textarea

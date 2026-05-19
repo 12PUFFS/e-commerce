@@ -393,7 +393,7 @@ input[type='radio']:checked {
   width: stretch;
   background: #666;
   height: 250px;
-  margin-top: 30px;
+  margin: 30px 0;
   color: white;
   border-radius: 8px;
   padding: 20px;
@@ -403,6 +403,7 @@ input[type='radio']:checked {
   overflow: hidden;
   position: relative;
   font-size: 30px;
+  box-shadow: 0 4px 24px rgb(0 0 0 / 65%);
 }
 
 .card-numbers {
@@ -411,6 +412,18 @@ input[type='radio']:checked {
   flex-direction: column;
   gap: 30px;
   overflow: hidden;
+  margin-top: 20px;
+}
+
+input.card-input-cvv:focus,
+input.card-input-date:focus,
+input.card-input:focus {
+  outline: none;
+  border: none; /* Опционально, если нужно полностью убрать рамку */
+}
+
+.card-input {
+  margin-top: 20px;
 }
 
 .line-card {
@@ -424,9 +437,19 @@ input[type='radio']:checked {
   height: 40px;
 }
 
-.date {
+.date-desc {
+  font-size: 15px;
+}
+
+.cvv-desc {
+  font-size: 15px;
+}
+
+.date-cvv {
+  /* display: flex;
+  gap: 40px; */
   display: flex;
-  gap: 40px;
+  gap: 80px;
 }
 
 @media (max-width: 480px) {
@@ -434,9 +457,36 @@ input[type='radio']:checked {
     padding: 12px;
   }
 
+  .card-input-date {
+    font-size: 20px;
+    width: 65px;
+  }
+
+  .card-input-cvv,
+  .card-input-date,
+  .card-input {
+    outline: none;
+    padding: 5px;
+    border-radius: 8px;
+  }
+
+  .card-input-cvv {
+    font-size: 20px;
+    width: 48px;
+  }
+
   .card-wrapper {
     height: 180px;
     font-size: 16px;
+  }
+
+  .card-input {
+    font-size: 18px;
+  }
+
+  .date-cvv {
+    display: flex;
+    gap: 30px;
   }
 
   .card-numbers {
@@ -444,8 +494,19 @@ input[type='radio']:checked {
     font-size: 22px;
   }
 
+  /* font-size: 20px;
+  width: 55px; */
+
   .line-card {
     height: 30px;
+  }
+
+  .date-desc {
+    font-size: 10px;
+  }
+
+  .cvv-desc {
+    font-size: 10px;
   }
 
   .modal-content {
@@ -482,7 +543,7 @@ input[type='radio']:checked {
   }
 
   textarea {
-    min-height: 60px;
+    min-height: 100px;
   }
 
   .form button[type='submit'] {
@@ -494,6 +555,12 @@ input[type='radio']:checked {
   .selected-item {
     max-height: 180px;
     padding-top: 12px;
+  }
+
+  form {
+    background: whitesmoke;
+    padding: 20px;
+    border-radius: 8px;
   }
 
   /* 👇 Карточки товаров НЕ трогаем — стили остаются как были */
