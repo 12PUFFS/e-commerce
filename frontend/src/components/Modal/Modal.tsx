@@ -4,7 +4,7 @@
 import { Link } from 'react-router-dom';
 import './Modal.css';
 import type { Product } from '../../App';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 interface ModalType {
   cart: Product[];
@@ -28,17 +28,56 @@ export function CardPay({ value, onChange }: CardType) {
   // const [dateValue, setDateValue] = useState('');
   // const [cvvValue, setCvvValue] = useState('');
 
+  const expiryRef = useRef<HTMLInputElement>(null);
+  const cvvRef = useRef<HTMLInputElement>(null);
+
   const formatCardNumber = (input: string) => {
     const onlyDigit = input.replace(/\D/g, '');
     const trimmed = onlyDigit.slice(0, 16);
-    const spases = trimmed.replace(/(\d{4})/g, '$1 ');
+    const spases = trimmed.replace(/(\d{4})/g, '$1 ').trim();
 
     return spases.trim();
   };
 
+  const formattedDate = (input: string) => {
+    const onlyDigit = input.replace(/\D/g, '');
+    const trimmed = onlyDigit.slice(0, 4);
+    if (trimmed.length <= 2) {
+      return trimmed;
+    }
+
+    return `${trimmed.substring(0, 2)}/${trimmed.substring(2)}`;
+  };
+
+  const handleDateInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value.replace(/\D/g, '');
+    const formatted = formattedDate(e.target.value);
+    onChange({ ...value, expiry: formatted });
+
+    if (raw.length === 4) {
+      cvvRef.current?.focus();
+    }
+  };
+
+  const formattedCvv = (input: string) => {
+    const onlyDigit = input.replace(/\D/g, '');
+    const trimmed = onlyDigit.slice(0, 3);
+    return trimmed;
+  };
+
   const handleNumberInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value.replace(/\D/g, '');
     const formatted = formatCardNumber(e.target.value);
     onChange({ ...value, number: formatted });
+
+    if (raw.length === 16) {
+      expiryRef.current?.focus();
+    }
+  };
+
+  const handleCvvInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formattedCvv(e.target.value);
+    onChange({ ...value, cvv: formatted });
   };
 
   return (
@@ -71,7 +110,8 @@ export function CardPay({ value, onChange }: CardType) {
                 className="card-input-date"
                 value={value.expiry}
                 placeholder="00/00"
-                onChange={(e) => onChange({ ...value, expiry: e.target.value })}
+                ref={expiryRef}
+                onChange={handleDateInput}
                 type="text"
                 inputMode="numeric"
               />
@@ -79,10 +119,11 @@ export function CardPay({ value, onChange }: CardType) {
             <div className="cvv">
               <p className="cvv-desc">CVV</p>
               <input
+                ref={cvvRef}
                 className="card-input-cvv"
                 value={value.cvv}
                 placeholder="000"
-                onChange={(e) => onChange({ ...value, cvv: e.target.value })}
+                onChange={handleCvvInput}
                 type="text"
                 inputMode="numeric"
               />
