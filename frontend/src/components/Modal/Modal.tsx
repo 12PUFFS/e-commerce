@@ -234,6 +234,16 @@ export default function Modal({ cart, onClose, onSubmit }: ModalType) {
                       value="online"
                       type="radio"
                     />
+                    <div className="card-wrapper">
+                      <div className="line-card"></div>
+                      <div className="card-numbers">
+                        <p>0000 0000 0000 0000</p>
+                        <div className="date">
+                          <p>00/00</p>
+                          <p>000</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <label htmlFor="comment">Комментарий к заказу</label>
