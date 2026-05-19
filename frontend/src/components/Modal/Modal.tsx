@@ -40,13 +40,23 @@ export function CardPay({ value, onChange }: CardType) {
   };
 
   const formattedDate = (input: string) => {
-    const onlyDigit = input.replace(/\D/g, '');
-    const trimmed = onlyDigit.slice(0, 4);
-    if (trimmed.length <= 2) {
-      return trimmed;
+    // 1. Только цифры, максимум 4
+    const digits = input.replace(/\D/g, '').slice(0, 4);
+    if (!digits) return '';
+
+    // 2. Если введена 1 цифра от 1 до 9 → подставляем 0
+    if (digits.length === 1 && digits >= '1' && digits <= '9') {
+      return `0${digits}`;
     }
 
-    return `${trimmed.substring(0, 2)}/${trimmed.substring(2)}`;
+    // 3. Если 2 цифры (месяц сформирован)
+    if (digits.length === 2) {
+      // 01-09 уже с нулём, 10-12 остаются без изменений
+      return digits;
+    }
+
+    // 4. Если 3 или 4 цифры → добавляем слэш ММ/ГГ
+    return `${digits.slice(0, 2)}/${digits.slice(2)}`;
   };
 
   const handleDateInput = (e: React.ChangeEvent<HTMLInputElement>) => {

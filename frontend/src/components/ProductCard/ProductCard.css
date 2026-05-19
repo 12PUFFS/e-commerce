@@ -230,7 +230,11 @@ a {
 }
 
 .cart-item strong {
-  color: #667eea;
+  /* color: #667eea; */
+  color: #666;
+  background: #f0f0f3;
+  font-size: 13px;
+  padding: 2px 8px;
 }
 
 .cart-item button {
