@@ -69,11 +69,11 @@ export function CardPay({ value, onChange }: CardType) {
     }
   };
 
-  const formattedCvv = (input: string) => {
-    const onlyDigit = input.replace(/\D/g, '');
-    const trimmed = onlyDigit.slice(0, 3);
-    return trimmed;
-  };
+  // const formattedCvv = (input: string) => {
+  //   const onlyDigit = input.replace(/\D/g, '');
+  //   const trimmed = onlyDigit.slice(0, 3);
+  //   return trimmed;
+  // };
 
   const handleNumberInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const raw = e.target.value.replace(/\D/g, '');
@@ -85,58 +85,63 @@ export function CardPay({ value, onChange }: CardType) {
     }
   };
 
-  const handleCvvInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formatted = formattedCvv(e.target.value);
-    onChange({ ...value, cvv: formatted });
-  };
+  // const handleCvvInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const formatted = formattedCvv(e.target.value);
+  //   onChange({ ...value, cvv: formatted });
+  // };
 
   return (
     <>
       <div className="warning">
         <p>Введите вашу карту</p>
       </div>
-      <div className="card-wrapper">
-        <div className="line-card"></div>
-        <div className="card-numbers">
-          <div className="input-wrapper">
-            <input
-              className="card-input"
-              onChange={handleNumberInput}
-              value={value.number}
-              type="text"
-              inputMode="numeric"
-              pattern="\d*"
-            />
-            <span
-              className={`placeholder-guide ${value.number ? 'is-hidden' : ''}`}
-            >
-              0000 0000 0000 0000
-            </span>
-          </div>
-          <div className="date-cvv">
-            <div className="date">
-              <p className="date-desc">Срок</p>
+      <div className="card">
+        <div className="card-wrapper">
+          <div className="line-card"></div>
+          <div className="card-numbers">
+            <div className="input-wrapper">
               <input
-                className="card-input-date"
-                value={value.expiry}
-                placeholder="00/00"
-                ref={expiryRef}
-                onChange={handleDateInput}
+                className="card-input"
+                onChange={handleNumberInput}
+                value={value.number}
                 type="text"
                 inputMode="numeric"
+                pattern="\d*"
               />
+              <span
+                className={`placeholder-guide ${value.number ? 'is-hidden' : ''}`}
+              >
+                0000 0000 0000 0000
+              </span>
             </div>
-            <div className="cvv">
-              <p className="cvv-desc">CVV</p>
-              <input
-                ref={cvvRef}
-                className="card-input-cvv"
-                value={value.cvv}
-                placeholder="000"
-                onChange={handleCvvInput}
-                type="text"
-                inputMode="numeric"
-              />
+            <div className="date-cvv">
+              <div className="date">
+                <p className="date-desc">Срок</p>
+                <input
+                  className="card-input-date"
+                  value={value.expiry}
+                  placeholder="00/00"
+                  ref={expiryRef}
+                  onChange={handleDateInput}
+                  type="text"
+                  inputMode="numeric"
+                />
+              </div>
+              <div className="cvv">
+                <p className="cvv-desc">CVV</p>
+                <input
+                  ref={cvvRef}
+                  className="card-input-cvv"
+                  value={value.cvv}
+                  placeholder="000"
+                  onChange={(e) => {
+                    const row = e.target.value.replace(/\D/g, '').slice(0, 3);
+                    onChange({ ...value, cvv: row });
+                  }}
+                  type="password"
+                  inputMode="numeric"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -192,6 +197,63 @@ export default function Modal({ cart, onClose, onSubmit }: ModalType) {
     0,
   );
 
+  const validatePhoneNumber = (input: string) => {
+    // 1. Оставляем только цифры
+    let digits = input.replace(/\D/g, '');
+
+    // 2. === ЭТАП 1: НОРМАЛИЗАЦИЯ ===
+    // Убираем + если есть
+    if (digits.startsWith('+')) {
+      digits = digits.slice(1);
+    }
+    // Заменяем 8 на 7 в начале
+    if (digits.startsWith('8')) {
+      digits = '7' + digits.slice(1);
+    }
+    // Если номер начинается не с 7 (например с 9) и не пустой — добавляем 7
+    if (digits.length > 0 && !digits.startsWith('7')) {
+      digits = '7' + digits;
+    }
+    // Обрезаем до 11 цифр
+    digits = digits.slice(0, 11);
+
+    // 3. === ЭТАП 2: ФОРМАТИРОВАНИЕ ===
+    if (digits.length === 0) return '';
+
+    // Код страны уже в префиксе +7, скобки пока пустые
+    if (digits.length === 1) return '+7 (';
+
+    // Показываем цифры оператора в скобках
+    if (digits.length <= 4) return '+7 (' + digits.slice(1);
+
+    // Закрываем скобки после 3 цифр оператора, начинаем номер
+    if (digits.length <= 7)
+      return '+7 (' + digits.slice(1, 4) + ') ' + digits.slice(4);
+
+    // Добавляем первые дефисы
+    if (digits.length <= 9)
+      return (
+        '+7 (' +
+        digits.slice(1, 4) +
+        ') ' +
+        digits.slice(4, 7) +
+        '-' +
+        digits.slice(7)
+      );
+
+    // Полный формат: +7 (999) 123-45-67
+    return (
+      '+7 (' +
+      digits.slice(1, 4) +
+      ') ' +
+      digits.slice(4, 7) +
+      '-' +
+      digits.slice(7, 9) +
+      '-' +
+      digits.slice(9)
+    );
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -246,6 +308,16 @@ export default function Modal({ cart, onClose, onSubmit }: ModalType) {
       };
     } else {
       cardInfo = undefined;
+    }
+
+    // const handlePhoneNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //   const formatted = validatePhoneNumber(e.target.value);
+    //   onChange({ ...value, phone: formatted });
+    // };
+
+    const rowPhone = phoneData.replace(/\D/g, '');
+    if (rowPhone.length < 11) {
+      anyErrors.phone = 'Введите номер';
     }
 
     const mainObj = {
@@ -305,7 +377,7 @@ export default function Modal({ cart, onClose, onSubmit }: ModalType) {
                 <label htmlFor="address">адрес</label>
                 <input name="address" id="address" type="text" />
                 <label htmlFor="phone">телефон *</label>
-                {error.name && (
+                {error.phone && (
                   <span className="error-text">{error.phone}</span>
                 )}
                 <input
@@ -313,7 +385,10 @@ export default function Modal({ cart, onClose, onSubmit }: ModalType) {
                   id="phone"
                   type="tel"
                   value={phone}
-                  onChange={(e) => setCorrectPhone(e.target.value)}
+                  onChange={(e) => {
+                    const formatted = validatePhoneNumber(e.target.value);
+                    setCorrectPhone(formatted);
+                  }}
                   placeholder="+7(000)000-00-00"
                   className={`${error.phone ? 'error' : ''} ${phone.trim() ? 'green' : ''}`}
                 />

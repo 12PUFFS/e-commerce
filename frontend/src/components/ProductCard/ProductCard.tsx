@@ -15,7 +15,9 @@ export default function ProductCard({ product }: TypeOfProduct) {
   const { handleToFavorite, favorite } = useContext(CartContext);
   // const [modal, setModal] = useState(false);
   const [selectedSize, setSelectedSize] = useState<number | null>(null);
-  const isLiked = favorite.some((i) => i.id === product.id);
+  const isLiked = favorite.some(
+    (i) => i.id === product.id && i.selectedSize === selectedSize,
+  );
 
   // useEffect(() => {
   //   const savedSize = localStorage.getItem(`item-${product.id}`);
@@ -49,7 +51,7 @@ export default function ProductCard({ product }: TypeOfProduct) {
               return (
                 <span
                   key={`${product.id}-${size}-${index}`}
-                  className={`size-tag ${isActive ? 'active' : ''}`}
+                  className={`size-tag ${isActive ? 'active' : ''} `}
                   onClick={() => setSelectedSize(size)}
                 >
                   {size}

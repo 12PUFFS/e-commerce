@@ -165,7 +165,7 @@ export default function ProductInfo() {
                 </div>
               </div>
 
-              <div className="desc-wrapper">
+              {/* <div className="desc-wrapper">
                 <div className="full-desc">
                   <ul>
                     <div className="open-lock">
@@ -193,7 +193,7 @@ export default function ProductInfo() {
                     })}
                   </ul>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="full-info">
@@ -275,7 +275,35 @@ export default function ProductInfo() {
               </div>
             </div>
           </div>
+          <div className="desc-wrapper">
+            <div className="full-desc">
+              <ul>
+                <div className="open-lock">
+                  <p>Описание</p>
+                  <button
+                    onClick={() => setOpenItem(!openItem)}
+                    className="open"
+                    aria-label={
+                      openItem ? 'Скрыть описание' : 'Показать описание'
+                    }
+                  >
+                    {openItem ? '−' : '+'}
+                  </button>
+                </div>
 
+                {product.desc?.map((item, index) => {
+                  return (
+                    <li
+                      className={`item ${openItem ? 'active' : 'hide'}`}
+                      key={index}
+                    >
+                      - {item}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
           <div className="inter">
             <div className="w">
               <h2 className="section-title">Могут понравиться</h2>

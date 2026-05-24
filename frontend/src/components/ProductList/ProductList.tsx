@@ -141,7 +141,7 @@ export default function ProductList() {
 
             <ul className="card-list">
               {filteredItems.length === 0 ? (
-                <div>нет результата</div>
+                <div className="empty-list">нет результата</div>
               ) : (
                 filteredItems.map((item) => (
                   <li key={item.id}>

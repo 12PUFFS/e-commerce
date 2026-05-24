@@ -239,6 +239,8 @@ a {
   font-size: 35px;
 }
 
+/* .photo img */
+
 .photo li {
   /* width: 100px; */
   height: 200px;
@@ -274,7 +276,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex: 4;
+  flex: 0;
   width: 100%;
   background: white;
   /* position: sticky; */
@@ -327,16 +329,16 @@ a {
 .main {
   position: relative;
   border-radius: 24px;
-  overflow: clip;
+  overflow: hidden;
   /* gap: 30px; */
-  max-height: 1000px;
+  max-height: 666px;
   /* background: #f5f5f5; */
   background: white;
   height: fit-content;
   display: flex;
   /* align-items: center; */
   justify-content: center;
-  flex: 2;
+  /* flex: 2; */
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
@@ -347,12 +349,12 @@ a {
 }
 
 .o img {
-  max-height: 1000px;
+  height: 666px;
   object-fit: cover;
   display: block;
   /* border-radius: 20px; */
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-  width: stretch;
+  width: 500px;
 }
 
 .options {
@@ -824,6 +826,10 @@ a {
     /* grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); */
     gap: 25px;
   }
+
+  .o img {
+    width: stretch;
+  }
 }
 
 @media (max-width: 768px) {
@@ -841,6 +847,10 @@ a {
     margin-bottom: 30px;
   }
 
+  .photo img {
+    width: auto;
+  }
+
   .all-sneakers-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
@@ -852,6 +862,11 @@ a {
 
   .sneaker-info {
     padding: 20px;
+  }
+
+  .o img {
+    height: stretch;
+    width: stretch;
   }
 }
 
