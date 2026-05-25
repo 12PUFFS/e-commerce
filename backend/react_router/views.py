@@ -73,9 +73,41 @@ products = [
     'models': 'dunk',
     'status': 'new',
   },
+    {
+    'id': 3,
+    'title': 'Nike Dunk Low Next Nature',
+    'price': '19 999',
+    'image': 'https://static.street-beat.ru/upload/resize_cache/iblock/69b/666_666_1/5qlunwlwdpa710w30m7cigeco46v9htg.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'shoes',
+    'fulldesc':
+      'Кроссовки Nike Dunk Low Retro - это стильная и универсальная модель...',
+    'rating': 4.4,
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/69b/666_666_1/5qlunwlwdpa710w30m7cigeco46v9htg.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/67f/666_666_1/6nz34i59k14zl8krq3c62h0q1zevreqr.jpg',
+      'https://static.street-beat.ru/upload/iblock/e9f/pef0vaipd2mlzpwg00krp27x6ydzpgyu.jpg',
+      'https://static.street-beat.ru/upload/iblock/4ea/xai10mbh3n1f6d8vp3c4hzd7r7wf5jxy.jpg',
+      'https://static.street-beat.ru/upload/iblock/6b6/lv1yyttg1hebk1zjqsudv8vh2bcripsx.jpg',
+
+    ],
+    'desc': [
+      'Материал - Кожа',
+      'Материал стельки - Вспененный полиуретан+микрофибра',
+      'Материал подошвы обуви - Искусственный каучук',
+      'Сезон - На любой сезон',
+      'Бренд в одежде и обуви - Nike',
+    ],
+    'variants': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/69b/666_666_1/5qlunwlwdpa710w30m7cigeco46v9htg.jpg'
+    ],
+    'availableSizes': [38, 39, 40, 41],
+    'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/69b/666_666_1/5qlunwlwdpa710w30m7cigeco46v9htg.jpg',
+    'status': 'new',
+  },
 
   {
-    'id': 3,
+    'id': 4,
     'title': 'Nike Blazer Mid `77 Vintage',
     'price': '9 699',
     'image':'https://static.street-beat.ru/upload/resize_cache/iblock/27c/666_666_1/drv0siaqm7nwxi0k5ji10attkmvy8vc1.jpg',
@@ -112,7 +144,7 @@ products = [
   },
 
   {
-    'id': 4,
+    'id': 5,
     'title': 'NIKE Air Force 1',
     'price': '14 912',
     'image':
@@ -149,7 +181,7 @@ products = [
     'status': 'hit',
   },
     {
-    'id': 5,
+    'id': 6,
     'title': 'Nike Air Max 90',
     'price': '23 999',
     'image':
@@ -188,43 +220,43 @@ products = [
     'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/48b/666_666_1/y5z4vrwq6r1ehugbc5x8vehpko4hxl68.jpg',
     'status': 'hit',
   },
-      {
-    'id': 6,
-    'title': 'adidas Superstar II',
-    'price': '15 699',
-    'image':
-      'https://static.street-beat.ru/upload/resize_cache/iblock/7ea/666_666_1/rh90t0d1q00d372jlofbp57kdhbcbztw.jpg',
-    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
-    'category': 'shoes',
-    'fulldesc':
-      'Кроссовки adidas Superstar впервые вышли на баскетбольные площадки в 1970 году. Прошло совсем немного времени, прежде чем они превратились из обуви для спортсменов в икону уличной моды. Модель adidas Superstar II выполнена в том же стиле, с теми же пропорциями и из тех же материалов, которые сделали оригинальную модель легендой. Верх из гладкой кожи дополнен спортивными тремя полосками и накладкой на пятке. Финальный штрих — классический резиновый мысок-ракушка.',
-    'rating': 4.4,
-    'photos': [
-      'https://static.street-beat.ru/upload/resize_cache/iblock/7ea/666_666_1/rh90t0d1q00d372jlofbp57kdhbcbztw.jpg',
-      'https://static.street-beat.ru/upload/resize_cache/iblock/3a4/666_666_1/yb6zmsryhjudipr9m5m98tj8yly3tt91.jpg',
-      'https://static.street-beat.ru/upload/resize_cache/iblock/b82/666_666_1/gycjlprpgx9ceu3a41egae4a4nvw7e1y.jpg',
-      'https://static.street-beat.ru/upload/resize_cache/iblock/474/666_666_1/50clpuipkb39j8i8ro8110f8vqdr9f86.jpg',
-      'https://static.street-beat.ru/upload/resize_cache/iblock/b81/666_666_1/ud0ttbj9be5y3mhtflz5093ln5j1xgy7.jpg',
-      'https://static.street-beat.ru/upload/resize_cache/iblock/a34/666_666_1/vz9qjb6jl6m7wkusn346p7102e9y569a.jpg',
+  #     {
+  #   'id': 7,
+  #   'title': 'adidas Superstar II',
+  #   'price': '15 699',
+  #   'image':
+  #     'https://static.street-beat.ru/upload/resize_cache/iblock/7ea/666_666_1/rh90t0d1q00d372jlofbp57kdhbcbztw.jpg',
+  #   'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+  #   'category': 'shoes',
+  #   'fulldesc':
+  #     'Кроссовки adidas Superstar впервые вышли на баскетбольные площадки в 1970 году. Прошло совсем немного времени, прежде чем они превратились из обуви для спортсменов в икону уличной моды. Модель adidas Superstar II выполнена в том же стиле, с теми же пропорциями и из тех же материалов, которые сделали оригинальную модель легендой. Верх из гладкой кожи дополнен спортивными тремя полосками и накладкой на пятке. Финальный штрих — классический резиновый мысок-ракушка.',
+  #   'rating': 4.4,
+  #   'photos': [
+  #     'https://static.street-beat.ru/upload/resize_cache/iblock/7ea/666_666_1/rh90t0d1q00d372jlofbp57kdhbcbztw.jpg',
+  #     'https://static.street-beat.ru/upload/resize_cache/iblock/3a4/666_666_1/yb6zmsryhjudipr9m5m98tj8yly3tt91.jpg',
+  #     'https://static.street-beat.ru/upload/resize_cache/iblock/b82/666_666_1/gycjlprpgx9ceu3a41egae4a4nvw7e1y.jpg',
+  #     'https://static.street-beat.ru/upload/resize_cache/iblock/474/666_666_1/50clpuipkb39j8i8ro8110f8vqdr9f86.jpg',
+  #     'https://static.street-beat.ru/upload/resize_cache/iblock/b81/666_666_1/ud0ttbj9be5y3mhtflz5093ln5j1xgy7.jpg',
+  #     'https://static.street-beat.ru/upload/resize_cache/iblock/a34/666_666_1/vz9qjb6jl6m7wkusn346p7102e9y569a.jpg',
       
-    ],
-    'desc': [
-      'Низкий силуэт',
-      'Кожаный верх',
-      'Текстильная внутренняя подкладка',
-      'Перфорация для циркуляции воздуха',
-      'Резиновая подошва с зигзагообразным протектором',
-      'Брендинг adidas',
-    ],
-    'variants': [
-      '',
-    ],
-    'availableSizes': [38, 39, 40, 41],
-    'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/7ea/666_666_1/rh90t0d1q00d372jlofbp57kdhbcbztw.jpg',
-    'status': 'hit',
-  },
+  #   ],
+  #   'desc': [
+  #     'Низкий силуэт',
+  #     'Кожаный верх',
+  #     'Текстильная внутренняя подкладка',
+  #     'Перфорация для циркуляции воздуха',
+  #     'Резиновая подошва с зигзагообразным протектором',
+  #     'Брендинг adidas',
+  #   ],
+  #   'variants': [
+  #     '',
+  #   ],
+  #   'availableSizes': [38, 39, 40, 41],
+  #   'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/7ea/666_666_1/rh90t0d1q00d372jlofbp57kdhbcbztw.jpg',
+  #   'status': 'hit',
+  # },
    {
-    'id': 7,
+    'id': 8,
     'title': 'adidas Drop Step Low 2.0',
     'price': '12 199',
     'image':
@@ -262,6 +294,43 @@ products = [
     'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/f1d/666_666_1/o9qpmny0f4rtu8uhrw5cbz0i35mhit0z.jpg',
     'status': 'hit',
   },
+    {
+    'id': 9,
+    'title': 'adidas Сampus 00s',
+    'price': '15 999',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/2f4/666_666_1/pl7ot405u9m6gbfwmqnauqe2azn5wbas.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'shoes',
+    'fulldesc':
+      'Кроссовки adidas Superstar впервые вышли на баскетбольные площадки в 1970 году. Прошло совсем немного времени, прежде чем они превратились из обуви для спортсменов в икону уличной моды. Модель adidas Superstar II выполнена в том же стиле, с теми же пропорциями и из тех же материалов, которые сделали оригинальную модель легендой. Верх из гладкой кожи дополнен спортивными тремя полосками и накладкой на пятке. Финальный штрих — классический резиновый мысок-ракушка.',
+    'rating': 4.4,
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/2f4/666_666_1/pl7ot405u9m6gbfwmqnauqe2azn5wbas.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/7d0/666_666_1/b77dtwle9tee0xzp0f7638inhb25zkmg.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/8b1/666_666_1/h1ijfqnvsict803kt5uvxvaqs59diue0.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/7be/666_666_1/vztudspji5e9ouc92fb9smfnfzyj73dt.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/785/666_666_1/sbn80x5z0z9ras9sud7wmk2x5jra6maf.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/1a1/666_666_1/54v9vcalbpd9i63omoo2kq09rdqhyjfx.jpg',
+     
+    ],
+    'desc': [
+    'Низкий силуэт',
+    'Верх из натуральной замши',
+    'Текстильная внутренняя подкладка',
+    'Шнуровка с дополнительными отверстиями',
+    'Перфорация по боковым сторонам модели для циркуляции воздуха',
+    'Резиновая подошва с протектором',
+    'Брендинг adidas'
+    ],
+    'variants': [
+      '',
+    ],
+    'availableSizes': [38, 39, 40, 41],
+    'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/f1d/666_666_1/o9qpmny0f4rtu8uhrw5cbz0i35mhit0z.jpg',
+    'status': 'hit',
+  },
+
 ]
 
 def products_list(request):
