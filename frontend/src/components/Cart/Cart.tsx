@@ -27,6 +27,12 @@ export default function Cart() {
     setCart((item) => item.filter((i) => !i.isChecked));
   };
 
+  const checkedItems = cart.filter((item) => item.isChecked);
+  const total = checkedItems.reduce(
+    (sum, item) => sum + parseInt(item.price.replace(/\s/g, '')),
+    0,
+  );
+
   return (
     <>
       <div className="cartw">
@@ -110,6 +116,10 @@ export default function Cart() {
               <button onClick={() => setModal(true)} className="pay">
                 <h5>Перейти к оформлению</h5>
               </button>
+              <div className="summary">
+                <div> Общая сумма</div>
+                <div>{`${total} руб.`}</div>
+              </div>
             </div>
             {modal && <Modal onClose={() => setModal(false)} cart={cart} />}
           </div>

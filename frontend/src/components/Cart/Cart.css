@@ -30,9 +30,10 @@
 /* Лейаут корзины */
 .cart-layout {
   display: flex;
-  gap: 30px;
+  /* gap: 30px; */
   margin-top: 50px;
   justify-content: space-between;
+  background: whitesmoke;
 }
 
 .cart-menu {
@@ -55,7 +56,7 @@
   height: 20px;
   display: flex;
   align-items: center;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   /* margin-top: 20px; */
 }
 
@@ -79,8 +80,8 @@
   justify-content: space-between;
   padding: 16px;
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  /* border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); */
   gap: 16px;
   width: stretch;
 }
@@ -109,16 +110,38 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  /* background: whitesmoke; */
+  padding: 20px;
+  height: fit-content;
 }
 
 .pay-block {
-  background: #f9f9f9;
-  height: 260px;
+  gap: 20px;
+  /* background: #f9f9f9; */
+  height: fit-content;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   position: sticky;
-  top: 90px;
+  padding: 20px;
+  /* background: white; */
+  top: 70px;
+  width: 350px;
+  /* border: 1px solid; */
+  /* background: white; */
+}
+
+.summary {
+  padding: 20px;
+  border-radius: 12px;
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.favorite-title-text {
+  text-align: left;
 }
 
 .cart__card {
@@ -126,20 +149,23 @@
   align-items: center;
   gap: 30px;
   width: stretch;
-
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
+  /* border: 1px solid #e0e0e0; */
+  /* border-radius: 12px; */
   background: white;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); */
   position: relative;
   z-index: 4;
 }
 
 .cart__card:hover {
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   border-color: #999;
+}
+
+.delete-all {
+  background: red;
 }
 
 .card a {
@@ -155,7 +181,7 @@
   width: 100px;
   height: 100px;
   object-fit: cover;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   background: #f5f5f5;
 }
 
@@ -167,30 +193,30 @@
 }
 
 .pay {
-  width: 400px;
-  height: 120px;
+  /* width: 400px; */
+  /* height: 120px; */
   padding: 20px;
   border: none;
-
+  /* border: 1px solid; */
   color: rgb(0, 0, 0);
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 600;
   border-radius: 12px;
+  background: white;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(42, 42, 44, 0.3);
-  display: flex;
+  /* box-shadow: 0 4px 6px rgba(42, 42, 44, 0.3); */
+  /* display: flex; */
   align-items: center;
   justify-content: center;
-  margin-left: auto;
-  position: sticky;
-  top: 120px;
+  /* border: 1px solid; */
+  /* margin-left: auto; */
 }
 
-.pay:hover {
+/* .pay:hover {
   transform: scale(1.02);
   box-shadow: 0 8px 12px rgba(102, 126, 234, 0.4);
-}
+} */
 
 @keyframes fadeIn {
   from {
@@ -229,18 +255,21 @@
 .choseAll,
 .delete-all {
   height: fit-content;
-  padding: 10px;
-  border: none;
+  /* padding: 10px; */
+  /* border: none; */
   cursor: pointer;
   height: 40px;
   display: flex;
   align-items: center;
+  color: white;
   font-size: 15px;
 }
 
-.delete-all {
-  background: none;
-  border: 1px solid;
+.delete-all button {
+  color: white;
+  /* background: none; */
+  /* border: 1px solid; */
+  /* background: white; */
   border-radius: 12px;
 }
 
@@ -268,8 +297,16 @@
     height: 80px;
   }
 
+  .cart__list {
+    padding: 0;
+  }
+
+  .cart-layout {
+    background: none;
+  }
+
   .pay {
-    height: 100px;
+    /* height: 100px; */
     font-size: 20px;
   }
 }
@@ -292,13 +329,19 @@
     content: '←';
   }
 
-  .cart__card img {
+  /* .cart__card img {
     width: 120px;
     height: 120px;
-  }
+  } */
 
   .pay {
     font-size: 18px;
+  }
+
+  .pay-block {
+    padding: 0;
+    width: auto;
+    margin-top: 20px;
   }
 
   .oir {
@@ -308,4 +351,10 @@
   .empty {
     top: 70%;
   }
+  .cartw {
+    background: whitesmoke;
+  }
+  /* .card-i {
+    padding: 0;
+  } */
 }
