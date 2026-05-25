@@ -268,7 +268,7 @@ export default function ProductInfo() {
                     }
                     handleToFavorite(product.id, currentSize);
                   }}
-                  className="to_favorite"
+                  className={`to_favorite ${isFavor ? 'active' : ''}`}
                 >
                   {isFavor ? 'Удалить из избранного' : 'Добавить в избранное'}
                 </button>

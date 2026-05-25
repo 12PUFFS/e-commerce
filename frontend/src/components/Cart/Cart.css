@@ -279,14 +279,14 @@
     padding: 15px;
   } */
 
-  .back-btn {
+  /* .back-btn {
     height: 100vh;
   }
 
   .back-btn::before {
     margin: 2px;
     content: '';
-  }
+  } */
 
   .back-btn::before:hover {
     content: '←';
