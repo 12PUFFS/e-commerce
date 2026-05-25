@@ -271,6 +271,8 @@ form button {
   width: stretch;
   margin-top: 30px;
   background: #6dc525;
+  color: white;
+  font-size: 30px;
 }
 
 input[type='radio']:checked {
