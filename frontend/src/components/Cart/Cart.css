@@ -230,6 +230,55 @@ input[type='checkbox']:checked::after {
   background: #f5f5f5;
 }
 
+.delete-wrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999999999999999999999;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.delete-window {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999999999999999999999999999999;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.window-title {
+  padding: 20px;
+}
+
+.button-cancel,
+.button-delete {
+  /* display: flex; */
+  padding: 20px 40px;
+  border-radius: 8px;
+  /* justify-content: space-between; */
+  width: stretch;
+}
+
+.button-cancel {
+  background: whitesmoke;
+}
+
+.button-delete {
+  background: red;
+  color: white;
+}
+
 .cart__card p {
   margin: 0;
   font-size: 18px;
@@ -297,6 +346,11 @@ h5 {
   align-items: center;
   color: white;
   font-size: 15px;
+  opacity: 1;
+}
+
+.delete-all-hidden {
+  opacity: 0.5;
 }
 
 .delete-all button {
@@ -361,6 +415,10 @@ h5 {
   .back-btn::before:hover {
     content: '←';
   }
+
+  /* .pre-header {
+    display: none;
+  } */
 
   /* .cart__card img {
     width: 120px;

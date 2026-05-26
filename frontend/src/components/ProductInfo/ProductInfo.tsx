@@ -3,6 +3,7 @@ import './ProductInfo.css';
 import { useContext, useState, useEffect } from 'react';
 import { CartContext, ProductsContext } from '../../App';
 import type { Product } from '../../App';
+import Header from '../Header/Header';
 // import toHome from '../../images/toHome.png';
 export default function ProductInfo() {
   const products = useContext(ProductsContext);
@@ -114,58 +115,60 @@ export default function ProductInfo() {
   });
 
   return (
-    <div className="root-wrapper">
-      <div className="container">
-        <Link to={'/'}>
-          <button className="back-btn">
-            {/* <img src={toHome} alt="" /> */}
-          </button>
-        </Link>
+    <>
+      <Header />
+      <div className="root-wrapper">
+        <div className="container">
+          <Link to={'/'}>
+            <button className="back-btn">
+              {/* <img src={toHome} alt="" /> */}
+            </button>
+          </Link>
 
-        <div className="content">
-          <div className="info-wrapper">
-            <div className="main-content">
-              <div className="main">
-                <div className="photo">
-                  <ul>
-                    {product.photos.map((photo, index: number) => {
-                      return (
-                        <li
-                          className={`${
-                            index === selectedPhoto ? 'active' : ''
-                          }`}
-                          key={index}
-                        >
-                          <img
-                            onClick={() => setSelectedPhoto(index)}
-                            src={photo}
-                          />
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-                <div className="o">
-                  <img
-                    src={product.photos?.[selectedPhoto]}
-                    alt={`${product.title} - основное изображение`}
-                  />
-                  <div className="options">
-                    <div className="div-prev">
-                      <button onClick={handlePrevPhoto} className="prev">
-                        ←
-                      </button>
-                    </div>
-                    <div className="div-next">
-                      <button onClick={handleNextPhoto} className="next">
-                        →
-                      </button>
+          <div className="content">
+            <div className="info-wrapper">
+              <div className="main-content">
+                <div className="main">
+                  <div className="photo">
+                    <ul>
+                      {product.photos.map((photo, index: number) => {
+                        return (
+                          <li
+                            className={`${
+                              index === selectedPhoto ? 'active' : ''
+                            }`}
+                            key={index}
+                          >
+                            <img
+                              onClick={() => setSelectedPhoto(index)}
+                              src={photo}
+                            />
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  <div className="o">
+                    <img
+                      src={product.photos?.[selectedPhoto]}
+                      alt={`${product.title} - основное изображение`}
+                    />
+                    <div className="options">
+                      <div className="div-prev">
+                        <button onClick={handlePrevPhoto} className="prev">
+                          ←
+                        </button>
+                      </div>
+                      <div className="div-next">
+                        <button onClick={handleNextPhoto} className="next">
+                          →
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* <div className="desc-wrapper">
+                {/* <div className="desc-wrapper">
                 <div className="full-desc">
                   <ul>
                     <div className="open-lock">
@@ -194,145 +197,146 @@ export default function ProductInfo() {
                   </ul>
                 </div>
               </div> */}
-            </div>
+              </div>
 
-            <div className="full-info">
-              <h1>{product.title}</h1>
-              <h3>доступные размеры</h3>
-              <ul className="current-size">
-                {product.availableSizes?.map((size) => {
-                  const isCurrentlySelected = currentSize === size;
+              <div className="full-info">
+                <h1>{product.title}</h1>
+                <h3>доступные размеры</h3>
+                <ul className="current-size">
+                  {product.availableSizes?.map((size) => {
+                    const isCurrentlySelected = currentSize === size;
 
-                  const isInCart = sizesInCart.includes(size);
-                  const inFavorite = favorite.some(
-                    (item) =>
-                      item.id === product.id && item.selectedSize === size,
-                  );
-                  const isActive = isCurrentlySelected || isInCart;
-                  return (
-                    <button
-                      onClick={() => setCurrentSize(size)}
-                      className={`current-size-item ${
-                        isActive ? 'active' : ''
-                      } ${isCurrentlySelected ? 'selected-bg' : ''} ${inFavorite ? 'infavor' : ''}`}
-                      key={size}
-                    >
-                      {size}
-                      {/* {inFavorite && <span>♥</span>} */}
-                    </button>
-                  );
-                })}
-              </ul>
+                    const isInCart = sizesInCart.includes(size);
+                    const inFavorite = favorite.some(
+                      (item) =>
+                        item.id === product.id && item.selectedSize === size,
+                    );
+                    const isActive = isCurrentlySelected || isInCart;
+                    return (
+                      <button
+                        onClick={() => setCurrentSize(size)}
+                        className={`current-size-item ${
+                          isActive ? 'active' : ''
+                        } ${isCurrentlySelected ? 'selected-bg' : ''} ${inFavorite ? 'infavor' : ''}`}
+                        key={size}
+                      >
+                        {size}
+                        {/* {inFavorite && <span>♥</span>} */}
+                      </button>
+                    );
+                  })}
+                </ul>
 
-              <div className="current-color">
-                <p>Цвет</p>
-                {/* <img
+                <div className="current-color">
+                  <p>Цвет</p>
+                  {/* <img
               className="current-color-img"
               src={product.variants}
               alt={`${product.title} - расцветка`}
             /> */}
-                <div className="variants">
-                  {sameModel.map((variant, index: number) => {
-                    const getVariant = product.id === variant.id;
+                  <div className="variants">
+                    {sameModel.map((variant, index: number) => {
+                      const getVariant = product.id === variant.id;
 
-                    return (
-                      <Link key={index} to={`/item/${variant.id}`}>
-                        <img
-                          className={`current-color-img ${
-                            getVariant ? 'active' : ''
-                          }`}
-                          src={variant.image}
-                          alt=""
-                        />
-                      </Link>
-                    );
-                  })}
+                      return (
+                        <Link key={index} to={`/item/${variant.id}`}>
+                          <img
+                            className={`current-color-img ${
+                              getVariant ? 'active' : ''
+                            }`}
+                            src={variant.image}
+                            alt=""
+                          />
+                        </Link>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-              <div className="main-btn">
-                <div className="price">
-                  <button>{product.price} ₽</button>
-                </div>
-                <button onClick={handleAddToCart} className="to-cart">
-                  В корзину
-                  {currentSize && <p>Размер: {currentSize}</p>}
-                </button>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    if (!currentSize) {
-                      alert('Выберите размер');
-                      return;
-                    }
-                    handleToFavorite(product.id, currentSize);
-                  }}
-                  className={`to_favorite ${isFavor ? 'active' : ''}`}
-                >
-                  {isFavor ? 'Удалить из избранного' : 'Добавить в избранное'}
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="desc-wrapper">
-            <div className="full-desc">
-              <ul>
-                <div className="open-lock">
-                  <p>Описание</p>
+                <div className="main-btn">
+                  <div className="price">
+                    <button>{product.price} ₽</button>
+                  </div>
+                  <button onClick={handleAddToCart} className="to-cart">
+                    В корзину
+                    {currentSize && <p>Размер: {currentSize}</p>}
+                  </button>
                   <button
-                    onClick={() => setOpenItem(!openItem)}
-                    className="open"
-                    aria-label={
-                      openItem ? 'Скрыть описание' : 'Показать описание'
-                    }
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+
+                      if (!currentSize) {
+                        alert('Выберите размер');
+                        return;
+                      }
+                      handleToFavorite(product.id, currentSize);
+                    }}
+                    className={`to_favorite ${isFavor ? 'active' : ''}`}
                   >
-                    {openItem ? '−' : '+'}
+                    {isFavor ? 'Удалить из избранного' : 'Добавить в избранное'}
                   </button>
                 </div>
-
-                {product.desc?.map((item, index) => {
-                  return (
-                    <li
-                      className={`item ${openItem ? 'active' : 'hide'}`}
-                      key={index}
-                    >
-                      - {item}
-                    </li>
-                  );
-                })}
-              </ul>
+              </div>
             </div>
-          </div>
-          <div className="inter">
-            <div className="w">
-              <h2 className="section-title">Могут понравиться</h2>
-              <div className="all-sneakers-grid">
-                {sameModel.map((item) => (
-                  <Link key={item.id} to={`/item/${item.id}`}>
-                    <div className="sneaker-card">
-                      <div className="sneaker-image">
-                        <img
-                          src={item.photos?.[0] || product.image}
-                          alt={item.title}
-                        />
+            <div className="desc-wrapper">
+              <div className="full-desc">
+                <ul>
+                  <div className="open-lock">
+                    <p>Описание</p>
+                    <button
+                      onClick={() => setOpenItem(!openItem)}
+                      className="open"
+                      aria-label={
+                        openItem ? 'Скрыть описание' : 'Показать описание'
+                      }
+                    >
+                      {openItem ? '−' : '+'}
+                    </button>
+                  </div>
+
+                  {product.desc?.map((item, index) => {
+                    return (
+                      <li
+                        className={`item ${openItem ? 'active' : 'hide'}`}
+                        key={index}
+                      >
+                        - {item}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+            <div className="inter">
+              <div className="w">
+                <h2 className="section-title">Могут понравиться</h2>
+                <div className="all-sneakers-grid">
+                  {sameModel.map((item) => (
+                    <Link key={item.id} to={`/item/${item.id}`}>
+                      <div className="sneaker-card">
+                        <div className="sneaker-image">
+                          <img
+                            src={item.photos?.[0] || product.image}
+                            alt={item.title}
+                          />
+                        </div>
+                        <div className="sneaker-info">
+                          <h3 className="sneaker-title">{item.title}</h3>
+                          <p className="sneaker-description">
+                            {item.description}
+                          </p>
+                          <div className="sneaker-price">{item.price} ₽</div>
+                        </div>
                       </div>
-                      <div className="sneaker-info">
-                        <h3 className="sneaker-title">{item.title}</h3>
-                        <p className="sneaker-description">
-                          {item.description}
-                        </p>
-                        <div className="sneaker-price">{item.price} ₽</div>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <footer className="footer">Магазин кроссовок © 2025</footer>
       </div>
-      <footer className="footer">Магазин кроссовок © 2025</footer>
-    </div>
+    </>
   );
 }

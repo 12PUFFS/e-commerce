@@ -4,11 +4,13 @@ import './Cart.css';
 import { useContext, useState } from 'react';
 import { CartContext } from '../../App';
 import Modal from '../Modal/Modal'; // ✅ Без .tsx
+import Header from '../Header/Header';
 
 export default function Cart() {
   const { cart, removeFromCart, toggleCheck, setCart } =
     useContext(CartContext);
   const [modal, setModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
   // const { setCart } = useContext(ProductsContext);
   // <button className="back-btn"></button>;
 
@@ -33,8 +35,39 @@ export default function Cart() {
     0,
   );
 
+  function DeleteSelectedModal() {
+    return (
+      <div className="delete-wrapper">
+        <div className="delete-window">
+          <div className="window-title">
+            Удалить выбранные товары?
+            {/* <span className="number-delete">{cart.length}</span> */}
+          </div>
+          <div className="buttons">
+            <button
+              className="button-cancel"
+              onClick={() => setDeleteModal(false)}
+            >
+              отмена
+            </button>
+            <button
+              className="button-delete"
+              onClick={() => {
+                (deleteSelected(), setDeleteModal(false));
+              }}
+            >
+              удалить
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
+      {deleteModal && <DeleteSelectedModal />}
+      <Header />
       <div className="cartw">
         <div className="links">
           <Link to={'/'}>
@@ -46,19 +79,34 @@ export default function Cart() {
             <h1>Корзина</h1>
             <p>Всего товаров : {cart.length}</p>
           </div>
-          <div className="cart-right">
-            <div className="right-btn">
-              <div className="rerer">
-                <button className="choseAll" onClick={choseAll}>
-                  выбрать все
+          {cart.length > 0 ? (
+            <div className="cart-right">
+              <div className="right-btn">
+                <div className="rerer">
+                  <button className="choseAll" onClick={choseAll}>
+                    выбрать все
+                  </button>
+                  <div>Выбрано {cart.filter((i) => i.isChecked).length}</div>
+                </div>
+              </div>
+              <div
+                className={`delete-all ${checkedItems.length > 0 ? '' : 'delete-all-hidden'}`}
+              >
+                <button
+                  onClick={() => {
+                    if (checkedItems.length > 0) {
+                      setDeleteModal(true);
+                    }
+                    return;
+                  }}
+                >
+                  Удалить выбранные
                 </button>
-                <div>Выбрано {cart.filter((i) => i.isChecked).length}</div>
               </div>
             </div>
-            <div className="delete-all">
-              <button onClick={deleteSelected}>Удалить выбранные</button>
-            </div>
-          </div>
+          ) : (
+            ''
+          )}
         </div>
         {cart.length === 0 ? (
           <h2 className="empty">Здесь будут ваши товары</h2>
@@ -118,10 +166,14 @@ export default function Cart() {
               <button onClick={() => setModal(true)} className="pay">
                 <h5>Перейти к оформлению</h5>
               </button>
-              <div className="summary">
-                <div> Общая сумма</div>
-                <div>{`${total} руб.`}</div>
-              </div>
+              {checkedItems.length > 0 ? (
+                <div className="summary">
+                  <div> Общая сумма</div>
+                  <div>{`${total} руб.`}</div>
+                </div>
+              ) : (
+                ''
+              )}
             </div>
             {modal && <Modal onClose={() => setModal(false)} cart={cart} />}
           </div>

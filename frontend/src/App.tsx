@@ -1,6 +1,6 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Header from './components/Header/Header';
+// import Header from './components/Header/Header';
 import ProductList from './components/ProductList/ProductList';
 import ProductInfo from './components/ProductInfo/ProductInfo';
 import { createContext, useState, useEffect } from 'react';
@@ -196,7 +196,7 @@ export default function App() {
         }}
       >
         <HashRouter>
-          <Header />
+          {/* <Header /> */}
           <Routes>
             <Route path="/" element={<ProductList />} />
             <Route path="/item/:id" element={<ProductInfo />} />

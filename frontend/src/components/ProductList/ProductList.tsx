@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ProductCard from '../ProductCard/ProductCard';
 import './ProductList.css';
 import { ProductsContext } from '../../App';
+import Header from '../Header/Header';
 
 export default function ProductList() {
   const products = useContext(ProductsContext);
@@ -64,6 +65,7 @@ export default function ProductList() {
 
   return (
     <>
+      <Header />
       {displayBanners.length > 0 && currentBanner && (
         <div className="banner">
           <div className="wontainer">
