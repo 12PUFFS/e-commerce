@@ -32,6 +32,8 @@
 }
 
 .product-card-img img {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   width: 250px;
   height: 350px;
   object-fit: cover;
@@ -164,7 +166,7 @@ a {
   /* padding: 10px; */
   /* border: 1px solid; */
   display: flex;
-  gap: 10px;
+  /* gap: 10px; */
   /* background: whitesmoke; */
   width: stretch;
   cursor: pointer;
@@ -177,7 +179,7 @@ a {
 .size-tag {
   padding: 5px;
   background: white;
-  opacity: 0.5;
+  opacity: 0.2;
 }
 
 .size-tag:hover {
@@ -320,7 +322,8 @@ a {
   }
 
   .product-card-price {
-    width: stretch;
+    /* width: stretch; */
+    text-align: center;
   }
 
   .product-card-title {

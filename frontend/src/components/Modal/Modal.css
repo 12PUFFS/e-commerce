@@ -635,6 +635,13 @@ input[type='password'].card-input-cvv {
     height: 100px;
     object-fit: cover;
   }
+
+  .selected-item .cart-item {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-bottom: 0;
+  }
   /* 
   .selected-item.cart-item.cart-item strong {
     font-size: 13px;

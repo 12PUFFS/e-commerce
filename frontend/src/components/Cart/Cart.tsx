@@ -76,7 +76,9 @@ export default function Cart() {
                     }
                   />
                   <div className="cart__card" key={item.id}>
-                    <div className="card-i">
+                    <div
+                      className={`card-i ${item.isChecked ? 'checked' : ''}`}
+                    >
                       <Link to={`/item/${item.id}`}>
                         <img
                           src={item.image}

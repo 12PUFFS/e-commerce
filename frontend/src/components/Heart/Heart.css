@@ -137,6 +137,10 @@
     align-items: flex-start;
   }
 
+  .empty-favorite {
+    text-align: center;
+  }
+
   .favor-list {
     gap: 20px;
   }
