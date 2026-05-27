@@ -11,7 +11,7 @@ products = [
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
     'category': 'shoes',
     'fulldesc':
-      'Кроссовки Nike Dunk Low Retro - это стильная и универсальная модель...',
+      ['Кроссовки Nike Dunk Low Retro - это стильная и универсальная модель...'],
     'rating': 4.5,
     'photos': [
       'https://ir.ozone.ru/s3/multimedia-1-t/wc1000/7695221033.jpg',
@@ -47,7 +47,7 @@ products = [
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
     'category': 'shoes',
     'fulldesc':
-      'Кроссовки Nike Dunk Low Retro - это стильная и универсальная модель...',
+      ['Кроссовки Nike Dunk Low Retro - это стильная и универсальная модель...'],
     'rating': 4.4,
     'photos': [
       'https://ir.ozone.ru/s3/multimedia-1-k/wc1000/7435891604.jpg',
@@ -81,7 +81,7 @@ products = [
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
     'category': 'shoes',
     'fulldesc':
-      'Кроссовки Nike Dunk Low Retro - это стильная и универсальная модель...',
+      ['Кроссовки Nike Dunk Low Retro - это стильная и универсальная модель...'],
     'rating': 4.4,
     'photos': [
       'https://static.street-beat.ru/upload/resize_cache/iblock/69b/666_666_1/5qlunwlwdpa710w30m7cigeco46v9htg.jpg',
@@ -101,20 +101,55 @@ products = [
     'variants': [
       'https://static.street-beat.ru/upload/resize_cache/iblock/69b/666_666_1/5qlunwlwdpa710w30m7cigeco46v9htg.jpg'
     ],
+    'availableSizes': [36,37,38, 39, 40],
+    'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/69b/666_666_1/5qlunwlwdpa710w30m7cigeco46v9htg.jpg',
+    'status': 'new',
+  },
+
+      {
+    'id': 4,
+    'title': 'Nike Dunk Low',
+    'price': '22 999',
+    'image': 'https://static.street-beat.ru/upload/resize_cache/iblock/d84/666_666_1/ez2avnzus6eq0erx4caar7lwplany2wx.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'shoes',
+    'fulldesc':
+      ['Созданные специально для баскетбольной площадки, кроссовки Nike Dunk Low покоряют улицы города за ее пределами начиная с 80-х годов. И делают это максимально успешно. Верх пары изготовлен из натуральной кожи. Перфорация на мыске хорошо пропускает воздух, а дополнительные отверстия для шнуровки позволяют настроить комфортную плотность. Амортизация надежно защищает стопы от ударных нагрузок. Резиновая подошва с протектором минимизирует скольжение и создает уверенное сцепление с поверхностью. Стильный визуал и современные технологии делают эти кроссовки актуальными во все времена.'],
+    'rating': 4.4,
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/d84/666_666_1/ez2avnzus6eq0erx4caar7lwplany2wx.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/6ff/666_666_1/7va6yrk3iwxroq94wqgp361ymgcy39tb.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/d03/666_666_1/g2q9pzr5pr83qi1w6cpku11nnbh3y579.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/d6a/666_666_1/q7ibi5jwyy8o16ugo962vqcblvnhyrux.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/f17/666_666_1/qarxbr1qfwrp7ynlqc00zo80h22ktpq3.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/8eb/666_666_1/ke2aj80gu2sbgev6osp9cc4lct5814w5.jpg',
+     
+
+    ],
+    'desc': [
+      'Материал - Кожа',
+      'Материал стельки - Вспененный полиуретан+микрофибра',
+      'Материал подошвы обуви - Искусственный каучук',
+      'Сезон - На любой сезон',
+      'Бренд в одежде и обуви - Nike',
+    ],
+    'variants': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/69b/666_666_1/5qlunwlwdpa710w30m7cigeco46v9htg.jpg'
+    ],
     'availableSizes': [38, 39, 40, 41],
     'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/69b/666_666_1/5qlunwlwdpa710w30m7cigeco46v9htg.jpg',
     'status': 'new',
   },
 
   {
-    'id': 4,
+    'id': 5,
     'title': 'Nike Blazer Mid `77 Vintage',
     'price': '9 699',
     'image':'https://static.street-beat.ru/upload/resize_cache/iblock/27c/666_666_1/drv0siaqm7nwxi0k5ji10attkmvy8vc1.jpg',
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
     'category': 'shoes',
     'fulldesc':
-      'Кроссовки NIKE Air Force 1 - это стильная и универсальная модель...',
+      ['Кроссовки NIKE Air Force 1 - это стильная и универсальная модель...'],
     'rating': 4.4,
     'photos': [
       'https://static.street-beat.ru/upload/resize_cache/iblock/27c/666_666_1/drv0siaqm7nwxi0k5ji10attkmvy8vc1.jpg',
@@ -144,7 +179,7 @@ products = [
   },
 
   {
-    'id': 5,
+    'id': 6,
     'title': 'NIKE Air Force 1',
     'price': '14 912',
     'image':
@@ -152,7 +187,7 @@ products = [
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
     'category': 'shoes',
     'fulldesc':
-      'Кроссовки NIKE Air Force 1 - это стильная и универсальная модель...',
+      ['Кроссовки NIKE Air Force 1 - это стильная и универсальная модель...'],
     'rating': 4.4,
     'photos': [
       'https://avatars.mds.yandex.net/get-mpic/986077/2a00000192ec444afcccb0f62be69d2aa8fa/900x1200',
@@ -181,7 +216,7 @@ products = [
     'status': 'hit',
   },
     {
-    'id': 6,
+    'id': 7,
     'title': 'Nike Air Max 90',
     'price': '23 999',
     'image':
@@ -220,43 +255,43 @@ products = [
     'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/48b/666_666_1/y5z4vrwq6r1ehugbc5x8vehpko4hxl68.jpg',
     'status': 'hit',
   },
-  #     {
-  #   'id': 7,
-  #   'title': 'adidas Superstar II',
-  #   'price': '15 699',
-  #   'image':
-  #     'https://static.street-beat.ru/upload/resize_cache/iblock/7ea/666_666_1/rh90t0d1q00d372jlofbp57kdhbcbztw.jpg',
-  #   'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
-  #   'category': 'shoes',
-  #   'fulldesc':
-  #     'Кроссовки adidas Superstar впервые вышли на баскетбольные площадки в 1970 году. Прошло совсем немного времени, прежде чем они превратились из обуви для спортсменов в икону уличной моды. Модель adidas Superstar II выполнена в том же стиле, с теми же пропорциями и из тех же материалов, которые сделали оригинальную модель легендой. Верх из гладкой кожи дополнен спортивными тремя полосками и накладкой на пятке. Финальный штрих — классический резиновый мысок-ракушка.',
-  #   'rating': 4.4,
-  #   'photos': [
-  #     'https://static.street-beat.ru/upload/resize_cache/iblock/7ea/666_666_1/rh90t0d1q00d372jlofbp57kdhbcbztw.jpg',
-  #     'https://static.street-beat.ru/upload/resize_cache/iblock/3a4/666_666_1/yb6zmsryhjudipr9m5m98tj8yly3tt91.jpg',
-  #     'https://static.street-beat.ru/upload/resize_cache/iblock/b82/666_666_1/gycjlprpgx9ceu3a41egae4a4nvw7e1y.jpg',
-  #     'https://static.street-beat.ru/upload/resize_cache/iblock/474/666_666_1/50clpuipkb39j8i8ro8110f8vqdr9f86.jpg',
-  #     'https://static.street-beat.ru/upload/resize_cache/iblock/b81/666_666_1/ud0ttbj9be5y3mhtflz5093ln5j1xgy7.jpg',
-  #     'https://static.street-beat.ru/upload/resize_cache/iblock/a34/666_666_1/vz9qjb6jl6m7wkusn346p7102e9y569a.jpg',
-      
-  #   ],
-  #   'desc': [
-  #     'Низкий силуэт',
-  #     'Кожаный верх',
-  #     'Текстильная внутренняя подкладка',
-  #     'Перфорация для циркуляции воздуха',
-  #     'Резиновая подошва с зигзагообразным протектором',
-  #     'Брендинг adidas',
-  #   ],
-  #   'variants': [
-  #     '',
-  #   ],
-  #   'availableSizes': [38, 39, 40, 41],
-  #   'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/7ea/666_666_1/rh90t0d1q00d372jlofbp57kdhbcbztw.jpg',
-  #   'status': 'hit',
-  # },
-   {
+      {
     'id': 8,
+    'title': 'adidas Superstar II',
+    'price': '15 699',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/f3e/666_666_1/zbar5ef5zry0ks25em6ofk7n6f42eeir.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'shoes',
+    'fulldesc':
+      ['Кроссовки adidas Superstar впервые вышли на баскетбольные площадки в 1970 году. Прошло совсем немного времени, прежде чем они превратились из обуви для спортсменов в икону уличной моды. Модель adidas Superstar II выполнена в том же стиле, с теми же пропорциями и из тех же материалов, которые сделали оригинальную модель легендой. Верх из гладкой кожи дополнен спортивными тремя полосками и накладкой на пятке. Финальный штрих — классический резиновый мысок-ракушка.'],
+    'rating': 4.4,
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/f3e/666_666_1/zbar5ef5zry0ks25em6ofk7n6f42eeir.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/3a4/666_666_1/yb6zmsryhjudipr9m5m98tj8yly3tt91.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/b82/666_666_1/gycjlprpgx9ceu3a41egae4a4nvw7e1y.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/474/666_666_1/50clpuipkb39j8i8ro8110f8vqdr9f86.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/b81/666_666_1/ud0ttbj9be5y3mhtflz5093ln5j1xgy7.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/a34/666_666_1/vz9qjb6jl6m7wkusn346p7102e9y569a.jpg',
+      
+    ],
+    'desc': [
+      'Низкий силуэт',
+      'Кожаный верх',
+      'Текстильная внутренняя подкладка',
+      'Перфорация для циркуляции воздуха',
+      'Резиновая подошва с зигзагообразным протектором',
+      'Брендинг adidas',
+    ],
+    'variants': [
+      '',
+    ],
+    'availableSizes': [38, 39, 40, 41],
+    'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/7ea/666_666_1/rh90t0d1q00d372jlofbp57kdhbcbztw.jpg',
+    'status': 'hit',
+  },
+   {
+    'id': 9,
     'title': 'adidas Drop Step Low 2.0',
     'price': '12 199',
     'image':
@@ -264,7 +299,7 @@ products = [
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
     'category': 'shoes',
     'fulldesc':
-      'Кроссовки adidas Superstar впервые вышли на баскетбольные площадки в 1970 году. Прошло совсем немного времени, прежде чем они превратились из обуви для спортсменов в икону уличной моды. Модель adidas Superstar II выполнена в том же стиле, с теми же пропорциями и из тех же материалов, которые сделали оригинальную модель легендой. Верх из гладкой кожи дополнен спортивными тремя полосками и накладкой на пятке. Финальный штрих — классический резиновый мысок-ракушка.',
+      ['Кроссовки adidas Superstar впервые вышли на баскетбольные площадки в 1970 году. Прошло совсем немного времени, прежде чем они превратились из обуви для спортсменов в икону уличной моды. Модель adidas Superstar II выполнена в том же стиле, с теми же пропорциями и из тех же материалов, которые сделали оригинальную модель легендой. Верх из гладкой кожи дополнен спортивными тремя полосками и накладкой на пятке. Финальный штрих — классический резиновый мысок-ракушка.'],
     'rating': 4.4,
     'photos': [
       'https://static.street-beat.ru/upload/resize_cache/iblock/f1d/666_666_1/o9qpmny0f4rtu8uhrw5cbz0i35mhit0z.jpg',
@@ -295,7 +330,7 @@ products = [
     'status': 'hit',
   },
     {
-    'id': 9,
+    'id': 10,
     'title': 'adidas Сampus 00s',
     'price': '15 999',
     'image':
@@ -303,7 +338,7 @@ products = [
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
     'category': 'shoes',
     'fulldesc':
-      'Кроссовки adidas Superstar впервые вышли на баскетбольные площадки в 1970 году. Прошло совсем немного времени, прежде чем они превратились из обуви для спортсменов в икону уличной моды. Модель adidas Superstar II выполнена в том же стиле, с теми же пропорциями и из тех же материалов, которые сделали оригинальную модель легендой. Верх из гладкой кожи дополнен спортивными тремя полосками и накладкой на пятке. Финальный штрих — классический резиновый мысок-ракушка.',
+      ['Кроссовки adidas Superstar впервые вышли на баскетбольные площадки в 1970 году. Прошло совсем немного времени, прежде чем они превратились из обуви для спортсменов в икону уличной моды. Модель adidas Superstar II выполнена в том же стиле, с теми же пропорциями и из тех же материалов, которые сделали оригинальную модель легендой. Верх из гладкой кожи дополнен спортивными тремя полосками и накладкой на пятке. Финальный штрих — классический резиновый мысок-ракушка.'],
     'rating': 4.4,
     'photos': [
       'https://static.street-beat.ru/upload/resize_cache/iblock/2f4/666_666_1/pl7ot405u9m6gbfwmqnauqe2azn5wbas.jpg',
