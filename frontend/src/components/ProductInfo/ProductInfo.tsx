@@ -211,14 +211,15 @@ export default function ProductInfo() {
                       (item) =>
                         item.id === product.id && item.selectedSize === size,
                     );
-                    const isActive = isCurrentlySelected || isInCart;
+                    const isActive = isCurrentlySelected;
                     return (
                       <button
                         onClick={() => setCurrentSize(size)}
                         className={`current-size-item ${
                           isActive ? 'active' : ''
-                        } ${isCurrentlySelected ? 'selected-bg' : ''} ${inFavorite ? 'infavor' : ''}`}
+                        } ${isInCart ? 'selected-bg' : ''} ${inFavorite ? 'infavor' : ''}`}
                         key={size}
+                        // disabled={isInCart}
                       >
                         {size}
                         {/* {inFavorite && <span>♥</span>} */}
@@ -280,9 +281,14 @@ export default function ProductInfo() {
             </div>
             <div className="desc-wrapper">
               <div className="full-desc">
+                {/* <div className="cc">
+                  {product.fulldesc?.map((text, index) => {
+                    return <p key={index}>{text}</p>;
+                  })}
+                </div> */}
                 <ul>
                   <div className="open-lock">
-                    <p>Описание</p>
+                    <p>Материалы</p>
                     <button
                       onClick={() => setOpenItem(!openItem)}
                       className="open"

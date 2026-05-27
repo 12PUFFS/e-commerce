@@ -13,12 +13,16 @@ interface TypeOfProduct {
 }
 
 export default function ProductCard({ product }: TypeOfProduct) {
-  const { handleToFavorite, favorite } = useContext(CartContext);
+  const { handleToFavorite, favorite, cart } = useContext(CartContext);
   // const [modal, setModal] = useState(false);
   const [selectedSize, setSelectedSize] = useState<number | null>(null);
   const isLiked = favorite.some(
     (i) => i.id === product.id && i.selectedSize === selectedSize,
   );
+
+  // const inCart = cart.some((i) => {
+  //   return i.id === product.id && i.selectedSize === selectedSize;
+  // });
 
   // useEffect(() => {
   //   const savedSize = localStorage.getItem(`item-${product.id}`);
@@ -49,11 +53,14 @@ export default function ProductCard({ product }: TypeOfProduct) {
                 const isInFavorite = favorite.some(
                   (i) => i.id === product.id && i.selectedSize === size,
                 );
+                const inCart = cart.some((i) => {
+                  return i.id === product.id && i.selectedSize === size;
+                });
                 const isActive = IsCurrentSize || isInFavorite;
                 return (
                   <span
                     key={`${product.id}-${size}-${index}`}
-                    className={`size-tag ${isActive ? 'active' : ''} `}
+                    className={`size-tag ${isInFavorite ? 'in-favorite' : ''} ${inCart ? 'in-cart' : ''} ${isActive ? 'active' : ''}`}
                     onClick={() => setSelectedSize(size)}
                   >
                     {size}
@@ -77,6 +84,7 @@ export default function ProductCard({ product }: TypeOfProduct) {
               handleToFavorite(product.id, selectedSize);
             }}
             aria-label="Добавить в избранное"
+            disabled={!selectedSize}
           >
             <img src={heartIcon} alt="" />
           </button>
