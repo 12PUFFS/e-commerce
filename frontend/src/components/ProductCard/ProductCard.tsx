@@ -41,7 +41,9 @@ export default function ProductCard({ product }: TypeOfProduct) {
       {loading ? (
         <div className="product-card skeleton">
           <div className="product-link">
-            <div className="product-card-img skeleton-image"></div>
+            <div className="product-card-img skeleton-image">
+              <img src={product.image} alt="" />
+            </div>
           </div>
           <div className="product-card-info">
             <div className="skeleton-sizes">
