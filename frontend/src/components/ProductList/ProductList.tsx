@@ -75,9 +75,9 @@ export default function ProductList() {
                 <div className="skeleton-title"></div>
                 <div className="skeleton-price"></div>
               </div>
-              <div className="content-images">
+              {/* <div className="content-images">
                 <div className="skeleton-image"></div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
