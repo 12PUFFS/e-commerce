@@ -163,7 +163,7 @@ export default function ProductList() {
 
             <ul className="card-list">
               {loading ? (
-                Array(8)
+                Array(10)
                   .fill(null)
                   .map((_, i) => (
                     <li key={i}>
