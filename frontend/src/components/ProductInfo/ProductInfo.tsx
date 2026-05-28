@@ -26,6 +26,7 @@ export default function ProductInfo() {
     handleToFavorite,
     favorite,
     cart,
+    // loading,
   } = useContext(CartContext);
 
   // ... остальные хуки

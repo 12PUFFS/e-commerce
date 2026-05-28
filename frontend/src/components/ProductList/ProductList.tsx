@@ -3,11 +3,12 @@ import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../ProductCard/ProductCard';
 import './ProductList.css';
-import { ProductsContext } from '../../App';
+import { ProductsContext, CartContext } from '../../App';
 import Header from '../Header/Header';
-
+import type { Product } from '../../App';
 export default function ProductList() {
   const products = useContext(ProductsContext);
+  const { loading } = useContext(CartContext);
 
   const [active, setActive] = useState('all');
   const [bannerIndex, setBannerIndex] = useState(0);
@@ -66,42 +67,61 @@ export default function ProductList() {
   return (
     <>
       <Header />
-      {displayBanners.length > 0 && currentBanner && (
-        <div className="banner">
+      {loading ? (
+        <div className="banner skeleton">
           <div className="wontainer">
-            <div className="banner-content">
+            <div className="banner-content skeleton-content">
               <div className="title-desc">
-                {displayBanners.length > 1 && (
-                  <div className="banner-counter">
-                    {bannerIndex + 1} / {displayBanners.length}
-                  </div>
-                )}
-                <h2>{currentBanner.title}</h2>
-                <p className="banner-price">{currentBanner.price} ₽</p>
+                <div className="skeleton-title"></div>
+                <div className="skeleton-price"></div>
               </div>
-
-              {displayBanners.length > 1 && (
-                <div className="options">
-                  <div className="div-prev">
-                    <button onClick={handlePrevBanner}>←</button>
-                  </div>
-                  <div className="div-next">
-                    <button onClick={handleNextBanner}>→</button>
-                  </div>
-                </div>
-              )}
-
               <div className="content-images">
-                <Link to={`/item/${currentBanner.id}`}>
-                  <img
-                    src={currentBanner.image || currentBanner.photos?.[0] || ''}
-                    alt={currentBanner.title}
-                  />
-                </Link>
+                <div className="skeleton-image"></div>
               </div>
             </div>
           </div>
         </div>
+      ) : (
+        displayBanners.length > 0 &&
+        currentBanner && (
+          <div className="banner">
+            <div className="wontainer">
+              <div className="banner-content">
+                <div className="title-desc">
+                  {displayBanners.length > 1 && (
+                    <div className="banner-counter">
+                      {bannerIndex + 1} / {displayBanners.length}
+                    </div>
+                  )}
+                  <h2>{currentBanner.title}</h2>
+                  <p className="banner-price">{currentBanner.price} ₽</p>
+                </div>
+
+                {displayBanners.length > 1 && (
+                  <div className="options">
+                    <div className="div-prev">
+                      <button onClick={handlePrevBanner}>←</button>
+                    </div>
+                    <div className="div-next">
+                      <button onClick={handleNextBanner}>→</button>
+                    </div>
+                  </div>
+                )}
+
+                <div className="content-images">
+                  <Link to={`/item/${currentBanner.id}`}>
+                    <img
+                      src={
+                        currentBanner.image || currentBanner.photos?.[0] || ''
+                      }
+                      alt={currentBanner.title}
+                    />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
       )}
       <div className="container">
         <div className="wrapper">
@@ -142,7 +162,15 @@ export default function ProductList() {
             </div>
 
             <ul className="card-list">
-              {filteredItems.length === 0 ? (
+              {loading ? (
+                Array(8)
+                  .fill(null)
+                  .map((_, i) => (
+                    <li key={i}>
+                      <ProductCard product={{} as Product} />
+                    </li>
+                  ))
+              ) : filteredItems.length === 0 ? (
                 <div className="empty-list">нет результата</div>
               ) : (
                 filteredItems.map((item) => (

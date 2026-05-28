@@ -38,6 +38,7 @@ interface SetCart {
   toggleCheck: (id: number, size: number | null) => void;
   favorite: Product[];
   handleToFavorite: (id: number, size: number | null) => void;
+  loading: boolean;
 }
 
 export const CartContext = createContext<SetCart>({
@@ -54,6 +55,7 @@ export const CartContext = createContext<SetCart>({
   newProductBanner: undefined,
   favorite: [], // Заглушка
   handleToFavorite: () => {},
+  loading: true,
 });
 
 export const ProductsContext = createContext<Product[]>([]);
@@ -172,10 +174,6 @@ export default function App() {
     // setModal(false);
   };
 
-  if (loading) {
-    return <div>Загрузка...</div>;
-  }
-
   return (
     <ProductsContext.Provider value={items}>
       <CartContext.Provider
@@ -193,6 +191,7 @@ export default function App() {
           setCurrentSize,
           newProductBanner,
           handleToFavorite,
+          loading,
         }}
       >
         <HashRouter>
