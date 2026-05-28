@@ -220,7 +220,7 @@ products = [
     'title': 'Nike Air Max 90',
     'price': '23 999',
     'image':
-      'https://static.street-beat.ru/upload/resize_cache/iblock/48b/666_666_1/y5z4vrwq6r1ehugbc5x8vehpko4hxl68.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/590/666_666_1/p538b44xjtftpk2rir04vpoxwme0ummz.jpg',
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
     'category': 'shoes',
     'fulldesc':[
@@ -230,7 +230,7 @@ products = [
     ],
     'rating': 4.4,
     'photos': [
-      'https://static.street-beat.ru/upload/resize_cache/iblock/48b/666_666_1/y5z4vrwq6r1ehugbc5x8vehpko4hxl68.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/590/666_666_1/p538b44xjtftpk2rir04vpoxwme0ummz.jpg',
       'https://static.street-beat.ru/upload/resize_cache/iblock/0b0/666_666_1/kjllxjwor42fqcs7sj0xm5euarowcz79.jpg',
       'https://static.street-beat.ru/upload/resize_cache/iblock/0de/666_666_1/qkvywgjhfhvkxzuh5fnvfh4vnnev8xk1.jpg',
       'https://static.street-beat.ru/upload/resize_cache/iblock/b54/666_666_1/nyk1bj1d7qixjbynfpdmvhp0u3xlysyj.jpg',
