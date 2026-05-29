@@ -778,7 +778,7 @@ a {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 20px;
+  /* padding: 20px; */
   margin-bottom: 30px;
 }
 
@@ -917,6 +917,14 @@ a {
     /* position: sticky; */
   }
 
+  .photo img {
+    height: 290px;
+  }
+
+  .sneaker-title {
+    font-size: 17px;
+  }
+
   .section-title {
     font-size: 24px;
     margin-bottom: 30px;
@@ -1051,7 +1059,7 @@ a {
 
   .photo img {
     width: auto;
-    height: 150px;
+    /* height: 150px; */
   }
 
   .price button {
@@ -1091,6 +1099,11 @@ a {
 
   .cc p {
     font-size: smaller;
+  }
+
+  .photo img {
+    width: auto;
+    height: 150px;
   }
 
   .sneaker-info {
