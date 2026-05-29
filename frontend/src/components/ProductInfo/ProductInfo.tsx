@@ -209,6 +209,7 @@ export default function ProductInfo() {
               </div>
 
               <div className="full-info">
+                <p className="cat">{product.category}</p>
                 <h1>{product.title}</h1>
                 <h3>доступные размеры</h3>
                 <ul className="current-size">

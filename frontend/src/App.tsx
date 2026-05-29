@@ -10,6 +10,7 @@ import Heart from './components/Heart/Heart';
 export interface Product {
   id: number;
   title: string;
+  category: string;
   price: string;
   image?: string;
   status?: 'new' | 'hit';
