@@ -38,7 +38,7 @@
 .product-card-img img {
   /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); */
   overflow: hidden;
-  width: 200px;
+  /* width: 200px; */
   height: 200px;
   object-fit: cover;
   border: none;
