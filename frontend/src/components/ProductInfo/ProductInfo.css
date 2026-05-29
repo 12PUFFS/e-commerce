@@ -755,6 +755,7 @@ a {
   /* grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); */
   gap: 30px;
   /* padding-top: 50px; */
+  justify-content: center;
 }
 
 .sneaker-card {
