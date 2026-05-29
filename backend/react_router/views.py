@@ -457,7 +457,7 @@ products = [
     'image':
       'https://static.street-beat.ru/upload/resize_cache/iblock/1db/666_666_1/tf3wtszch5up14ygfxvrtvc4w3axv8vd.jpg',
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
-    'category': 'clothing',
+    'category': 'T-Shirt',
     'fulldesc':
       ['Мужская футболка Carhartt WIP Chase T-Shirt выполнена из натурального хлопка. Материал отлично циркулирует воздух. Свободный крой не сковывает движения. Модель дополнена вышитым логотипом бренда.'],
     'photos': [
@@ -481,6 +481,171 @@ products = [
     'availableSizes': ['S', 'M', 'L', 'XL', 'XXL'],
     'models': 'carhartt',
     'status': 'new',
+  },
+         {
+    'id': 15,
+    'title': 'Carhartt WIP Chase T-Shirt',
+    'price': '6 999',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/ae2/666_666_1/6t017b2f6dcq7u5on1gjtjjbrfc2ococ.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'T-Shirt',
+    'fulldesc':
+      ['Мужская футболка Carhartt WIP Chase T-Shirt выполнена из натурального хлопка. Материал отлично циркулирует воздух. Свободный крой не сковывает движения. Модель дополнена вышитым логотипом бренда.'],
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/ae2/666_666_1/6t017b2f6dcq7u5on1gjtjjbrfc2ococ.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/ec8/666_666_1/xozp5ihdr6lsxg1jtfuyvoifvv5w84me.jpg',
+
+     
+    ],
+    'desc': [
+       'Свободный крой',
+      'Короткий рукав',
+      'Спущенная линия плеча'
+      'Овальный вырез горловины'
+      'Вышитый логотип бренда'
+ 
+    ],
+    'variants': [
+      
+      
+    ],
+    'availableSizes': ['S', 'M', 'L', 'XL', 'XXL'],
+    'models': 'carhartt',
+    'status': 'new',
+  },
+    
+    
+    
+    {
+    'id': 16,
+    'title':'Carhartt WIP Landon Pant',
+    'price': '17 999',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/efb/666_666_1/32n6ak93wz0bg2mfvv0t9y5vd7fqklqj.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'Pant',
+    'fulldesc':
+      ['Мужская футболка Carhartt WIP Chase T-Shirt выполнена из натурального хлопка. Материал отлично циркулирует воздух. Свободный крой не сковывает движения. Модель дополнена вышитым логотипом бренда.'],
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/efb/666_666_1/32n6ak93wz0bg2mfvv0t9y5vd7fqklqj.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/904/666_666_1/k353yx05a1lgf4uz80vej2tbjkyi9ww8.jpg',
+
+     
+    ],
+    'desc': [
+       'Свободный крой',
+      'Короткий рукав',
+      'Спущенная линия плеча'
+      'Овальный вырез горловины'
+      'Вышитый логотип бренда'
+ 
+    ],
+    'variants': [
+      
+      
+    ],
+    'availableSizes': [29, 30, 31, 32, 33, 34, 36],
+    'models': 'london-pants',
+    'status': 'new',
+  },
+
+
+
+
+
+      {
+    'id': 17,
+    'title':'Carhartt WIP Brandon Pant',
+    'price': '17 999',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/980/666_666_1/rbhr2r91rp2d6jjokkwh17jml5a1bcuy.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'Pant',
+    'fulldesc':
+      ['Мужская футболка Carhartt WIP Chase T-Shirt выполнена из натурального хлопка. Материал отлично циркулирует воздух. Свободный крой не сковывает движения. Модель дополнена вышитым логотипом бренда.'],
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/980/666_666_1/rbhr2r91rp2d6jjokkwh17jml5a1bcuy.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/538/666_666_1/3dtovdtzmhgi3aj6qo0y3u3rzhgh8bkt.jpg',
+
+     
+    ],
+    'desc': [
+       'Свободный крой',
+      'Короткий рукав',
+      'Спущенная линия плеча'
+      'Овальный вырез горловины'
+      'Вышитый логотип бренда'
+ 
+    ],
+    'variants': [
+      
+      
+    ],
+    'availableSizes': ['S', 'M', 'L', 'XL', '2XL'],
+    'models': 'brandon-pants',
+    'status': 'new',
+  },
+
+
+
+
+
+
+
+
+
+   {
+    'id': 18,
+    'title': 'The North Face Retro Nuptse Jacket',
+    'price': '37 799',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/a00/666_666_1/amy83q2zbsgsl6fo0ihmxyddz5h5b37w.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'clothing',
+    'fulldesc':
+      ['Культовый силуэт, рожденный для покорения восьмитысячников и адаптированный для динамичного ритма мегаполиса. Пуховик Regrind Himalayan Down Jacket от The North Face — это безупречное сочетание архивного наследия бренда и современных экологичных технологий.'],
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/a00/666_666_1/amy83q2zbsgsl6fo0ihmxyddz5h5b37w.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/51b/666_666_1/29kle3e9uobq8yizjka27ag4yn8qqu8b.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/2d9/666_666_1/yhr2qhpj0ym8uxqcm7hkfq7jlv3npzj0.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/1ed/666_666_1/nr8brvurendprpfx4fcevkbgfmhrptav.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/3a3/666_666_1/61sq1ofcuw8comqv8nelw3gibfjnqf5e.jpg',
+    ],
+    'desc': [
+ 
+    ],
+    'variants': [
+     
+    ],
+    'availableSizes': ['XS', 'S', 'M', 'L', 'XL'],
+    'models': 'northface2',
+    'status': 'hit',
+  },
+
+     {
+    'id': 19,
+    'title': 'The North Face Retro Nuptse Jacket',
+    'price': '37 799',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/f19/666_666_1/xq12zjn27nnhze6dkgzxvc9bmuscvu6t.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'clothing',
+    'fulldesc':
+      ['Культовый силуэт, рожденный для покорения восьмитысячников и адаптированный для динамичного ритма мегаполиса. Пуховик Regrind Himalayan Down Jacket от The North Face — это безупречное сочетание архивного наследия бренда и современных экологичных технологий.'],
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/f19/666_666_1/xq12zjn27nnhze6dkgzxvc9bmuscvu6t.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/0d0/666_666_1/78d338namhdgzvfj168o3j3u5eutk2f5.jpg'
+    ],
+    'desc': [
+ 
+    ],
+    'variants': [
+     
+    ],
+    'availableSizes': ['M', 'L'],
+    'models': 'northface2',
+    'status': 'hit',
   },
 ]
 
