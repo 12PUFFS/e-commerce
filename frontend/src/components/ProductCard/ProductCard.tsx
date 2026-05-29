@@ -15,7 +15,9 @@ interface TypeOfProduct {
 export default function ProductCard({ product }: TypeOfProduct) {
   const { handleToFavorite, favorite, cart, loading } = useContext(CartContext);
   // const [modal, setModal] = useState(false);
-  const [selectedSize, setSelectedSize] = useState<number | null>(null);
+  const [selectedSize, setSelectedSize] = useState<string | number | string | null>(
+    null,
+  );
   const isLiked = favorite.some(
     (i) => i.id === product.id && i.selectedSize === selectedSize,
   );

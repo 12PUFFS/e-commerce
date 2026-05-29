@@ -125,7 +125,17 @@ export default function ProductList() {
       )}
       <div className="container">
         <div className="wrapper">
-          <div className="filters">тут фильтры</div>
+          <div className="filters">
+            <div className="filter_category">
+              <ul className="category-list">
+                <li className="category-item active">Все</li>
+                <li className="category-item">Кроссовки</li>
+                <li className="category-item">Куртки</li>
+                <li className="category-item">Футболки</li>
+                <li className="category-item">Джинсы</li>
+              </ul>
+            </div>
+          </div>
           <div className="list">
             <div className="wee">
               <div className="indiv">

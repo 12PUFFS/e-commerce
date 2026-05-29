@@ -158,7 +158,7 @@ interface CheckoutData {
   delivery: 'courier' | 'pickup' | 'post';
   payment: 'card' | 'cash' | 'online';
   comment?: string;
-  items: Array<{ id: number; size: number | null; price: string }>;
+  items: Array<{ id: number; size: number | string | null; price: string }>;
   total: string;
   card?: {
     number: string;

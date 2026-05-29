@@ -301,6 +301,9 @@ body {
   border: 1px solid #eee;
   margin-bottom: 20px;
   height: fit-content;
+  position: sticky;
+  top: 90px;
+  z-index: 3;
 }
 
 .indiv {

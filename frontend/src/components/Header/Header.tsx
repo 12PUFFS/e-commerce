@@ -11,7 +11,7 @@ export default function Header() {
   const { cart, favorite } = useContext(CartContext);
   return (
     <>
-      <div className="pre-header">Найди свою идеальную пару</div>
+      {/* <div className="pre-header">Найди свою идеальную пару</div> */}
       <header className="header">
         {/* <a href="">
           <img src={logo} alt="" />

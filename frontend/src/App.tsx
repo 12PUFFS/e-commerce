@@ -17,7 +17,7 @@ export interface Product {
   description?: string; // Добавлено
   desc?: string[]; // Добавлено (для списка особенностей)
   fulldesc?: string; // Добавлено (для текста о товаре)
-  selectedSize?: number | null;
+  selectedSize?: number | string | null | string;
   isChecked?: boolean; // ИСПРАВЛЕНО: было isCheked
   availableSizes?: number[]; // Добавлено
   models?: string; // Добавлено (для фильтрации похожих)
@@ -27,17 +27,17 @@ export interface Product {
 interface SetCart {
   cart: Product[];
   setCart: React.Dispatch<React.SetStateAction<Product[]>>;
-  addCart: (id: number, size: number | null) => void;
-  removeFromCart: (id: number, size: number | null) => void;
+  addCart: (id: number, size: number | string | null) => void;
+  removeFromCart: (id: number, size: number | string | null) => void;
   deleteAllCart: () => void;
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   modal: boolean;
-  currentSize: number | null;
-  setCurrentSize: React.Dispatch<React.SetStateAction<number | null>>;
+  currentSize: number | string | null;
+  setCurrentSize: React.Dispatch<React.SetStateAction<number | string | null>>;
   newProductBanner: Product | undefined;
-  toggleCheck: (id: number, size: number | null) => void;
+  toggleCheck: (id: number, size: number | string | null) => void;
   favorite: Product[];
-  handleToFavorite: (id: number, size: number | null) => void;
+  handleToFavorite: (id: number, size: number | string | null) => void;
   loading: boolean;
 }
 
@@ -65,10 +65,10 @@ export default function App() {
   const [modal, setModal] = useState(false);
   const [items, setItems] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [currentSize, setCurrentSize] = useState<number | null>(null);
+  const [currentSize, setCurrentSize] = useState<number | string | null>(null);
   const [favorite, setFavorite] = useState<Product[]>([]);
 
-  const handleToFavorite = (id: number, size: number | null) => {
+  const handleToFavorite = (id: number, size: number | string | null) => {
     setFavorite((favor) => {
       const isFavor = favor.some(
         (item) => item.id === id && item.selectedSize === size,
@@ -126,7 +126,7 @@ export default function App() {
     }
   }, [cart]);
 
-  const addCart = (id: number, size: number | null) => {
+  const addCart = (id: number, size: number | string | null) => {
     // Если размер не передан — берём из стейта currentSize
     const finalSize = size ?? currentSize;
 
@@ -152,7 +152,7 @@ export default function App() {
     setModal(true);
   };
 
-  const toggleCheck = (id: number, size: number | null) => {
+  const toggleCheck = (id: number, size: number | string | null) => {
     setCart((prev) =>
       prev.map((item) =>
         item.id === id && item.selectedSize === size
@@ -163,7 +163,7 @@ export default function App() {
   };
 
   const newProductBanner = items.find((i) => i.status === 'new');
-  const removeFromCart = (id: number, sizeToRemove: number | null) => {
+  const removeFromCart = (id: number, sizeToRemove: number | string | null) => {
     setCart((prev) =>
       prev.filter((p) => p.id !== id || p.selectedSize !== sizeToRemove),
     );
