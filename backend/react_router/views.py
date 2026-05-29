@@ -366,6 +366,35 @@ products = [
     'status': 'hit',
   },
 
+ {
+    'id': 11,
+    'title': 'The North Face Re-Grind Hydrenalite Parka',
+    'price': '47 999',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/9f7/666_666_1/mdctb3fonrzca9plhi52agxq8r3stz4r.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'clothing',
+    'fulldesc':
+      ['Культовый силуэт, рожденный для покорения восьмитысячников и адаптированный для динамичного ритма мегаполиса. Пуховик Regrind Himalayan Down Jacket от The North Face — это безупречное сочетание архивного наследия бренда и современных экологичных технологий.'],
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/9f7/666_666_1/mdctb3fonrzca9plhi52agxq8r3stz4r.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/ecf/666_666_1/1i00qn3v5lmq9fk91cheo2kuvgb5ze27.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/896/666_666_1/of202ttoy6e7kifdfe8tguu299egvern.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/766/666_666_1/8q6mc3h9it2ui2lvh8o1zshbyphmeo3x.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/774/666_666_1/ej2d2igssom41dp7j51pe57nsytuovql.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/a64/666_666_1/mnsilkg85bmsudb6hyoohteyfkpp33tt.jpg'
+     
+    ],
+    'desc': [
+ 
+    ],
+    'variants': [
+      '',
+    ],
+    'availableSizes': ['S', 'M', 'L', 'XL'],
+    'models': 'northface',
+    'status': 'hit',
+  },
 ]
 
 def products_list(request):
