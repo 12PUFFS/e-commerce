@@ -142,7 +142,7 @@
   }
 
   .photo img {
-    max-height: 100px;
+    /* max-height: 100px; */
   }
 }
 
@@ -301,6 +301,11 @@ a {
   height: fit-content;
   position: sticky;
   top: 90px;
+  z-index: 0;
+}
+
+.full-info {
+  z-index: 1;
 }
 
 .content {
@@ -433,8 +438,8 @@ a {
 
 .prev:hover,
 .next:hover {
-  background: #0000007d;
-  color: white;
+  /* background: #0000007d;
+  color: white; */
   transform: scale(1.1);
 }
 
@@ -865,6 +870,12 @@ a {
   border: 2px solid rgba(0, 0, 0, 0.05);
 }
 
+@media (max-width: 1024px) {
+  .info-wrapper {
+    gap: 0;
+  }
+}
+
 @media (max-width: 990px) {
   .main-content {
     flex-direction: column-reverse;
@@ -945,7 +956,7 @@ a {
   .info-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    /* gap: 30px; */
   }
 
   .photo li {
@@ -957,7 +968,7 @@ a {
 @media (max-width: 992px) {
   .info-wrapper {
     grid-template-columns: 1fr;
-    gap: 40px;
+    /* gap: 40px; */
     /* display: grid; */
   }
 
@@ -1028,7 +1039,7 @@ a {
 
   .photo img {
     width: auto;
-    height: 200px;
+    height: 150px;
   }
 
   .price button {
@@ -1061,7 +1072,7 @@ a {
 
 @media (max-width: 480px) {
   .info-wrapper {
-    gap: 30px;
+    /* gap: 30px; */
     display: flex;
     flex-direction: column;
   }
