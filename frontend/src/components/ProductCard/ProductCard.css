@@ -6,6 +6,7 @@
   /* border: 1px solid #cba2a2; */
   position: relative;
   height: stretch;
+  cursor: pointer;
   display: flex;
   border: none;
   /* flex-direction: column; */
@@ -53,20 +54,17 @@
 .rating {
   position: absolute;
   /* top: 15px; */
+  bottom: 23px;
   right: 15px;
-
-  /* Скрываем по умолчанию */
   display: none;
   align-items: center;
-  justify-content: center; /* Центрируем иконку */
-
+  justify-content: center;
   padding: 8px;
-  border-radius: 50%; /* Делаем круглой */
+  border-radius: 50%;
   background: white;
   border: none;
   cursor: pointer;
   z-index: 2;
-
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -279,13 +277,15 @@ a {
   /* border: 1px solid; */
   display: flex;
   gap: 10px;
-  /* background: whitesmoke; */
+  background: white;
   width: stretch;
   cursor: pointer;
+  align-items: center;
   flex-wrap: wrap;
-
+  border-radius: 8px;
   /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); */
   /* justify-content: center; */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .size-tag {
