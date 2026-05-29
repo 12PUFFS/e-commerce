@@ -103,7 +103,7 @@ products = [
     ],
     'availableSizes': [36,37,38, 39, 40],
     'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/69b/666_666_1/5qlunwlwdpa710w30m7cigeco46v9htg.jpg',
-    'status': 'new',
+    'status': 'hit',
   },
 
       {
@@ -138,7 +138,7 @@ products = [
     ],
     'availableSizes': [38, 39, 40, 41],
     'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/69b/666_666_1/5qlunwlwdpa710w30m7cigeco46v9htg.jpg',
-    'status': 'new',
+    'status': 'nit',
   },
 
   {
@@ -389,11 +389,66 @@ products = [
  
     ],
     'variants': [
-      '',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/9f7/666_666_1/mdctb3fonrzca9plhi52agxq8r3stz4r.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/f2e/666_666_1/0a5wvos1c65c7aibuixif911em5yrwt8.jpg'
     ],
     'availableSizes': ['S', 'M', 'L', 'XL'],
+    'models': 'northface1',
+    'status': 'new',
+  },
+   {
+    'id': 12,
+    'title': 'The North Face Retro Nuptse Jacket',
+    'price': '37 799',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/de6/666_666_1/sawor6xyzntrv8nxs0y1e0tf8fbesb72.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'clothing',
+    'fulldesc':
+      ['Большие дутые отсеки, оригинальные цветовые решения и эталонное качество — всё это культовый пуховик Retro Nuptse Jacket. Немного укороченный силуэт модели отсылает нас к истории её создания, когда альпинистам было необходимо носить поясной ремень со снаряжением. Верхний слой куртки выполнен в стиле колор-блок из рипстоп-нейлона с водоотталкивающей пропиткой. В качестве утеплителя — гусиный пух, собранный по стандартам ответственного потребления. Эластичные манжеты и нижний край обеспечивают плотное прилегание и отличную посадку по фигуре. В воротнике спрятан лёгкий капюшон с козырьком. Собираясь в путешествие, вы можете сложить куртку в один из её карманов.'],
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/de6/666_666_1/sawor6xyzntrv8nxs0y1e0tf8fbesb72.jpg',
+  'https://static.street-beat.ru/upload/resize_cache/iblock/8fe/666_666_1/ukqqv8dv2iaog9hj3c9sdd61i6t2ebqz.jpg',
+
+     
+    ],
+    'desc': [
+ 
+    ],
+    'variants': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/9f7/666_666_1/mdctb3fonrzca9plhi52agxq8r3stz4r.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/f2e/666_666_1/0a5wvos1c65c7aibuixif911em5yrwt8.jpg',
+    ],
+    'availableSizes': ['S', 'M', 'L', 'XL', 'XXL'],
     'models': 'northface',
-    'status': 'hit',
+    'status': 'new',
+  },
+     {
+    'id': 13,
+    'title': 'The North Face Retro Nuptse Jacket',
+    'price': '37 799',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/f2e/666_666_1/0a5wvos1c65c7aibuixif911em5yrwt8.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'clothing',
+    'fulldesc':
+      ['Большие дутые отсеки, оригинальные цветовые решения и эталонное качество — всё это культовый пуховик Retro Nuptse Jacket. Немного укороченный силуэт модели отсылает нас к истории её создания, когда альпинистам было необходимо носить поясной ремень со снаряжением. Верхний слой куртки выполнен в стиле колор-блок из рипстоп-нейлона с водоотталкивающей пропиткой. В качестве утеплителя — гусиный пух, собранный по стандартам ответственного потребления. Эластичные манжеты и нижний край обеспечивают плотное прилегание и отличную посадку по фигуре. В воротнике спрятан лёгкий капюшон с козырьком. Собираясь в путешествие, вы можете сложить куртку в один из её карманов.'],
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/f2e/666_666_1/0a5wvos1c65c7aibuixif911em5yrwt8.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/28a/666_666_1/59j7am5yzo1vhixw5h839pcpyhrr7otd.jpg',
+
+     
+    ],
+    'desc': [
+ 
+    ],
+    'variants': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/9f7/666_666_1/mdctb3fonrzca9plhi52agxq8r3stz4r.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/f2e/666_666_1/0a5wvos1c65c7aibuixif911em5yrwt8.jpg',
+    ],
+    'availableSizes': ['S', 'M', 'L', 'XL', 'XXL'],
+    'models': 'northface',
+    'status': 'new',
   },
 ]
 
