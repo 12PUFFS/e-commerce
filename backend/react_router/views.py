@@ -647,6 +647,130 @@ products = [
     'models': 'northface2',
     'status': 'hit',
   },
+
+
+  
+     {
+    'id': 20,
+    'title': 'adidas Firebird Track Pant Denim',
+    'price': '10 499',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/7f9/666_666_1/nsjq75iao2k9jr5wgwjx6jb7l5q0clmw.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'pant',
+    'fulldesc':
+      ['Культовый силуэт, рожденный для покорения восьмитысячников и адаптированный для динамичного ритма мегаполиса. Пуховик Regrind Himalayan Down Jacket от The North Face — это безупречное сочетание архивного наследия бренда и современных экологичных технологий.'],
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/7f9/666_666_1/nsjq75iao2k9jr5wgwjx6jb7l5q0clmw.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/2f1/666_666_1/c61pnydqb1nb1es09hv8wfp15uie06zs.jpg',
+      'https://static.street-beat.ru/upload/iblock/913/cghwj5z5x4cl6czp784hzw6i18qx1vxw.jpg'
+    ],
+    'desc': [
+ 
+    ],
+    'variants': [
+     'https://static.street-beat.ru/upload/resize_cache/iblock/7f9/666_666_1/nsjq75iao2k9jr5wgwjx6jb7l5q0clmw.jpg'
+    ],
+    'availableSizes': ['24-32', '25-32', '26-32', '27-32', '28-32', '29-32', '30-32'],
+    'models': 'pant',
+    'status': 'hit',
+  },
+
+       {
+    'id': 21,
+    'title': 'Carhartt WIP Brandon Pant',
+    'price': '17 999',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/2d2/666_666_1/stq2jy1vajo9jbwogou7tbhwed1ycjq0.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'pant',
+    'fulldesc':
+      ['Культовый силуэт, рожденный для покорения восьмитысячников и адаптированный для динамичного ритма мегаполиса. Пуховик Regrind Himalayan Down Jacket от The North Face — это безупречное сочетание архивного наследия бренда и современных экологичных технологий.'],
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/2d2/666_666_1/stq2jy1vajo9jbwogou7tbhwed1ycjq0.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/2d2/666_666_1/stq2jy1vajo9jbwogou7tbhwed1ycjq0.jpg'
+     
+    ],
+    'desc': [
+ 
+    ],
+    'variants': [
+     ''
+    ],
+    'availableSizes': ['24-32', '25-32', '26-32', '27-32', '28-32', '29-32', '30-32'],
+    'models': 'pant1',
+    'status': 'hit',
+  },
+
+
+
+
+           {
+    'id': 22,
+    'title': 'Carhartt WIP Benton Tee',
+    'price': '8 999',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/eb6/666_666_1/2vakmmku4e4ws10cj8x0srgzq61a3kuh.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'T-Shirt',
+    'fulldesc':
+      ['Мужская футболка Carhartt WIP Chase T-Shirt выполнена из натурального хлопка. Материал отлично циркулирует воздух. Свободный крой не сковывает движения. Модель дополнена вышитым логотипом бренда.'],
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/eb6/666_666_1/2vakmmku4e4ws10cj8x0srgzq61a3kuh.jpg',
+      'https://static.street-beat.ru/upload/iblock/be1/ha3cp58tg1bpi38cnhnw9t3sshozygg2.jpg',
+
+     
+    ],
+    'desc': [
+       'Свободный крой',
+      'Короткий рукав',
+      'Спущенная линия плеча'
+      'Овальный вырез горловины'
+      'Вышитый логотип бренда'
+ 
+    ],
+    'variants': [
+      
+      
+    ],
+    'availableSizes': ['XS','S', 'M', 'L'],
+    'models': 'carhartt2',
+    'status': 'new',
+  },
+
+
+             {
+    'id': 23,
+    'title': 'Carhartt WIP Benton Tee',
+    'price': '8 999',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/9cc/666_666_1/qzt8bqiry1alnt585a9j9nd0p6qdwfzv.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'T-Shirt',
+    'fulldesc':
+      ['Мужская футболка Carhartt WIP Chase T-Shirt выполнена из натурального хлопка. Материал отлично циркулирует воздух. Свободный крой не сковывает движения. Модель дополнена вышитым логотипом бренда.'],
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/9cc/666_666_1/qzt8bqiry1alnt585a9j9nd0p6qdwfzv.jpg',
+      'https://static.street-beat.ru/upload/iblock/431/x2k9mdo1s6tlmu0t8vlggetocy51mf2z.jpg',
+
+     
+    ],
+    'desc': [
+       'Свободный крой',
+      'Короткий рукав',
+      'Спущенная линия плеча'
+      'Овальный вырез горловины'
+      'Вышитый логотип бренда'
+ 
+    ],
+    'variants': [
+      
+      
+    ],
+    'availableSizes': ['XS','S', 'M', 'L'],
+    'models': 'carhartt2',
+    'status': 'new',
+  },
 ]
 
 def products_list(request):
