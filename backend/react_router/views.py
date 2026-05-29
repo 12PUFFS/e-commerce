@@ -450,6 +450,38 @@ products = [
     'models': 'northface',
     'status': 'new',
   },
+       {
+    'id': 14,
+    'title': 'Carhartt WIP Chase T-Shirt',
+    'price': '6 999',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/1db/666_666_1/tf3wtszch5up14ygfxvrtvc4w3axv8vd.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'clothing',
+    'fulldesc':
+      ['Мужская футболка Carhartt WIP Chase T-Shirt выполнена из натурального хлопка. Материал отлично циркулирует воздух. Свободный крой не сковывает движения. Модель дополнена вышитым логотипом бренда.'],
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/1db/666_666_1/tf3wtszch5up14ygfxvrtvc4w3axv8vd.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/771/666_666_1/ptrqvouaukzbm8jvxgkrxue4ec9cbgu0.jpg',
+
+     
+    ],
+    'desc': [
+       ' Свободный крой',
+'Короткий рукав',
+'Спущенная линия плеча'
+'Овальный вырез горловины'
+'Вышитый логотип бренда'
+ 
+    ],
+    'variants': [
+      
+      
+    ],
+    'availableSizes': ['S', 'M', 'L', 'XL', 'XXL'],
+    'models': 'carhartt',
+    'status': 'new',
+  },
 ]
 
 def products_list(request):
