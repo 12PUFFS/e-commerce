@@ -37,6 +37,14 @@ export default function ProductInfo() {
     setSelectedPhoto(0); // ✅ Сбрасываем фото на первое
   }, [id, setCurrentSize]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth', // 'auto' - мгновенно, 'smooth' - плавно
+    });
+  }, [id]);
+
   const isFavor = favorite.some(
     (i) => i.id === product.id && i.selectedSize === currentSize,
   );
