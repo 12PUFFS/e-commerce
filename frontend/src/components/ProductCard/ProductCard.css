@@ -1,5 +1,5 @@
 .product-card {
-  /* background: whitesmoke; */
+  background: whitesmoke;
   border-radius: 8px;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -8,15 +8,16 @@
   height: stretch;
   display: flex;
   border: none;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
-  width: min-content;
+  width: 470px;
   /* border: 1px solid; */
 }
 
 .product-card:hover {
   transform: translateY(-15px) scale(1.02);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15); */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   /* border-color: #667eea; */
 }
 
@@ -34,14 +35,15 @@
 }
 
 .product-card-img img {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); */
   overflow: hidden;
-  width: 250px;
-  height: 350px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border: none;
   /* padding: 30px; */
   transition: transform 0.6s ease;
+  padding-left: 20px;
 }
 
 /* .product-card:hover .product-card-img img {
@@ -50,7 +52,7 @@
 
 .rating {
   position: absolute;
-  top: 15px;
+  /* top: 15px; */
   right: 15px;
 
   /* Скрываем по умолчанию */
@@ -276,7 +278,7 @@ a {
   /* padding: 10px; */
   /* border: 1px solid; */
   display: flex;
-  /* gap: 10px; */
+  gap: 10px;
   /* background: whitesmoke; */
   width: stretch;
   cursor: pointer;
@@ -382,16 +384,30 @@ a {
   box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
 }
 
+@media (max-width: 1440px) {
+  .product-card {
+    width: stretch;
+  }
+}
+
 @media (max-width: 1024px) {
   .product-card-price {
     font-size: 2.5rem;
+  }
+
+  .product-card {
+    width: 480px;
   }
 }
 
 @media (max-width: 768px) {
   .product-card-img img {
-    width: 360px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
+  }
+
+  .product-card {
+    width: 736px;
   }
 
   .product-card-title {
@@ -413,6 +429,10 @@ a {
     gap: 8px;
     justify-content: start;
     height: auto;
+  }
+
+  .product-card {
+    width: 400px;
   }
 
   .size-tag {
@@ -443,5 +463,11 @@ a {
 
   .product-card-title {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .product-card {
+    width: 350px;
   }
 }

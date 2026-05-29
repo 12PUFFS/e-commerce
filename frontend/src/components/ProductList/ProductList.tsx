@@ -127,37 +127,44 @@ export default function ProductList() {
         <div className="wrapper">
           <div className="filters">тут фильтры</div>
           <div className="list">
-            <div className="indiv">
-              <input
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                type="text"
-                placeholder="Что ищем?"
-              />
-              <p
-                onClick={() => setActive('all')}
-                className={`f ${active === 'all' ? 'active' : ''}`}
-              >
-                все
-              </p>
-              <p
-                onClick={() => setActive('hits')}
-                className={`f ${active === 'hits' ? 'active' : ''}`}
-              >
-                хиты
-              </p>
-              <p
-                onClick={() => setActive('new')}
-                className={`f ${active === 'new' ? 'active' : ''}`}
-              >
-                новое
-              </p>
-              <div className="price-filter">
-                <select name="price" id="price-select">
-                  <option value="">Фильтры по цене</option>
-                  <option value="high">Сначала дороже</option>
-                  <option value="low">Сначала дешевле</option>
-                </select>
+            <div className="wee">
+              <div className="indiv">
+                <input
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
+                  type="text"
+                  placeholder="Что ищем?"
+                />
+                <p
+                  onClick={() => setActive('all')}
+                  className={`f ${active === 'all' ? 'active' : ''}`}
+                >
+                  все
+                </p>
+                <p
+                  onClick={() => setActive('hits')}
+                  className={`f ${active === 'hits' ? 'active' : ''}`}
+                >
+                  хиты
+                </p>
+                <p
+                  onClick={() => setActive('new')}
+                  className={`f ${active === 'new' ? 'active' : ''}`}
+                >
+                  новое
+                </p>
+                <div className="price-filter">
+                  <select name="price" id="price-select">
+                    <option value="">Фильтры по цене</option>
+                    <option value="high">Сначала дороже</option>
+                    <option value="low">Сначала дешевле</option>
+                  </select>
+                </div>
+              </div>
+              <div className="filter-counter">
+                <div>
+                  <p> Каталог товаров {filteredItems.length}</p>
+                </div>
               </div>
             </div>
 
