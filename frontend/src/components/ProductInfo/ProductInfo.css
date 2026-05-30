@@ -168,6 +168,16 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
+.full-info .cat p {
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 8px;
+  width: fit-content;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  opacity: 0.5;
+  color: black;
+}
+
 /* Для мобильной версии корректируем позиции */
 @media (max-width: 992px) {
   .photo {
@@ -210,12 +220,18 @@ a {
 }
 
 .cat {
-  padding: 10px;
-  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sneaker-info .cat p {
+  /* padding: 10px;
+  background: #ffffff; */
   border-radius: 8px;
   width: fit-content;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); */
   opacity: 0.5;
+  color: black;
 }
 
 /* Миниатюры */
@@ -321,6 +337,8 @@ a {
   padding: 20px;
   margin-top: 20px;
   background: white;
+  border-radius: 8px;
+  /* overflow: scroll; */
 }
 
 .cc {
@@ -359,6 +377,7 @@ a {
 .desc-wrapper {
   background: white;
   padding: 20px;
+  border-radius: 8px;
 }
 
 /* Основное изображение */
@@ -648,11 +667,21 @@ a {
   margin-top: 32px;
 } */
 
+.full-desc p {
+  padding: 20px;
+}
+
+.full-desc {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .open-lock {
   display: flex;
   justify-content: space-between;
   background: #f5f5f5;
   align-items: center;
+  border-radius: 8px;
   padding: 20px;
   /* box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06); */
 }
@@ -751,11 +780,14 @@ a {
 }
 
 .all-sneakers-grid {
-  display: flex;
-  /* grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); */
   gap: 30px;
   /* padding-top: 50px; */
   /* justify-content: center; */
+  display: grid;
+  grid-template-columns: repeat(min-content);
+  grid-template-columns: repeat(auto-fill, minmax(552px, 1fr));
+  grid-auto-flow: column;
+  overflow: scroll;
 }
 
 .sneaker-card {
@@ -769,7 +801,7 @@ a {
 
 .sneaker-card {
   background: whitesmoke;
-  border-radius: 20px;
+  border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -834,14 +866,14 @@ a {
 }
 
 .sneaker-info {
-  padding: 0 24px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .sneaker-title {
-  font-size: 50px;
+  font-size: 35px;
   font-weight: 700;
   margin-bottom: 12px;
   color: #000;

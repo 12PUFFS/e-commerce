@@ -1,18 +1,50 @@
 // @ts-ignore
-import { useContext, useEffect, useState } from 'react';
+import { use, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../ProductCard/ProductCard';
 import './ProductList.css';
 import { ProductsContext, CartContext } from '../../App';
 import Header from '../Header/Header';
 import type { Product } from '../../App';
+
 export default function ProductList() {
   const products = useContext(ProductsContext);
   const { loading } = useContext(CartContext);
-
+  const [paginator, setPaginotor] = useState(12);
+  const [hasAnyitems, setHasAnyItems] = useState(true);
+  const [categoryToggle, setCategoryToggle] = useState('visible');
   const [active, setActive] = useState('all');
   const [bannerIndex, setBannerIndex] = useState(0);
   const [value, setValue] = useState('');
+  const [sortPrice, setSortPrice] = useState('');
+  const [sortByGender] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedGender, setSelectedGender] = useState('all');
+  const [genderToggle, setGenderToggle] = useState('visible');
+  const [showUpButton, setShowUpButton] = useState(false);
+
+  const [selectedBrand, setSelectedBrand] = useState('all');
+  const [brandToggle, setBrandToggle] = useState('visible');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 800) {
+        setShowUpButton(true);
+      } else {
+        setShowUpButton(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   const filteredItems = products.filter((item) => {
     const filterByTag =
@@ -24,8 +56,102 @@ export default function ProductList() {
       .toLowerCase()
       .includes(value.toLowerCase());
 
-    return filterByTag && filterByinput;
+    const filterByCategory =
+      selectedCategory === 'all' || item.category === selectedCategory;
+
+    const filterByGender =
+      selectedGender === 'all' || item.gender === selectedGender;
+
+    const filteredByBrand =
+      selectedBrand === 'all' || item.brand === selectedBrand;
+
+    return (
+      filterByTag &&
+      filterByinput &&
+      filterByCategory &&
+      filterByGender &&
+      filteredByBrand
+    );
   });
+
+  // const getfilterByGender = () => {
+  //   if (sortByGender === 'man') {
+  //     return filteredItems.filter((item) => item.gender === 'man');
+  //   }
+  //   if (sortByGender === 'woman') {
+  //     return filteredItems.filter((item) => item.gender === 'woman');
+  //   }
+  //   return filteredItems.filter(
+  //     (item) => item.gender === 'man' || item.gender === 'woman',
+  //   );
+  // };
+
+  // const sortedByGender = getfilterByGender();
+
+  const getSortedItems = () => {
+    const itemsCopy = [...filteredItems];
+
+    if (sortPrice === 'high') {
+      return itemsCopy.sort((a, b) => {
+        const priceA = parseInt(a.price.replace(/\s/g, ''));
+        const priceB = parseInt(b.price.replace(/\s/g, ''));
+        return priceB - priceA;
+      });
+    }
+
+    if (sortPrice === 'low') {
+      return itemsCopy.sort((a, b) => {
+        const priceA = parseInt(a.price.replace(/\s/g, ''));
+        const priceB = parseInt(b.price.replace(/\s/g, ''));
+        return priceA - priceB;
+      });
+    }
+
+    return itemsCopy;
+  };
+
+  const sortedItems = getSortedItems();
+
+  const visibleItems = sortedItems.slice(0, paginator);
+
+  useEffect(() => {
+    setHasAnyItems(visibleItems.length < sortedItems.length);
+  }, [visibleItems, sortedItems.length]);
+
+  useEffect(() => {}, [
+    filteredItems,
+    sortPrice,
+    sortByGender,
+    selectedCategory,
+    active,
+    value,
+  ]);
+
+  const loadMore = () => {
+    setPaginotor((prev) => prev + 15);
+  };
+
+  const categoryProductsNames: Record<string, string> = {
+    all: 'Все товары',
+    shoes: 'Кроссовки',
+    clothing: 'Куртки',
+    Pant: 'Джинсы',
+    'T-Shirt': 'Футболки',
+  };
+
+  const categoryGenderNames: Record<string, string> = {
+    all: 'Все',
+    man: 'Мужчинам',
+    woman: 'Женщинам',
+  };
+
+  const categoryBrandNames: Record<string, string> = {
+    all: 'Все',
+    adidas: 'Adidas',
+    nike: 'Nike',
+    'the north face': 'The North Face',
+    Carhartt: 'Carhartt',
+  };
 
   const bannerProducts = products.filter((i) => i.status === 'new');
 
@@ -75,9 +201,6 @@ export default function ProductList() {
                 <div className="skeleton-title"></div>
                 <div className="skeleton-price"></div>
               </div>
-              {/* <div className="content-images">
-                <div className="skeleton-image"></div>
-              </div> */}
             </div>
           </div>
         </div>
@@ -124,82 +247,236 @@ export default function ProductList() {
         )
       )}
       <div className="container">
-        <div className="wrapper">
-          <div className="filters">
-            <div className="filter_category">
-              <ul className="category-list">
-                <li className="category-item active">Все</li>
-                <li className="category-item">Кроссовки</li>
-                <li className="category-item">Куртки</li>
-                <li className="category-item">Футболки</li>
-                <li className="category-item">Джинсы</li>
-              </ul>
-            </div>
-          </div>
-          <div className="list">
-            <div className="wee">
-              <div className="indiv">
-                <input
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
-                  type="text"
-                  placeholder="Что ищем?"
-                />
-                <p
+        <div className="content-wrapper">
+          {/* Сайдбар с фильтрами */}
+          <aside className="filters-sidebar">
+            <h3>Фильтры</h3>
+            <span className="count">Найдено: {sortedItems.length}</span>
+            <div className="filter-section">
+              {/* <h4>Статус</h4> */}
+              <div className="status-buttons">
+                <button
                   onClick={() => setActive('all')}
-                  className={`f ${active === 'all' ? 'active' : ''}`}
+                  className={`status-btn ${active === 'all' ? 'active' : ''}`}
                 >
-                  все
-                </p>
-                <p
+                  Все
+                </button>
+                <button
                   onClick={() => setActive('hits')}
-                  className={`f ${active === 'hits' ? 'active' : ''}`}
+                  className={`status-btn ${active === 'hits' ? 'active' : ''}`}
                 >
-                  хиты
-                </p>
-                <p
+                  Хиты
+                </button>
+                <button
                   onClick={() => setActive('new')}
-                  className={`f ${active === 'new' ? 'active' : ''}`}
+                  className={`status-btn ${active === 'new' ? 'active' : ''}`}
                 >
-                  новое
-                </p>
-                <div className="price-filter">
-                  <select name="price" id="price-select">
-                    <option value="">Фильтры по цене</option>
-                    <option value="high">Сначала дороже</option>
-                    <option value="low">Сначала дешевле</option>
-                  </select>
+                  Новинки
+                </button>
+              </div>
+            </div>
+            <div className="filter-section">
+              <h4>Сортировка по цене</h4>
+              <select
+                onChange={(e) => setSortPrice(e.target.value)}
+                className="price-select"
+                value={sortPrice}
+              >
+                <option value="">По умолчанию</option>
+                <option value="high">Сначала дороже</option>
+                <option value="low">Сначала дешевле</option>
+              </select>
+            </div>
+
+            <div className="filter-section">
+              <div className="type">
+                <div
+                  onClick={() =>
+                    setCategoryToggle((prev) =>
+                      prev === 'hidden' ? 'visible' : 'hidden',
+                    )
+                  }
+                  className="cat-type-heder"
+                >
+                  <h4>тип товара</h4>
+                  <div className="current-type">
+                    {categoryProductsNames[selectedCategory]}
+                  </div>
+                </div>
+                <ul
+                  className={`category-list ${categoryToggle === 'visible' ? 'active' : 'hidden'}`}
+                >
+                  <li
+                    onClick={() => setSelectedCategory('all')}
+                    className={`category-item ${selectedCategory === 'all' ? 'active' : ''}`}
+                  >
+                    Все
+                  </li>
+                  <li
+                    onClick={() => setSelectedCategory('shoes')}
+                    className={`category-item ${selectedCategory === 'shoes' ? 'active' : ''}`}
+                  >
+                    Кроссовки
+                  </li>
+                  <li
+                    onClick={() => setSelectedCategory('clothing')}
+                    className={`category-item ${selectedCategory === 'clothing' ? 'active' : ''}`}
+                  >
+                    Куртки
+                  </li>
+                  <li
+                    onClick={() => setSelectedCategory('Pant')}
+                    className={`category-item ${selectedCategory === 'Pant' ? 'active' : ''}`}
+                  >
+                    Джинсы
+                  </li>
+                  <li
+                    onClick={() => setSelectedCategory('T-Shirt')}
+                    className={`category-item ${selectedCategory === 'T-Shirt' ? 'active' : ''}`}
+                  >
+                    Футболки
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="filter-section">
+              <div className="cat-gender-type">
+                <div
+                  onClick={() =>
+                    setGenderToggle((prev) =>
+                      prev === 'hidden' ? 'visible' : 'hidden',
+                    )
+                  }
+                  className="cat-gender-header"
+                >
+                  <h4>Пол</h4>
+                  <div className="current-type">
+                    {categoryGenderNames[selectedGender]}
+                  </div>
+                </div>
+                <ul
+                  className={`gender-list ${genderToggle === 'visible' ? 'active' : 'hidden'}`}
+                >
+                  <li
+                    onClick={() => setSelectedGender('all')}
+                    className={`gender-item ${selectedGender === 'all' ? 'active' : ''}`}
+                  >
+                    Все
+                  </li>
+                  <li
+                    onClick={() => setSelectedGender('man')}
+                    className={`gender-item ${selectedGender === 'man' ? 'active' : ''}`}
+                  >
+                    Мужчины
+                  </li>
+                  <li
+                    onClick={() => setSelectedGender('woman')}
+                    className={`gender-item ${selectedGender === 'woman' ? 'active' : ''}`}
+                  >
+                    Женщины
+                  </li>
+                </ul>
+              </div>
+              <div className="filter-section">
+                <div className="cat-brand-type">
+                  <div
+                    onClick={() =>
+                      setBrandToggle((prev) =>
+                        prev === 'hidden' ? 'visible' : 'hidden',
+                      )
+                    }
+                    className="cat-gender-header"
+                  >
+                    <h4>Бренд</h4>
+                    <div className="current-type">
+                      {categoryBrandNames[selectedBrand]}
+                    </div>
+                  </div>
+                  <ul
+                    className={`brand-list ${brandToggle === 'visible' ? 'active' : 'hidden'}`}
+                  >
+                    <li
+                      onClick={() => setSelectedBrand('all')}
+                      className={`brand-item ${selectedBrand === 'all' ? 'active' : ''}`}
+                    >
+                      Все
+                    </li>
+                    <li
+                      onClick={() => setSelectedBrand('adidas')}
+                      className={`brand-item ${selectedBrand === 'adidas' ? 'active' : ''}`}
+                    >
+                      Adidas
+                    </li>
+                    <li
+                      onClick={() => setSelectedBrand('nike')}
+                      className={`brand-item ${selectedBrand === 'nike' ? 'active' : ''}`}
+                    >
+                      Nike
+                    </li>
+                    <li
+                      onClick={() => setSelectedBrand('the north face')}
+                      className={`brand-item ${selectedBrand === 'the north face' ? 'active' : ''}`}
+                    >
+                      The North Face
+                    </li>
+                    <li
+                      onClick={() => setSelectedBrand('Carhartt')}
+                      className={`brand-item ${selectedBrand === 'Carhartt' ? 'active' : ''}`}
+                    >
+                      Carhartt
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <div className="filter-counter">
-                <div>
-                  <p> Каталог товаров {filteredItems.length}</p>
-                </div>
-              </div>
+            </div>
+          </aside>
+
+          {/* Основная область с товарами */}
+          <div className="products-area">
+            <div className="search-bar">
+              <input
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                type="text"
+                placeholder="Поиск по названию..."
+              />
             </div>
 
             <ul className="card-list">
               {loading ? (
-                Array(20)
+                Array(15)
                   .fill(null)
                   .map((_, i) => (
                     <li key={i}>
                       <ProductCard product={{} as Product} />
                     </li>
                   ))
-              ) : filteredItems.length === 0 ? (
+              ) : sortedItems.length === 0 ? (
                 <div className="empty-list">нет результата</div>
               ) : (
-                filteredItems.map((item) => (
+                visibleItems.map((item) => (
                   <li key={item.id}>
                     <ProductCard product={item} />
                   </li>
                 ))
               )}
             </ul>
+            {hasAnyitems && (
+              <div className="load-more">
+                <button onClick={loadMore}>
+                  Загрузить еще {sortedItems.length - visibleItems.length}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
+      {showUpButton && (
+        <button onClick={scrollToTop} className="scroll-to-top">
+          Наверх
+        </button>
+      )}
       <footer className="footer">Магазин кроссовок © 2025</footer>
     </>
   );

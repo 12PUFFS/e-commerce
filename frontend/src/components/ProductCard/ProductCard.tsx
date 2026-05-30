@@ -15,9 +15,9 @@ interface TypeOfProduct {
 export default function ProductCard({ product }: TypeOfProduct) {
   const { handleToFavorite, favorite, cart, loading } = useContext(CartContext);
   // const [modal, setModal] = useState(false);
-  const [selectedSize, setSelectedSize] = useState<string | number | string | null>(
-    null,
-  );
+  const [selectedSize, setSelectedSize] = useState<
+    string | number | string | null
+  >(null);
   const isLiked = favorite.some(
     (i) => i.id === product.id && i.selectedSize === selectedSize,
   );
@@ -69,7 +69,7 @@ export default function ProductCard({ product }: TypeOfProduct) {
           <div className="product-card-info">
             {product.availableSizes && product.availableSizes.length > 0 && (
               <div className="size-group">
-                {product.availableSizes.map((size, index) => {
+                {product.availableSizes.slice(0, 4).map((size, index) => {
                   const IsCurrentSize = selectedSize === size;
                   const isInFavorite = favorite.some(
                     (i) => i.id === product.id && i.selectedSize === size,
@@ -92,6 +92,10 @@ export default function ProductCard({ product }: TypeOfProduct) {
             )}
             <h2 className="product-card-price">{product.price} ₽</h2>
             <h3 className="product-card-title">{product.title}</h3>
+            <div className="gg">
+              <p className="gender">{product.gender}</p>
+              {/* <p className="status">{product.status}</p> */}
+            </div>
             <button
               className={`rating ${isLiked ? 'active' : ''}`}
               onClick={(e) => {

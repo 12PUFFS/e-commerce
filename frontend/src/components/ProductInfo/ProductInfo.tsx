@@ -72,6 +72,26 @@ export default function ProductInfo() {
     );
   }
 
+  const getRecomended = () => {
+    const category = products.filter(
+      (item) =>
+        item.category !== product.category &&
+        item.gender === product.gender &&
+        item.id !== product.id,
+    );
+
+    // const mappingCategory = {};
+
+    // category.forEach((item) => {
+    //   if (!mappingCategory[item.category]) {
+    //     mappingCategory[item.category] = item;
+    //   }
+    // });
+    return category.slice(0, 5);
+  };
+
+  const recomended = getRecomended();
+
   // if (selectedPhoto > 0) {
   //   setSelectedPhoto(selectedPhoto.lenght - 1);
   // }
@@ -209,7 +229,10 @@ export default function ProductInfo() {
               </div>
 
               <div className="full-info">
-                <p className="cat">{product.category}</p>
+                <p className="cat">
+                  <p>{product.category}</p>
+                  <p>{product.gender}</p>
+                </p>
                 <h1>{product.title}</h1>
                 <h3>доступные размеры</h3>
                 <ul className="current-size">
@@ -298,7 +321,7 @@ export default function ProductInfo() {
                 </div> */}
                 <ul>
                   <div className="open-lock">
-                    <p>Материалы</p>
+                    <p>Особенности</p>
                     <button
                       onClick={() => setOpenItem(!openItem)}
                       className="open"
@@ -321,13 +344,16 @@ export default function ProductInfo() {
                     );
                   })}
                 </ul>
+                <div>
+                  <p>{product.fulldesc}</p>
+                </div>
               </div>
             </div>
             <div className="inter">
               <div className="w">
                 <h2 className="section-title">Могут понравиться</h2>
                 <div className="all-sneakers-grid">
-                  {sameModel.map((item) => (
+                  {recomended.map((item) => (
                     <Link key={item.id} to={`/item/${item.id}`}>
                       <div className="sneaker-card">
                         <div className="sneaker-image">
@@ -337,6 +363,10 @@ export default function ProductInfo() {
                           />
                         </div>
                         <div className="sneaker-info">
+                          <p className="cat">
+                            {/* <p>{item.category}</p> */}
+                            <p>{item.gender}</p>
+                          </p>
                           <h3 className="sneaker-title">{item.title}</h3>
                           <p className="sneaker-description">
                             {item.description}

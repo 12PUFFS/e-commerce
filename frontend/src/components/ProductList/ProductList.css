@@ -216,7 +216,7 @@ body {
 }
 
 .filter_category {
-  display: none;
+  /* display: none; */
 }
 
 .div-next button {
@@ -244,6 +244,24 @@ body {
 
 .banner.skeleton .banner-content {
   background: linear-gradient(135deg, #2a2a3e 0%, #1a1a2e 100%);
+}
+
+.cat-gender-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.cat-gender-type {
+  background: whitesmoke;
+  gap: 10px;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 8px;
+  flex-direction: column;
 }
 
 .banner.skeleton .skeleton-content {
@@ -313,6 +331,374 @@ body {
   position: sticky;
   top: 90px;
   z-index: 3;
+  display: flex;
+  gap: 50px;
+}
+
+/* =========================================
+   🎯 ФИЛЬТРЫ — САЙДБАР
+   ========================================= */
+
+.content-wrapper {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.cat-brand-type {
+  padding: 10px;
+  background: whitesmoke;
+  border-radius: 8px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-item {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #666;
+  background: #f5f5f5;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: stretch;
+}
+
+.brand-item:hover {
+  background: #e8e8e8;
+  color: #333;
+}
+
+.brand-list {
+  display: none;
+}
+
+.brand-list.hidden {
+  display: none;
+}
+
+.brand-list.active {
+  display: flex;
+}
+
+.brand-item.active {
+  background: black;
+  color: white;
+}
+
+.brand-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: fit-content;
+  padding: 10px;
+  height: 50px;
+  border-radius: 8px;
+  background: #000;
+  color: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-to-top:hover {
+  background: #333;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+}
+
+/* Сайдбар */
+.filters-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  position: sticky;
+  top: 25px;
+  height: fit-content;
+  /* border: 1px solid #eaeaea; */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  margin-bottom: 20px;
+}
+
+.filters-sidebar h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  display: none;
+}
+
+.filter-section {
+  margin: 24px 0;
+}
+
+.filter-section h4 {
+  font-size: 14px;
+  font-weight: 600;
+  /* margin: 0 0 12px 0; */
+  color: #333;
+  /* background: whitesmoke;
+  padding: 10px; */
+  border-radius: 8px;
+}
+
+.current-type {
+  background: rgb(0, 0, 0);
+  padding: 10px;
+  /* border: 1px solid; */
+  border-radius: 8px;
+  color: white;
+  /* width: 100px;
+  font-size: 10px; */
+}
+
+/* Списки категорий и пола */
+.category-list,
+.gender-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+}
+
+.type {
+  display: flex;
+  background: whitesmoke;
+  padding: 10px;
+  justify-content: space-between;
+  cursor: pointer;
+  border-radius: 8px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cat-type-heder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gender-list {
+  display: none;
+}
+
+.gender-list.hidden {
+  display: none;
+}
+
+.gender-list.active {
+  display: flex;
+}
+
+.category-list {
+  display: none;
+}
+
+.category-list.hidden {
+  display: none;
+}
+
+.category-list.active {
+  display: flex;
+  border-radius: 8px;
+  background: white;
+}
+
+.category-item,
+.gender-item {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #666;
+  background: #f5f5f5;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: stretch;
+}
+
+.category-item:hover,
+.gender-item:hover {
+  background: #e8e8e8;
+  color: #333;
+}
+
+.category-item.active,
+.gender-item.active {
+  background: #000;
+  color: #fff;
+}
+
+/* Кнопки статуса */
+.status-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.status-btn {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.status-btn:hover {
+  background: #e8e8e8;
+  color: #333;
+}
+
+.status-btn.active {
+  background: #000;
+  color: #fff;
+}
+
+/* Выпадающий список цены */
+.price-select {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #333;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+}
+
+.price-select:hover {
+  background: #e8e8e8;
+}
+
+/* Основная область */
+.products-area {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Поиск */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  /* padding: 16px 20px; */
+  background: #fff;
+  border-radius: 16px;
+  /* border: 1px solid #eaeaea; */
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 30px;
+  background: #fff;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.search-bar input:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+.search-bar .count {
+  font-size: 14px;
+  color: #888;
+  white-space: nowrap;
+}
+
+/* Сетка товаров */
+.card-list {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* gap: 24px; */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .filters-sidebar {
+    width: 100%;
+    position: static;
+  }
+
+  .category-list,
+  .gender-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    transition: all 0.7s ease;
+  }
+}
+
+.category-item.active {
+  /* padding: 5px; */
+  background: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  border-radius: 8px;
+  align-items: center;
+  display: flex;
+}
+
+.gender-item.active {
+  /* padding: 5px; */
+  background: black;
+  color: white;
+  border-radius: 8px;
+  align-items: center;
+  display: flex;
 }
 
 .indiv {
@@ -411,6 +797,21 @@ body {
   flex-direction: column-reverse;
 }
 
+.load-more {
+  display: flex;
+  justify-content: center;
+}
+
+.load-more button {
+  background: #000;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  width: stretch;
+  margin: 20px 0;
+  font-size: 20px;
+}
+
 /* =========================================
    🛍 PRODUCT GRID
    ========================================= */
@@ -441,8 +842,8 @@ body {
   flex-wrap: wrap;
   justify-content: space-between; */
 
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(470px, 1fr));
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(470px, 1fr)); */
   gap: 24px;
 }
 
@@ -544,7 +945,7 @@ body {
   }
 
   .card-list {
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
     gap: 16px;
   }
 }

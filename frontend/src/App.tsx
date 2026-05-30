@@ -11,6 +11,8 @@ export interface Product {
   id: number;
   title: string;
   category: string;
+  gender: string;
+  brand: string;
   price: string;
   image?: string;
   status?: 'new' | 'hit';
