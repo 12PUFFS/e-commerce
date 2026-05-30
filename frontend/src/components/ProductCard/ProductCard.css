@@ -421,7 +421,7 @@ a {
   }
 
   .product-card {
-    width: 480px;
+    /* width: 480px; */
   }
 }
 
@@ -432,7 +432,7 @@ a {
   }
 
   .product-card {
-    width: 736px;
+    /* width: 736px; */
   }
 
   .product-card-title {
@@ -457,7 +457,7 @@ a {
   }
 
   .product-card {
-    width: 400px;
+    /* width: 400px; */
   }
 
   .size-tag {
@@ -493,6 +493,6 @@ a {
 
 @media (max-width: 400px) {
   .product-card {
-    width: 350px;
+    /* width: 350px; */
   }
 }
