@@ -11,7 +11,7 @@ products = [
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
     'category': 'shoes',
     'fulldesc':
-      ['Кроссовки Nike Dunk Low Retro - это стильная и универсальная модель...'],
+      ['Созданные специально для баскетбольной площадки, кроссовки Nike Dunk Low покоряют улицы города за ее пределами начиная с 80-х годов. И делают это максимально успешно. Верх пары изготовлен из натуральной кожи. Перфорация на мыске хорошо пропускает воздух, а дополнительные отверстия для шнуровки позволяют настроить комфортную плотность. Амортизация надежно защищает стопы от ударных нагрузок. Резиновая подошва с протектором минимизирует скольжение и создает уверенное сцепление с поверхностью. Стильный визуал и современные технологии делают эти кроссовки актуальными во все времена.'],
     'rating': 4.5,
     'photos': [
       'https://ir.ozone.ru/s3/multimedia-1-t/wc1000/7695221033.jpg',
@@ -37,7 +37,9 @@ products = [
     'availableSizes': [38, 39, 40, 41, 42, 43, 45],
     'models': 'dunk',
     'status': 'new',
-  },
+    'gender': 'man',
+
+'brand' : 'nike'  },
 
   {
     'id': 2,
@@ -47,7 +49,7 @@ products = [
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
     'category': 'shoes',
     'fulldesc':
-      ['Кроссовки Nike Dunk Low Retro - это стильная и универсальная модель...'],
+      ['Созданные специально для баскетбольной площадки, кроссовки Nike Dunk Low покоряют улицы города за ее пределами начиная с 80-х годов. И делают это максимально успешно. Верх пары изготовлен из натуральной кожи. Перфорация на мыске хорошо пропускает воздух, а дополнительные отверстия для шнуровки позволяют настроить комфортную плотность. Амортизация надежно защищает стопы от ударных нагрузок. Резиновая подошва с протектором минимизирует скольжение и создает уверенное сцепление с поверхностью. Стильный визуал и современные технологии делают эти кроссовки актуальными во все времена.'],
     'rating': 4.4,
     'photos': [
       'https://ir.ozone.ru/s3/multimedia-1-k/wc1000/7435891604.jpg',
@@ -72,7 +74,10 @@ products = [
     'availableSizes': [38, 39, 40, 41],
     'models': 'dunk',
     'status': 'new',
-  },
+    'gender': 'man',
+
+'brand' : 'nike' 
+},
     {
     'id': 3,
     'title': 'Nike Dunk Low Next Nature',
@@ -81,7 +86,7 @@ products = [
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
     'category': 'shoes',
     'fulldesc':
-      ['Кроссовки Nike Dunk Low Retro - это стильная и универсальная модель...'],
+      ['Созданные специально для баскетбольной площадки, кроссовки Nike Dunk Low покоряют улицы города за ее пределами начиная с 80-х годов. И делают это максимально успешно. Верх пары изготовлен из натуральной кожи. Перфорация на мыске хорошо пропускает воздух, а дополнительные отверстия для шнуровки позволяют настроить комфортную плотность. Амортизация надежно защищает стопы от ударных нагрузок. Резиновая подошва с протектором минимизирует скольжение и создает уверенное сцепление с поверхностью. Стильный визуал и современные технологии делают эти кроссовки актуальными во все времена.'],
     'rating': 4.4,
     'photos': [
       'https://static.street-beat.ru/upload/resize_cache/iblock/69b/666_666_1/5qlunwlwdpa710w30m7cigeco46v9htg.jpg',
@@ -104,6 +109,8 @@ products = [
     'availableSizes': [36,37,38, 39, 40],
     'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/69b/666_666_1/5qlunwlwdpa710w30m7cigeco46v9htg.jpg',
     'status': 'hit',
+    'gender': 'woman',
+    'brand' : 'nike',
   },
 
       {
@@ -139,6 +146,8 @@ products = [
     'availableSizes': [38, 39, 40, 41],
     'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/69b/666_666_1/5qlunwlwdpa710w30m7cigeco46v9htg.jpg',
     'status': 'nit',
+    'gender': 'woman',
+    'brand' : 'nike',
   },
 
   {
@@ -176,7 +185,9 @@ products = [
     'availableSizes': [38, 39, 40, 41],
     'models': 'https://ir.ozone.ru/s3/multimedia-1-k/wc1000/7435891604.jpg',
     'status': 'new',
-  },
+    'gender': 'man',
+
+'brand' : 'nike'  },
 
   {
     'id': 6,
@@ -214,7 +225,9 @@ products = [
     'availableSizes': [38, 39, 40, 41],
     'models': 'force',
     'status': 'hit',
-  },
+    'gender': 'man',
+
+'brand' : 'nike'  },
     {
     'id': 7,
     'title': 'Nike Air Max 90',
@@ -254,7 +267,9 @@ products = [
     'availableSizes': [38, 39, 40, 41],
     'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/48b/666_666_1/y5z4vrwq6r1ehugbc5x8vehpko4hxl68.jpg',
     'status': 'hit',
-  },
+    'gender': 'man',
+
+'brand' : 'nike'  },
       {
     'id': 8,
     'title': 'adidas Superstar II',
@@ -289,7 +304,9 @@ products = [
     'availableSizes': [38, 39, 40, 41],
     'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/7ea/666_666_1/rh90t0d1q00d372jlofbp57kdhbcbztw.jpg',
     'status': 'hit',
-  },
+    'gender': 'man',
+
+'brand' : 'adidas'  },
    {
     'id': 9,
     'title': 'adidas Drop Step Low 2.0',
@@ -328,7 +345,9 @@ products = [
     'availableSizes': [38, 39, 40, 41],
     'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/f1d/666_666_1/o9qpmny0f4rtu8uhrw5cbz0i35mhit0z.jpg',
     'status': 'hit',
-  },
+    'gender': 'man',
+
+'brand' : 'adidas'  },
     {
     'id': 10,
     'title': 'adidas Сampus 00s',
@@ -364,7 +383,9 @@ products = [
     'availableSizes': [38, 39, 40, 41],
     'models': 'https://static.street-beat.ru/upload/resize_cache/iblock/f1d/666_666_1/o9qpmny0f4rtu8uhrw5cbz0i35mhit0z.jpg',
     'status': 'hit',
-  },
+    'gender': 'man',
+
+'brand' : 'adidas'  },
 
  {
     'id': 11,
@@ -395,7 +416,9 @@ products = [
     'availableSizes': ['S', 'M', 'L', 'XL'],
     'models': 'northface1',
     'status': 'new',
-  },
+    'gender': 'man',
+
+'brand' : 'the north face'  },
    {
     'id': 12,
     'title': 'The North Face Retro Nuptse Jacket',
@@ -422,7 +445,9 @@ products = [
     'availableSizes': ['S', 'M', 'L', 'XL', 'XXL'],
     'models': 'northface',
     'status': 'new',
-  },
+    'gender': 'man',
+
+'brand' : 'the north face'  },
      {
     'id': 13,
     'title': 'The North Face Retro Nuptse Jacket',
@@ -449,7 +474,10 @@ products = [
     'availableSizes': ['S', 'M', 'L', 'XL', 'XXL'],
     'models': 'northface',
     'status': 'new',
-  },
+    'gender': 'man',
+ 
+ 'brand' : 'the north face' 
+ },
        {
     'id': 14,
     'title': 'Carhartt WIP Chase T-Shirt',
@@ -469,8 +497,8 @@ products = [
     'desc': [
        'Свободный крой',
       'Короткий рукав',
-      'Спущенная линия плеча'
-      'Овальный вырез горловины'
+      'Спущенная линия плеча',
+      'Овальный вырез горловины',
       'Вышитый логотип бренда'
  
     ],
@@ -481,7 +509,9 @@ products = [
     'availableSizes': ['S', 'M', 'L', 'XL', 'XXL'],
     'models': 'carhartt',
     'status': 'new',
-  },
+    'gender': 'man',
+
+'brand' : 'Carhartt'  },
          {
     'id': 15,
     'title': 'Carhartt WIP Chase T-Shirt',
@@ -501,8 +531,8 @@ products = [
     'desc': [
        'Свободный крой',
       'Короткий рукав',
-      'Спущенная линия плеча'
-      'Овальный вырез горловины'
+      'Спущенная линия плеча',
+      'Овальный вырез горловины',
       'Вышитый логотип бренда'
  
     ],
@@ -513,7 +543,9 @@ products = [
     'availableSizes': ['S', 'M', 'L', 'XL', 'XXL'],
     'models': 'carhartt',
     'status': 'new',
-  },
+    'gender': 'man',
+ 
+ 'brand' : 'Carhartt', },
     
     
     
@@ -536,8 +568,8 @@ products = [
     'desc': [
        'Свободный крой',
       'Короткий рукав',
-      'Спущенная линия плеча'
-      'Овальный вырез горловины'
+      'Спущенная линия плеча',
+      'Овальный вырез горловины',
       'Вышитый логотип бренда'
  
     ],
@@ -548,7 +580,9 @@ products = [
     'availableSizes': [29, 30, 31, 32, 33, 34, 36],
     'models': 'london-pants',
     'status': 'new',
-  },
+    'gender': 'man',
+ 
+ 'brand' : 'Carhartt', },
 
 
 
@@ -573,8 +607,8 @@ products = [
     'desc': [
        'Свободный крой',
       'Короткий рукав',
-      'Спущенная линия плеча'
-      'Овальный вырез горловины'
+      'Спущенная линия плеча',
+      'Овальный вырез горловины',
       'Вышитый логотип бренда'
  
     ],
@@ -585,7 +619,10 @@ products = [
     'availableSizes': ['S', 'M', 'L', 'XL', '2XL'],
     'models': 'brandon-pants',
     'status': 'new',
-  },
+    'gender': 'man',
+ 
+ 'brand' : 'Carhartt' 
+ },
 
 
 
@@ -621,6 +658,8 @@ products = [
     'availableSizes': ['XS', 'S', 'M', 'L', 'XL'],
     'models': 'northface2',
     'status': 'hit',
+    'gender': 'woman',
+    'brand' : 'the north face'
   },
 
      {
@@ -646,6 +685,8 @@ products = [
     'availableSizes': ['M', 'L'],
     'models': 'northface2',
     'status': 'hit',
+    'gender': 'woman',
+    'brand' : 'the north face',
   },
 
 
@@ -657,7 +698,7 @@ products = [
     'image':
       'https://static.street-beat.ru/upload/resize_cache/iblock/7f9/666_666_1/nsjq75iao2k9jr5wgwjx6jb7l5q0clmw.jpg',
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
-    'category': 'pant',
+    'category': 'Pant',
     'fulldesc':
       ['Культовый силуэт, рожденный для покорения восьмитысячников и адаптированный для динамичного ритма мегаполиса. Пуховик Regrind Himalayan Down Jacket от The North Face — это безупречное сочетание архивного наследия бренда и современных экологичных технологий.'],
     'photos': [
@@ -674,6 +715,8 @@ products = [
     'availableSizes': ['24-32', '25-32', '26-32', '27-32', '28-32', '29-32', '30-32'],
     'models': 'pant',
     'status': 'hit',
+    'gender': 'woman',
+    'brand' : 'adidas'
   },
 
        {
@@ -683,7 +726,7 @@ products = [
     'image':
       'https://static.street-beat.ru/upload/resize_cache/iblock/2d2/666_666_1/stq2jy1vajo9jbwogou7tbhwed1ycjq0.jpg',
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
-    'category': 'pant',
+    'category': 'Pant',
     'fulldesc':
       ['Культовый силуэт, рожденный для покорения восьмитысячников и адаптированный для динамичного ритма мегаполиса. Пуховик Regrind Himalayan Down Jacket от The North Face — это безупречное сочетание архивного наследия бренда и современных экологичных технологий.'],
     'photos': [
@@ -700,6 +743,8 @@ products = [
     'availableSizes': ['24-32', '25-32', '26-32', '27-32', '28-32', '29-32', '30-32'],
     'models': 'pant1',
     'status': 'hit',
+    'gender': 'woman',
+    'brand' : 'Carhartt'
   },
 
 
@@ -714,7 +759,7 @@ products = [
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
     'category': 'T-Shirt',
     'fulldesc':
-      ['Мужская футболка Carhartt WIP Chase T-Shirt выполнена из натурального хлопка. Материал отлично циркулирует воздух. Свободный крой не сковывает движения. Модель дополнена вышитым логотипом бренда.'],
+      ['Женская футболка Carhartt WIP Benton Tee выполнена из органического хлопка. Материал приятен к телу и отлично циркулирует воздух. Ткань окрашена в готовом виде для большей мягкости и сложной цветовой гаммы.'],
     'photos': [
       'https://static.street-beat.ru/upload/resize_cache/iblock/eb6/666_666_1/2vakmmku4e4ws10cj8x0srgzq61a3kuh.jpg',
       'https://static.street-beat.ru/upload/iblock/be1/ha3cp58tg1bpi38cnhnw9t3sshozygg2.jpg',
@@ -736,6 +781,8 @@ products = [
     'availableSizes': ['XS','S', 'M', 'L'],
     'models': 'carhartt2',
     'status': 'new',
+    'gender': 'woman',
+    'brand' : 'Carhartt'
   },
 
 
@@ -748,7 +795,7 @@ products = [
     'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
     'category': 'T-Shirt',
     'fulldesc':
-      ['Мужская футболка Carhartt WIP Chase T-Shirt выполнена из натурального хлопка. Материал отлично циркулирует воздух. Свободный крой не сковывает движения. Модель дополнена вышитым логотипом бренда.'],
+      ['Женская футболка Carhartt WIP Benton Tee выполнена из органического хлопка. Материал приятен к телу и отлично циркулирует воздух. Ткань окрашена в готовом виде для большей мягкости и сложной цветовой гаммы.'],
     'photos': [
       'https://static.street-beat.ru/upload/resize_cache/iblock/9cc/666_666_1/qzt8bqiry1alnt585a9j9nd0p6qdwfzv.jpg',
       'https://static.street-beat.ru/upload/iblock/431/x2k9mdo1s6tlmu0t8vlggetocy51mf2z.jpg',
@@ -770,6 +817,81 @@ products = [
     'availableSizes': ['XS','S', 'M', 'L'],
     'models': 'carhartt2',
     'status': 'new',
+    'gender': 'woman',
+    'brand' : 'Carhartt'
+  },
+
+               {
+    'id': 24,
+    'title': 'adidas Regular Tee',
+    'price': '3 999',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/bc8/666_666_1/gabvu1ndd2895m6pqgn7iir0be736tav.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'T-Shirt',
+    'fulldesc':
+      ['Женская футболка adidas Regular Tee — классика спортивной моды. Она выполнена из натурального хлопка и дополнена вышитым логотипом — трилистником adidas.'],
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/bc8/666_666_1/gabvu1ndd2895m6pqgn7iir0be736tav.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/e05/666_666_1/gp5843504erys9wb029bgba8d36riiet.jpg',
+
+     
+    ],
+    'desc': [
+       'Свободный крой',
+      'Короткий рукав',
+      'Спущенная линия плеча'
+      'Овальный вырез горловины'
+      'Вышитый логотип бренда'
+ 
+    ],
+    'variants': [
+      
+      
+    ],
+    'availableSizes': ['XS','S', 'M', 'L'],
+    'models': 't-shirt-adidas',
+    'status': 'new',
+    'gender': 'woman',
+    'brand' : 'adidas'
+  },
+
+
+
+
+    {
+    'id': 25,
+    'title': 'adidas Essentials Boyfr Tee',
+    'price': '3 999',
+    'image':
+      'https://static.street-beat.ru/upload/resize_cache/iblock/c3f/666_666_1/081o5we04lwo3vv06a5p6iqgqn5saoq2.jpg',
+    'description': 'Классические кроссовки в ретро-стиле с удобной амортизацией',
+    'category': 'T-Shirt',
+    'fulldesc':
+      ['Футболка расслабленного кроя adidas Essentials Boyfriend Tee. Модель выполнена из плотной хлопковой ткани. Материал приятен к телу и отлично циркулирует воздух. Футболка дополнена вышитым логотипом adidas.'],
+    'photos': [
+      'https://static.street-beat.ru/upload/resize_cache/iblock/c3f/666_666_1/081o5we04lwo3vv06a5p6iqgqn5saoq2.jpg',
+      'https://static.street-beat.ru/upload/resize_cache/iblock/fb0/666_666_1/pth6s294j43vxny7g9wrrgox8leucdch.jpg',
+
+     
+    ],
+    'desc': [
+       'Свободный крой',
+      'Короткий рукав',
+      'Спущенная линия плеча'
+      'Овальный вырез горловины'
+      'Вышитый логотип бренда'
+ 
+    ],
+    'variants': [
+      
+      
+    ],
+    'availableSizes': ['XS','S', 'M', 'L'],
+    'models': 't-shirt-adidas',
+    'status': 'new',
+    'gender': 'woman',
+    'brand' : 'adidas'
   },
 ]
 
