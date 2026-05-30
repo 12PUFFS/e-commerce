@@ -87,7 +87,7 @@ export default function ProductInfo() {
     //     mappingCategory[item.category] = item;
     //   }
     // });
-    return category.slice(0, 5);
+    return category;
   };
 
   const recomended = getRecomended();
