@@ -1,6 +1,5 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-// import Header from './components/Header/Header';
 import ProductList from './components/ProductList/ProductList';
 import ProductInfo from './components/ProductInfo/ProductInfo';
 import { createContext, useState, useEffect } from 'react';
@@ -16,14 +15,14 @@ export interface Product {
   price: string;
   image?: string;
   status?: 'new' | 'hit';
-  photos?: string[]; // Добавлено
-  description?: string; // Добавлено
-  desc?: string[]; // Добавлено (для списка особенностей)
-  fulldesc?: string; // Добавлено (для текста о товаре)
-  selectedSize?: number | string | null | string;
-  isChecked?: boolean; // ИСПРАВЛЕНО: было isCheked
-  availableSizes?: number[]; // Добавлено
-  models?: string; // Добавлено (для фильтрации похожих)
+  photos?: string[];
+  description?: string;
+  desc?: string[];
+  fulldesc?: string;
+  selectedSize?: number | string | null;
+  isChecked?: boolean;
+  availableSizes?: number[];
+  models?: string;
   variants?: string[];
 }
 
@@ -56,7 +55,7 @@ export const CartContext = createContext<SetCart>({
   currentSize: null,
   setCurrentSize: () => {},
   newProductBanner: undefined,
-  favorite: [], // Заглушка
+  favorite: [],
   handleToFavorite: () => {},
   loading: true,
 });
@@ -86,6 +85,7 @@ export default function App() {
     });
   };
 
+  // Загрузка товаров с сервера
   useEffect(() => {
     const API_BASE =
       import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
@@ -102,14 +102,28 @@ export default function App() {
       });
   }, []);
 
-  // useEffect(() => {
-  //   if (cart.length > 0) {
-  //     localStorage.setItem('cart', JSON.stringify(cart));
-  //   } else {
-  //     localStorage.removeItem('cart');
-  //   }
-  // }, [cart]);
+  // ✅ Загрузка избранного из localStorage
+  useEffect(() => {
+    const savedFavorite = localStorage.getItem('favorite');
+    if (savedFavorite) {
+      try {
+        setFavorite(JSON.parse(savedFavorite));
+      } catch (e) {
+        console.error('Ошибка загрузки избранного:', e);
+      }
+    }
+  }, []);
 
+  // ✅ Сохранение избранного в localStorage
+  useEffect(() => {
+    if (favorite && favorite.length > 0) {
+      localStorage.setItem('favorite', JSON.stringify(favorite));
+    } else {
+      localStorage.removeItem('favorite');
+    }
+  }, [favorite]);
+
+  // Загрузка корзины из localStorage
   useEffect(() => {
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
@@ -121,6 +135,7 @@ export default function App() {
     }
   }, []);
 
+  // Сохранение корзины в localStorage
   useEffect(() => {
     if (cart && cart.length > 0) {
       localStorage.setItem('cart', JSON.stringify(cart));
@@ -130,7 +145,6 @@ export default function App() {
   }, [cart]);
 
   const addCart = (id: number, size: number | string | null) => {
-    // Если размер не передан — берём из стейта currentSize
     const finalSize = size ?? currentSize;
 
     const product = items.find((i) => i.id === id);
@@ -174,7 +188,6 @@ export default function App() {
 
   const deleteAllCart = () => {
     setCart([]);
-    // setModal(false);
   };
 
   return (
@@ -198,7 +211,6 @@ export default function App() {
         }}
       >
         <HashRouter>
-          {/* <Header /> */}
           <Routes>
             <Route path="/" element={<ProductList />} />
             <Route path="/item/:id" element={<ProductInfo />} />
