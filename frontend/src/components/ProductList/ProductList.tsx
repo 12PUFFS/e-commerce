@@ -131,27 +131,27 @@ export default function ProductList() {
     setPaginotor((prev) => prev + 15);
   };
 
-  const categoryProductsNames: Record<string, string> = {
+  const categoryProductsNames = {
     all: 'Все товары',
     shoes: 'Кроссовки',
     clothing: 'Куртки',
     Pant: 'Джинсы',
     'T-Shirt': 'Футболки',
-  };
+  } as const;
 
-  const categoryGenderNames: Record<string, string> = {
+  const categoryGenderNames = {
     all: 'Все',
     man: 'Мужчинам',
     woman: 'Женщинам',
-  };
+  } as const;
 
-  const categoryBrandNames: Record<string, string> = {
+  const categoryBrandNames = {
     all: 'Все',
     adidas: 'Adidas',
     nike: 'Nike',
     'the north face': 'The North Face',
-    Carhartt: 'Carhartt',
-  };
+    carhartt: 'Carhartt',
+  } as const;
 
   const bannerProducts = products.filter((i) => i.status === 'new');
 
@@ -300,7 +300,11 @@ export default function ProductList() {
                 >
                   <h4>тип товара</h4>
                   <div className="current-type">
-                    {categoryProductsNames[selectedCategory]}
+                    {
+                      categoryProductsNames[
+                        selectedCategory as keyof typeof categoryProductsNames
+                      ]
+                    }
                   </div>
                 </div>
                 <ul
@@ -352,7 +356,11 @@ export default function ProductList() {
                 >
                   <h4>Пол</h4>
                   <div className="current-type">
-                    {categoryGenderNames[selectedGender]}
+                    {
+                      categoryGenderNames[
+                        selectedGender as keyof typeof categoryGenderNames
+                      ]
+                    }
                   </div>
                 </div>
                 <ul
@@ -390,7 +398,11 @@ export default function ProductList() {
                   >
                     <h4>Бренд</h4>
                     <div className="current-type">
-                      {categoryBrandNames[selectedBrand]}
+                      {
+                        categoryBrandNames[
+                          selectedBrand as keyof typeof categoryBrandNames
+                        ]
+                      }
                     </div>
                   </div>
                   <ul
@@ -421,8 +433,8 @@ export default function ProductList() {
                       The North Face
                     </li>
                     <li
-                      onClick={() => setSelectedBrand('Carhartt')}
-                      className={`brand-item ${selectedBrand === 'Carhartt' ? 'active' : ''}`}
+                      onClick={() => setSelectedBrand('carhartt')}
+                      className={`brand-item ${selectedBrand === 'carhartt' ? 'active' : ''}`}
                     >
                       Carhartt
                     </li>
@@ -442,7 +454,53 @@ export default function ProductList() {
                 placeholder="Поиск по названию..."
               />
             </div>
-
+            <div className="active-tags">
+              {selectedCategory !== 'all' && (
+                <p>
+                  {
+                    categoryProductsNames[
+                      selectedCategory as keyof typeof categoryProductsNames
+                    ]
+                  }
+                  <span
+                    className="remove-tag"
+                    onClick={() => setSelectedCategory('all')}
+                  >
+                    ✕
+                  </span>
+                </p>
+              )}
+              {selectedGender !== 'all' && (
+                <p>
+                  {
+                    categoryGenderNames[
+                      selectedGender as keyof typeof categoryGenderNames
+                    ]
+                  }
+                  <span
+                    className="remove-tag"
+                    onClick={() => setSelectedGender('all')}
+                  >
+                    ✕
+                  </span>
+                </p>
+              )}
+              {selectedBrand !== 'all' && (
+                <p>
+                  {
+                    categoryBrandNames[
+                      selectedBrand as keyof typeof categoryBrandNames
+                    ]
+                  }
+                  <span
+                    className="remove-tag"
+                    onClick={() => setSelectedBrand('all')}
+                  >
+                    ✕
+                  </span>
+                </p>
+              )}
+            </div>
             <ul className="card-list">
               {loading ? (
                 Array(15)
