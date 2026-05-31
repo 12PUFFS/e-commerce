@@ -114,7 +114,7 @@ export default function Cart() {
           <div className="cart-layout">
             <div className="cart__list">
               {cart.map((item) => (
-                <div className="oir">
+                <div className="oir" key={`${item.id}-${item.selectedSize}`}>
                   <input
                     type="checkbox"
                     className="cart-checkbox"
@@ -175,7 +175,13 @@ export default function Cart() {
                 ''
               )}
             </div>
-            {modal && <Modal onClose={() => setModal(false)} cart={cart} />}
+            {modal && (
+              <Modal
+                onClose={() => setModal(false)}
+                cart={cart}
+                setCart={setCart}
+              />
+            )}
           </div>
         )}
       </div>

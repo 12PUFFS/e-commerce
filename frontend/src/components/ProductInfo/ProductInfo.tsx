@@ -4,20 +4,13 @@ import { useContext, useState, useEffect } from 'react';
 import { CartContext, ProductsContext } from '../../App';
 import type { Product } from '../../App';
 import Header from '../Header/Header';
-// import toHome from '../../images/toHome.png';
+
 export default function ProductInfo() {
+  // ========== 1. ВСЕ ХУКИ В САМОМ НАЧАЛЕ ==========
   const products = useContext(ProductsContext);
   const { id } = useParams();
-  const product = products.find(
-    (item: Product) => item.id === parseInt(id || '0'),
-  );
-
-  if (!product) {
-    return <div>Товар не найден</div>;
-  }
 
   const [selectedPhoto, setSelectedPhoto] = useState<number>(0);
-  // const [selectedModel, setSelectedModel] = useState<number>(0);
   const [openItem, setOpenItem] = useState(false);
   const {
     addCart,
@@ -26,40 +19,31 @@ export default function ProductInfo() {
     handleToFavorite,
     favorite,
     cart,
-    // loading,
   } = useContext(CartContext);
 
-  // ... остальные хуки
-
-  // 🔥 Сбрасываем выбранный размер при загрузке новой страницы товара
+  // useEffect ДО раннего return
   useEffect(() => {
-    setCurrentSize(null); // ✅ Сбрасываем выбор
-    setSelectedPhoto(0); // ✅ Сбрасываем фото на первое
+    setCurrentSize(null);
+    setSelectedPhoto(0);
   }, [id, setCurrentSize]);
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'smooth', // 'auto' - мгновенно, 'smooth' - плавно
+      behavior: 'smooth',
     });
   }, [id]);
 
-  const isFavor = favorite.some(
-    (i) => i.id === product.id && i.selectedSize === currentSize,
+  // ========== 2. ПОТОМ ЛОГИКА ==========
+  const product = products.find(
+    (item: Product) => item.id === parseInt(id || '0'),
   );
+
+  // ========== 3. РАННИЙ RETURN ==========
   if (!product) {
     return <div>Товар не найден</div>;
   }
-
-  // const back = () => {
-  //   navigate(-1);
-  // };
-
-  // // 🔥 Выбираем первую фотографию при загрузке
-  // if (!selectedPhoto && product.photos.length > 0) {
-  //   setSelectedPhoto(product.photos[0]);
-  // }
 
   if (!product.photos) {
     return (
@@ -72,37 +56,16 @@ export default function ProductInfo() {
     );
   }
 
-  const getRecomended = () => {
-    const category = products.filter(
-      (item) =>
-        item.category !== product.category &&
-        item.gender === product.gender &&
-        item.id !== product.id,
-    );
-
-    // const mappingCategory = {};
-
-    // category.forEach((item) => {
-    //   if (!mappingCategory[item.category]) {
-    //     mappingCategory[item.category] = item;
-    //   }
-    // });
-    return category;
-  };
-
-  const recomended = getRecomended();
-
-  // if (selectedPhoto > 0) {
-  //   setSelectedPhoto(selectedPhoto.lenght - 1);
-  // }
+  // ========== 4. ОСТАЛЬНАЯ ЛОГИКА ==========
+  const isFavor = favorite.some(
+    (i) => i.id === product.id && i.selectedSize === currentSize,
+  );
 
   const handlePrevPhoto = () => {
     if (!product.photos || product.photos.length === 0) return;
     if (selectedPhoto === 0) {
-      // Если на первом фото - переходим к последнему
       setSelectedPhoto(product.photos.length - 1);
     } else {
-      // Иначе - к предыдущему
       setSelectedPhoto(selectedPhoto - 1);
     }
   };
@@ -126,15 +89,11 @@ export default function ProductInfo() {
     setCurrentSize(null);
   };
 
-  // Опционально: можно запрет
-
   const handleNextPhoto = () => {
     if (!product.photos || product.photos.length === 0) return;
     if (selectedPhoto === product.photos.length - 1) {
-      // Если на последнем фото - переходим к первому
       setSelectedPhoto(0);
     } else {
-      // Иначе - к следующему
       setSelectedPhoto(selectedPhoto + 1);
     }
   };
@@ -143,15 +102,26 @@ export default function ProductInfo() {
     return model.models && model.models === product.models;
   });
 
+  const getRecomended = () => {
+    const category = products.filter(
+      (item) =>
+        item.category !== product.category &&
+        item.gender === product.gender &&
+        item.id !== product.id,
+    );
+    return category;
+  };
+
+  const recomended = getRecomended();
+
+  // ========== 5. JSX ==========
   return (
     <>
       <Header />
       <div className="root-wrapper">
         <div className="container">
           <Link to={'/'}>
-            <button className="back-btn">
-              {/* <img src={toHome} alt="" /> */}
-            </button>
+            <button className="back-btn"></button>
           </Link>
 
           <div className="content">
@@ -196,49 +166,19 @@ export default function ProductInfo() {
                     </div>
                   </div>
                 </div>
-
-                {/* <div className="desc-wrapper">
-                <div className="full-desc">
-                  <ul>
-                    <div className="open-lock">
-                      <p>Описание</p>
-                      <button
-                        onClick={() => setOpenItem(!openItem)}
-                        className="open"
-                        aria-label={
-                          openItem ? 'Скрыть описание' : 'Показать описание'
-                        }
-                      >
-                        {openItem ? '−' : '+'}
-                      </button>
-                    </div>
-
-                    {product.desc?.map((item, index) => {
-                      return (
-                        <li
-                          className={`item ${openItem ? 'active' : 'hide'}`}
-                          key={index}
-                        >
-                          - {item}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </div> */}
               </div>
 
               <div className="full-info">
-                <p className="cat">
-                  <p>{product.category}</p>
-                  <p>{product.gender}</p>
-                </p>
+                {/* ✅ Исправлено: div вместо p */}
+                <div className="cat">
+                  <span>{product.category}</span>
+                  <span>{product.gender}</span>
+                </div>
                 <h1>{product.title}</h1>
                 <h3>доступные размеры</h3>
                 <ul className="current-size">
                   {product.availableSizes?.map((size) => {
                     const isCurrentlySelected = currentSize === size;
-
                     const isInCart = sizesInCart.includes(size);
                     const inFavorite = favorite.some(
                       (item) =>
@@ -252,10 +192,8 @@ export default function ProductInfo() {
                           isActive ? 'active' : ''
                         } ${isInCart ? 'selected-bg' : ''} ${inFavorite ? 'infavor' : ''}`}
                         key={size}
-                        // disabled={isInCart}
                       >
                         {size}
-                        {/* {inFavorite && <span>♥</span>} */}
                       </button>
                     );
                   })}
@@ -263,15 +201,9 @@ export default function ProductInfo() {
 
                 <div className="current-color">
                   <p>Цвет</p>
-                  {/* <img
-              className="current-color-img"
-              src={product.variants}
-              alt={`${product.title} - расцветка`}
-            /> */}
                   <div className="variants">
                     {sameModel.map((variant, index: number) => {
                       const getVariant = product.id === variant.id;
-
                       return (
                         <Link key={index} to={`/item/${variant.id}`}>
                           <img
@@ -298,7 +230,6 @@ export default function ProductInfo() {
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
-
                       if (!currentSize) {
                         alert('Выберите размер');
                         return;
@@ -312,27 +243,19 @@ export default function ProductInfo() {
                 </div>
               </div>
             </div>
+
             <div className="desc-wrapper">
               <div className="full-desc">
-                {/* <div className="cc">
-                  {product.fulldesc?.map((text, index) => {
-                    return <p key={index}>{text}</p>;
-                  })}
-                </div> */}
                 <ul>
                   <div className="open-lock">
                     <p>Особенности</p>
                     <button
                       onClick={() => setOpenItem(!openItem)}
                       className="open"
-                      aria-label={
-                        openItem ? 'Скрыть описание' : 'Показать описание'
-                      }
                     >
                       {openItem ? '−' : '+'}
                     </button>
                   </div>
-
                   {product.desc?.map((item, index) => {
                     return (
                       <li
@@ -349,6 +272,7 @@ export default function ProductInfo() {
                 </div>
               </div>
             </div>
+
             <div className="inter">
               <div className="w">
                 <h2 className="section-title">Могут понравиться</h2>
@@ -363,10 +287,10 @@ export default function ProductInfo() {
                           />
                         </div>
                         <div className="sneaker-info">
-                          <p className="cat">
-                            {/* <p>{item.category}</p> */}
-                            <p>{item.gender}</p>
-                          </p>
+                          {/* ✅ Исправлено */}
+                          <div className="cat">
+                            <span>{item.gender}</span>
+                          </div>
                           <h3 className="sneaker-title">{item.title}</h3>
                           <p className="sneaker-description">
                             {item.description}
