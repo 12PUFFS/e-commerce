@@ -535,7 +535,7 @@ export default function ProductList() {
           Наверх
         </button>
       )}
-      <footer className="footer">Магазин кроссовок © 2025</footer>
+      <footer className="footer">Магазин одежды © 2026</footer>
     </>
   );
 }
