@@ -14,7 +14,7 @@ li {
 
 .pre-header {
   background: #000;
-  justify-content: center;
+  justify-content: end;
   height: 40px;
   color: white;
   align-items: center;
@@ -96,6 +96,62 @@ li {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   /* background: rgb(0, 0, 0); */
   /* max-width: 1400px; */
+}
+
+.burger-wrapper {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  /* background: #cf7777; */
+  backdrop-filter: blur(15px);
+  overflow: scroll;
+  z-index: 9999999999999999999999999999999999999999999999999999999999;
+}
+
+.burger-wrapper .filters-sidebar {
+  max-width: stretch;
+  background: none;
+}
+
+.burger-header {
+  display: FLEX;
+  align-items: CENTER;
+  justify-content: SPACE-BETWEEN;
+}
+
+.burger-header div {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buger-content {
+}
+
+.burder-menu {
+  height: stretch;
+  padding: 5px;
+  border: 1px solid whitesmoke;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.burger-block {
+  width: 45px;
+  height: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.burger-block span {
+  background: #000;
+  width: stretch;
+  height: 5px;
+  border-radius: 8px;
 }
 
 /* Добавьте отступ для body чтобы контент не скрывался под хедером */
@@ -324,6 +380,14 @@ button {
     width: fit-content;
     right: 0;
     height: fit-content;
+  }
+
+  .burder-menu {
+    display: flex;
+  }
+
+  .header {
+    justify-content: space-between;
   }
 }
 

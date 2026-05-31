@@ -457,7 +457,7 @@ body {
    ========================================= */
 
 .mobile-filters-header {
-  display: none;
+  /* display: none; */
 }
 
 @media (max-width: 768px) {
@@ -470,6 +470,10 @@ body {
     background: #fff;
     border-radius: 12px;
     border: 1px solid #eee;
+  }
+
+  .content-wrapper .filters-sidebar {
+    display: none;
   }
 
   .burger-btn {
