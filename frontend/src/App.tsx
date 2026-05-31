@@ -41,6 +41,27 @@ interface SetCart {
   favorite: Product[];
   handleToFavorite: (id: number, size: number | string | null) => void;
   loading: boolean;
+  // Фильтры
+  active: string;
+  setActive: (value: string) => void;
+  sortPrice: string;
+  setSortPrice: (value: string) => void;
+  selectedCategory: string;
+  setSelectedCategory: (value: string) => void;
+  selectedGender: string;
+  setSelectedGender: (value: string) => void;
+  selectedBrand: string;
+  setSelectedBrand: (value: string) => void;
+  categoryToggle: string;
+  setCategoryToggle: (value: string) => void;
+  genderToggle: string;
+  setGenderToggle: (value: string) => void;
+  brandToggle: string;
+  setBrandToggle: (value: string) => void;
+  categoryProductsNames: Record<string, string>;
+  categoryGenderNames: Record<string, string>;
+  categoryBrandNames: Record<string, string>;
+  ActiveNames: Record<string, string>;
 }
 
 export const CartContext = createContext<SetCart>({
@@ -58,6 +79,27 @@ export const CartContext = createContext<SetCart>({
   favorite: [],
   handleToFavorite: () => {},
   loading: true,
+  // Фильтры (значения по умолчанию)
+  active: 'all',
+  setActive: () => {},
+  sortPrice: '',
+  setSortPrice: () => {},
+  selectedCategory: 'all',
+  setSelectedCategory: () => {},
+  selectedGender: 'all',
+  setSelectedGender: () => {},
+  selectedBrand: 'all',
+  setSelectedBrand: () => {},
+  categoryToggle: 'hidden',
+  setCategoryToggle: () => {},
+  genderToggle: 'hidden',
+  setGenderToggle: () => {},
+  brandToggle: 'hidden',
+  setBrandToggle: () => {},
+  categoryProductsNames: {},
+  categoryGenderNames: {},
+  categoryBrandNames: {},
+  ActiveNames: {},
 });
 
 export const ProductsContext = createContext<Product[]>([]);
@@ -70,12 +112,49 @@ export default function App() {
   const [currentSize, setCurrentSize] = useState<number | string | null>(null);
   const [favorite, setFavorite] = useState<Product[]>([]);
 
+  // Фильтры
+  const [active, setActive] = useState('all');
+  const [sortPrice, setSortPrice] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedGender, setSelectedGender] = useState('all');
+  const [selectedBrand, setSelectedBrand] = useState('all');
+  const [categoryToggle, setCategoryToggle] = useState('visible');
+  const [genderToggle, setGenderToggle] = useState('visible');
+  const [brandToggle, setBrandToggle] = useState('visible');
+
+  const categoryProductsNames = {
+    all: 'Все товары',
+    shoes: 'Кроссовки',
+    clothing: 'Куртки',
+    Pant: 'Джинсы',
+    'T-Shirt': 'Футболки',
+  };
+
+  const ActiveNames = {
+    all: 'Все',
+    hits: 'Хиты',
+    new: 'Новинки',
+  };
+
+  const categoryGenderNames = {
+    all: 'Все',
+    man: 'Мужчинам',
+    woman: 'Женщинам',
+  };
+
+  const categoryBrandNames = {
+    all: 'Все',
+    adidas: 'Adidas',
+    nike: 'Nike',
+    'the north face': 'The North Face',
+    carhartt: 'Carhartt',
+  };
+
   const handleToFavorite = (id: number, size: number | string | null) => {
     setFavorite((favor) => {
       const isFavor = favor.some(
         (item) => item.id === id && item.selectedSize === size,
       );
-
       if (isFavor) {
         return favor.filter((i) => i.id !== id || i.selectedSize !== size);
       } else {
@@ -102,7 +181,7 @@ export default function App() {
       });
   }, []);
 
-  // ✅ Загрузка избранного из localStorage
+  // Загрузка избранного из localStorage
   useEffect(() => {
     const savedFavorite = localStorage.getItem('favorite');
     if (savedFavorite) {
@@ -114,7 +193,7 @@ export default function App() {
     }
   }, []);
 
-  // ✅ Сохранение избранного в localStorage
+  // Сохранение избранного в localStorage
   useEffect(() => {
     if (favorite && favorite.length > 0) {
       localStorage.setItem('favorite', JSON.stringify(favorite));
@@ -146,16 +225,13 @@ export default function App() {
 
   const addCart = (id: number, size: number | string | null) => {
     const finalSize = size ?? currentSize;
-
     const product = items.find((i) => i.id === id);
     if (!product) return;
-
     const productWithSize = {
       ...product,
       selectedSize: finalSize,
       isChecked: false,
     };
-
     setCart((prev: Product[]) => {
       const isExist = prev.some(
         (item) => item.id === id && item.selectedSize === finalSize,
@@ -165,7 +241,6 @@ export default function App() {
       }
       return prev;
     });
-
     setModal(true);
   };
 
@@ -208,6 +283,27 @@ export default function App() {
           newProductBanner,
           handleToFavorite,
           loading,
+          // Фильтры
+          active,
+          setActive,
+          sortPrice,
+          setSortPrice,
+          selectedCategory,
+          setSelectedCategory,
+          selectedGender,
+          setSelectedGender,
+          selectedBrand,
+          setSelectedBrand,
+          categoryToggle,
+          setCategoryToggle,
+          genderToggle,
+          setGenderToggle,
+          brandToggle,
+          setBrandToggle,
+          categoryProductsNames,
+          categoryGenderNames,
+          categoryBrandNames,
+          ActiveNames,
         }}
       >
         <HashRouter>

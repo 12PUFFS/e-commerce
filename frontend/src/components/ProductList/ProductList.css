@@ -24,6 +24,7 @@ body {
   display: flex;
   flex-direction: column;
   box-shadow: none;
+  /* overflow: hidden; */
 }
 
 /* =========================================
@@ -191,13 +192,26 @@ body {
   gap: 20px;
   /* border-bottom: 1px solid whitesmoke;
   padding-bottom: 20px; */
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   position: sticky;
   /* background: white; */
   border: none;
   top: 90px;
+  overflow: scroll;
   z-index: 100;
   /* padding: 10px 0; */
+}
+
+.remove-tag {
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.remove-tag:hover {
+  background: #000;
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
 }
 
 .active-tags p {
@@ -209,8 +223,11 @@ body {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  width: 200px;
-  width: 200px;
+  /* width: 200px; */
+  gap: 10px;
+  width: max-content;
+  /* width: 200px; */
+  /* overflow: scroll; */
   border: 1px solid whitesmoke;
   /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); */
 }
@@ -474,6 +491,10 @@ body {
 
   .content-wrapper .filters-sidebar {
     display: none;
+  }
+
+  .banner {
+    margin: 0;
   }
 
   .burger-btn {
@@ -790,7 +811,7 @@ body {
 /* Сетка товаров */
 .card-list {
   display: grid;
-
+  /* min-height: 500px; */
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   /* display: flex; */
   /* flex-wrap: wrap; */
@@ -972,6 +993,10 @@ body {
 .wontainer {
   max-width: 1450px;
   margin: 0 auto;
+  height: stretch;
+  max-width: 1450px;
+  margin: 0 auto;
+  /* border: 1px solid; */
 }
 
 .card-list {
@@ -1036,10 +1061,10 @@ body {
     padding: 0 16px;
   }
 
-  .banner {
+  /* .banner {
     margin-bottom: 32px;
     padding: 16px;
-  }
+  } */
 
   .banner-content {
     flex-direction: column;
@@ -1090,9 +1115,17 @@ body {
 
 /* Mobile (≤768px) */
 @media (max-width: 768px) {
-  .banner {
+  /* .banner {
     margin-bottom: 24px;
     padding: 12px;
+  } */
+
+  .content-wrapper {
+    margin: 0;
+  }
+
+  .search-bar {
+    display: none;
   }
 
   .banner-content {
@@ -1203,10 +1236,20 @@ body {
 
   .banner {
     padding: 8px;
+    height: 700px;
+  }
+
+  .banner-content {
+    height: stretch;
   }
 
   .banner-content {
     padding: 20px;
+  }
+
+  .banner img {
+    top: 25px;
+    left: -65px;
   }
 
   .banner-counter {
@@ -1234,6 +1277,7 @@ body {
     padding: 8px 18px;
     color: white;
     position: absolute;
+    display: none;
     top: 300px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   }

@@ -1,30 +1,44 @@
 // @ts-ignore
-import { use, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../ProductCard/ProductCard';
 import './ProductList.css';
 import { ProductsContext, CartContext } from '../../App';
 import Header from '../Header/Header';
 import type { Product } from '../../App';
+import FiltersContent from '../FiltersContent';
 
 export default function ProductList() {
   const products = useContext(ProductsContext);
-  const { loading } = useContext(CartContext);
+  const {
+    loading,
+    active,
+    setActive,
+    sortPrice,
+    setSortPrice,
+    selectedCategory,
+    setSelectedCategory,
+    selectedGender,
+    setSelectedGender,
+    selectedBrand,
+    setSelectedBrand,
+    categoryToggle,
+    setCategoryToggle,
+    genderToggle,
+    setGenderToggle,
+    brandToggle,
+    setBrandToggle,
+    categoryProductsNames,
+    ActiveNames,
+    categoryGenderNames,
+    categoryBrandNames,
+  } = useContext(CartContext);
+
   const [paginator, setPaginotor] = useState(12);
   const [hasAnyitems, setHasAnyItems] = useState(true);
-  const [categoryToggle, setCategoryToggle] = useState('visible');
-  const [active, setActive] = useState('all');
   const [bannerIndex, setBannerIndex] = useState(0);
   const [value, setValue] = useState('');
-  const [sortPrice, setSortPrice] = useState('');
-  const [sortByGender] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [selectedGender, setSelectedGender] = useState('all');
-  const [genderToggle, setGenderToggle] = useState('visible');
   const [showUpButton, setShowUpButton] = useState(false);
-
-  const [selectedBrand, setSelectedBrand] = useState('all');
-  const [brandToggle, setBrandToggle] = useState('visible');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -74,20 +88,6 @@ export default function ProductList() {
     );
   });
 
-  // const getfilterByGender = () => {
-  //   if (sortByGender === 'man') {
-  //     return filteredItems.filter((item) => item.gender === 'man');
-  //   }
-  //   if (sortByGender === 'woman') {
-  //     return filteredItems.filter((item) => item.gender === 'woman');
-  //   }
-  //   return filteredItems.filter(
-  //     (item) => item.gender === 'man' || item.gender === 'woman',
-  //   );
-  // };
-
-  // const sortedByGender = getfilterByGender();
-
   const getSortedItems = () => {
     const itemsCopy = [...filteredItems];
 
@@ -111,53 +111,19 @@ export default function ProductList() {
   };
 
   const sortedItems = getSortedItems();
-
   const visibleItems = sortedItems.slice(0, paginator);
 
   useEffect(() => {
     setHasAnyItems(visibleItems.length < sortedItems.length);
   }, [visibleItems, sortedItems.length]);
 
-  useEffect(() => {}, [
-    filteredItems,
-    sortPrice,
-    sortByGender,
-    selectedCategory,
-    active,
-    value,
-  ]);
-
   const loadMore = () => {
     setPaginotor((prev) => prev + 15);
   };
 
-  const categoryProductsNames = {
-    all: 'Все товары',
-    shoes: 'Кроссовки',
-    clothing: 'Куртки',
-    Pant: 'Джинсы',
-    'T-Shirt': 'Футболки',
-  } as const;
-
-  const categoryGenderNames = {
-    all: 'Все',
-    man: 'Мужчинам',
-    woman: 'Женщинам',
-  } as const;
-
-  const categoryBrandNames = {
-    all: 'Все',
-    adidas: 'Adidas',
-    nike: 'Nike',
-    'the north face': 'The North Face',
-    carhartt: 'Carhartt',
-  } as const;
-
   const bannerProducts = products.filter((i) => i.status === 'new');
-
   const displayBanners =
     bannerProducts.length > 0 ? bannerProducts : products.slice(0, 3);
-
   const currentBanner = displayBanners[bannerIndex];
 
   const handlePrevBanner = () => {
@@ -175,19 +141,13 @@ export default function ProductList() {
   };
 
   useEffect(() => {
-    if (displayBanners.length <= 1) {
-      return;
-    }
-
+    if (displayBanners.length <= 1) return;
     const interval = setInterval(() => {
       setBannerIndex((prev) =>
         prev === displayBanners.length - 1 ? 0 : prev + 1,
       );
     }, 5000);
-
-    return () => {
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, [displayBanners.length]);
 
   return (
@@ -219,7 +179,6 @@ export default function ProductList() {
                   <h2>{currentBanner.title}</h2>
                   <p className="banner-price">{currentBanner.price} ₽</p>
                 </div>
-
                 {displayBanners.length > 1 && (
                   <div className="options">
                     <div className="div-prev">
@@ -230,7 +189,6 @@ export default function ProductList() {
                     </div>
                   </div>
                 )}
-
                 <div className="content-images">
                   <Link to={`/item/${currentBanner.id}`}>
                     <img
@@ -248,203 +206,33 @@ export default function ProductList() {
       )}
       <div className="container">
         <div className="content-wrapper">
-          {/* Сайдбар с фильтрами */}
+          {/* Фильтры - слева */}
           <aside className="filters-sidebar">
-            <h3>Фильтры</h3>
-            <span className="count">Найдено: {sortedItems.length}</span>
-            <div className="filter-section">
-              {/* <h4>Статус</h4> */}
-              <div className="status-buttons">
-                <button
-                  onClick={() => setActive('all')}
-                  className={`status-btn ${active === 'all' ? 'active' : ''}`}
-                >
-                  Все
-                </button>
-                <button
-                  onClick={() => setActive('hits')}
-                  className={`status-btn ${active === 'hits' ? 'active' : ''}`}
-                >
-                  Хиты
-                </button>
-                <button
-                  onClick={() => setActive('new')}
-                  className={`status-btn ${active === 'new' ? 'active' : ''}`}
-                >
-                  Новинки
-                </button>
-              </div>
-            </div>
-            <div className="filter-section">
-              <h4>Сортировка по цене</h4>
-              <select
-                onChange={(e) => setSortPrice(e.target.value)}
-                className="price-select"
-                value={sortPrice}
-              >
-                <option value="">По умолчанию</option>
-                <option value="high">Сначала дороже</option>
-                <option value="low">Сначала дешевле</option>
-              </select>
-            </div>
-
-            <div className="filter-section">
-              <div className="type">
-                <div
-                  onClick={() =>
-                    setCategoryToggle((prev) =>
-                      prev === 'hidden' ? 'visible' : 'hidden',
-                    )
-                  }
-                  className="cat-type-heder"
-                >
-                  <h4>тип товара</h4>
-                  <div className="current-type">
-                    {
-                      categoryProductsNames[
-                        selectedCategory as keyof typeof categoryProductsNames
-                      ]
-                    }
-                  </div>
-                </div>
-                <ul
-                  className={`category-list ${categoryToggle === 'visible' ? 'active' : 'hidden'}`}
-                >
-                  <li
-                    onClick={() => setSelectedCategory('all')}
-                    className={`category-item ${selectedCategory === 'all' ? 'active' : ''}`}
-                  >
-                    Все
-                  </li>
-                  <li
-                    onClick={() => setSelectedCategory('shoes')}
-                    className={`category-item ${selectedCategory === 'shoes' ? 'active' : ''}`}
-                  >
-                    Кроссовки
-                  </li>
-                  <li
-                    onClick={() => setSelectedCategory('clothing')}
-                    className={`category-item ${selectedCategory === 'clothing' ? 'active' : ''}`}
-                  >
-                    Куртки
-                  </li>
-                  <li
-                    onClick={() => setSelectedCategory('Pant')}
-                    className={`category-item ${selectedCategory === 'Pant' ? 'active' : ''}`}
-                  >
-                    Джинсы
-                  </li>
-                  <li
-                    onClick={() => setSelectedCategory('T-Shirt')}
-                    className={`category-item ${selectedCategory === 'T-Shirt' ? 'active' : ''}`}
-                  >
-                    Футболки
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="filter-section">
-              <div className="cat-gender-type">
-                <div
-                  onClick={() =>
-                    setGenderToggle((prev) =>
-                      prev === 'hidden' ? 'visible' : 'hidden',
-                    )
-                  }
-                  className="cat-gender-header"
-                >
-                  <h4>Пол</h4>
-                  <div className="current-type">
-                    {
-                      categoryGenderNames[
-                        selectedGender as keyof typeof categoryGenderNames
-                      ]
-                    }
-                  </div>
-                </div>
-                <ul
-                  className={`gender-list ${genderToggle === 'visible' ? 'active' : 'hidden'}`}
-                >
-                  <li
-                    onClick={() => setSelectedGender('all')}
-                    className={`gender-item ${selectedGender === 'all' ? 'active' : ''}`}
-                  >
-                    Все
-                  </li>
-                  <li
-                    onClick={() => setSelectedGender('man')}
-                    className={`gender-item ${selectedGender === 'man' ? 'active' : ''}`}
-                  >
-                    Мужчины
-                  </li>
-                  <li
-                    onClick={() => setSelectedGender('woman')}
-                    className={`gender-item ${selectedGender === 'woman' ? 'active' : ''}`}
-                  >
-                    Женщины
-                  </li>
-                </ul>
-              </div>
-              <div className="filter-section">
-                <div className="cat-brand-type">
-                  <div
-                    onClick={() =>
-                      setBrandToggle((prev) =>
-                        prev === 'hidden' ? 'visible' : 'hidden',
-                      )
-                    }
-                    className="cat-gender-header"
-                  >
-                    <h4>Бренд</h4>
-                    <div className="current-type">
-                      {
-                        categoryBrandNames[
-                          selectedBrand as keyof typeof categoryBrandNames
-                        ]
-                      }
-                    </div>
-                  </div>
-                  <ul
-                    className={`brand-list ${brandToggle === 'visible' ? 'active' : 'hidden'}`}
-                  >
-                    <li
-                      onClick={() => setSelectedBrand('all')}
-                      className={`brand-item ${selectedBrand === 'all' ? 'active' : ''}`}
-                    >
-                      Все
-                    </li>
-                    <li
-                      onClick={() => setSelectedBrand('adidas')}
-                      className={`brand-item ${selectedBrand === 'adidas' ? 'active' : ''}`}
-                    >
-                      Adidas
-                    </li>
-                    <li
-                      onClick={() => setSelectedBrand('nike')}
-                      className={`brand-item ${selectedBrand === 'nike' ? 'active' : ''}`}
-                    >
-                      Nike
-                    </li>
-                    <li
-                      onClick={() => setSelectedBrand('the north face')}
-                      className={`brand-item ${selectedBrand === 'the north face' ? 'active' : ''}`}
-                    >
-                      The North Face
-                    </li>
-                    <li
-                      onClick={() => setSelectedBrand('carhartt')}
-                      className={`brand-item ${selectedBrand === 'carhartt' ? 'active' : ''}`}
-                    >
-                      Carhartt
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <FiltersContent
+              active={active}
+              setActive={setActive}
+              sortPrice={sortPrice}
+              setSortPrice={setSortPrice}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+              selectedGender={selectedGender}
+              setSelectedGender={setSelectedGender}
+              selectedBrand={selectedBrand}
+              setSelectedBrand={setSelectedBrand}
+              categoryToggle={categoryToggle}
+              setCategoryToggle={setCategoryToggle}
+              genderToggle={genderToggle}
+              setGenderToggle={setGenderToggle}
+              brandToggle={brandToggle}
+              setBrandToggle={setBrandToggle}
+              ActiveNames={ActiveNames}
+              categoryProductsNames={categoryProductsNames}
+              categoryGenderNames={categoryGenderNames}
+              categoryBrandNames={categoryBrandNames}
+            />
           </aside>
 
-          {/* Основная область с товарами */}
+          {/* Товары - справа */}
           <div className="products-area">
             <div className="search-bar">
               <input
@@ -455,13 +243,29 @@ export default function ProductList() {
               />
             </div>
             <div className="active-tags">
+              {active && (
+                <p>
+                  <p>
+                    Коллекция -{' '}
+                    {ActiveNames[active as keyof typeof categoryProductsNames]}
+                  </p>
+
+                  <span className="remove-tag" onClick={() => setActive('all')}>
+                    ✕
+                  </span>
+                </p>
+              )}
+
               {selectedCategory !== 'all' && (
                 <p>
-                  {
-                    categoryProductsNames[
-                      selectedCategory as keyof typeof categoryProductsNames
-                    ]
-                  }
+                  <p>
+                    Тип товара -{' '}
+                    {
+                      categoryProductsNames[
+                        selectedCategory as keyof typeof categoryProductsNames
+                      ]
+                    }
+                  </p>
                   <span
                     className="remove-tag"
                     onClick={() => setSelectedCategory('all')}
@@ -472,11 +276,14 @@ export default function ProductList() {
               )}
               {selectedGender !== 'all' && (
                 <p>
-                  {
-                    categoryGenderNames[
-                      selectedGender as keyof typeof categoryGenderNames
-                    ]
-                  }
+                  <p>
+                    Пол -{' '}
+                    {
+                      categoryGenderNames[
+                        selectedGender as keyof typeof categoryGenderNames
+                      ]
+                    }
+                  </p>
                   <span
                     className="remove-tag"
                     onClick={() => setSelectedGender('all')}
@@ -487,11 +294,14 @@ export default function ProductList() {
               )}
               {selectedBrand !== 'all' && (
                 <p>
-                  {
-                    categoryBrandNames[
-                      selectedBrand as keyof typeof categoryBrandNames
-                    ]
-                  }
+                  <p>
+                    Бренд -{' '}
+                    {
+                      categoryBrandNames[
+                        selectedBrand as keyof typeof categoryBrandNames
+                      ]
+                    }
+                  </p>
                   <span
                     className="remove-tag"
                     onClick={() => setSelectedBrand('all')}
@@ -530,6 +340,7 @@ export default function ProductList() {
           </div>
         </div>
       </div>
+
       {showUpButton && (
         <button onClick={scrollToTop} className="scroll-to-top">
           Наверх
