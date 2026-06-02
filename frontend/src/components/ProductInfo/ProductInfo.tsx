@@ -6,7 +6,6 @@ import type { Product } from '../../App';
 import Header from '../Header/Header';
 
 export default function ProductInfo() {
-  // ========== 1. ВСЕ ХУКИ В САМОМ НАЧАЛЕ ==========
   const products = useContext(ProductsContext);
   const { id } = useParams();
 
@@ -18,6 +17,7 @@ export default function ProductInfo() {
     setCurrentSize,
     handleToFavorite,
     favorite,
+    categoryProductsNames,
     cart,
   } = useContext(CartContext);
 
@@ -56,7 +56,6 @@ export default function ProductInfo() {
     );
   }
 
-  // ========== 4. ОСТАЛЬНАЯ ЛОГИКА ==========
   const isFavor = favorite.some(
     (i) => i.id === product.id && i.selectedSize === currentSize,
   );
@@ -169,9 +168,8 @@ export default function ProductInfo() {
               </div>
 
               <div className="full-info">
-                {/* ✅ Исправлено: div вместо p */}
                 <div className="cat">
-                  <span>{product.category}</span>
+                  <span>{categoryProductsNames[product.category]}</span>
                   <span>{product.gender}</span>
                 </div>
                 <h1>{product.title}</h1>
@@ -287,7 +285,6 @@ export default function ProductInfo() {
                           />
                         </div>
                         <div className="sneaker-info">
-                          {/* ✅ Исправлено */}
                           <div className="cat">
                             <span>{item.gender}</span>
                           </div>

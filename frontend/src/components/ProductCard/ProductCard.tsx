@@ -13,6 +13,7 @@ interface TypeOfProduct {
 }
 
 export default function ProductCard({ product }: TypeOfProduct) {
+  const [isHovered, setIshovered] = useState(false);
   const { handleToFavorite, favorite, cart, loading } = useContext(CartContext);
   // const [modal, setModal] = useState(false);
   const [selectedSize, setSelectedSize] = useState<
@@ -21,6 +22,9 @@ export default function ProductCard({ product }: TypeOfProduct) {
   const isLiked = favorite.some(
     (i) => i.id === product.id && i.selectedSize === selectedSize,
   );
+
+  const displayedImage =
+    isHovered && product.photos?.[1] ? product.photos?.[1] : product.image;
 
   // const inCart = cart.some((i) => {
   //   return i.id === product.id && i.selectedSize === selectedSize;
@@ -63,7 +67,12 @@ export default function ProductCard({ product }: TypeOfProduct) {
         <div className="product-card">
           <Link to={`/item/${product.id}`} className="product-link">
             <div className="product-card-img">
-              <img src={product.image} alt={product.title} />
+              <img
+                onMouseEnter={() => setIshovered(true)}
+                onMouseLeave={() => setIshovered(false)}
+                src={displayedImage}
+                alt={product.title}
+              />
             </div>
           </Link>
           <div className="product-card-info">

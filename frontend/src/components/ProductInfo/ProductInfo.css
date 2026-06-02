@@ -224,6 +224,11 @@ a {
   justify-content: space-between;
 }
 
+.cat span {
+  color: black;
+  opacity: 0.5;
+}
+
 .sneaker-info .cat p {
   /* padding: 10px;
   background: #ffffff; */

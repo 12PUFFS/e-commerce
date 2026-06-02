@@ -297,6 +297,9 @@ body {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid;
+  padding: 10px;
 }
 
 .cat-gender-type {
@@ -629,6 +632,7 @@ body {
 
 .current-type {
   background: rgb(0, 0, 0);
+  text-align: center;
   padding: 10px;
   /* border: 1px solid; */
   border-radius: 8px;
@@ -664,9 +668,12 @@ body {
 }
 
 .cat-type-heder {
+  border-radius: 8px;
+  border: 1px solid;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 10px;
 }
 
 .gender-list {

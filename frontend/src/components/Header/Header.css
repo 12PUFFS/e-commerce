@@ -127,7 +127,8 @@ li {
   width: stretch;
   height: 100vh;
   /* background: #cf7777; */
-  backdrop-filter: blur(30px);
+  /* backdrop-filter: blur(30px); */
+  background: white;
   /* background: white; */
   padding: 20px;
   overflow: scroll;
@@ -143,6 +144,10 @@ li {
   display: FLEX;
   align-items: CENTER;
   justify-content: SPACE-BETWEEN;
+  padding: 15px 0;
+  position: sticky;
+  top: -20px;
+  background: white;
 }
 
 .burger-header div {
