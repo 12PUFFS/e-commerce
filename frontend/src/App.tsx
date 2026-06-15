@@ -24,6 +24,7 @@ export interface Product {
   availableSizes?: number[];
   models?: string;
   variants?: string[];
+  models_name?: string;
 }
 
 interface SetCart {
@@ -128,6 +129,7 @@ export default function App() {
     clothing: 'Куртки',
     Pant: 'Джинсы',
     'T-Shirt': 'Футболки',
+    hudi: 'Худи',
   };
 
   const ActiveNames = {
@@ -147,7 +149,7 @@ export default function App() {
     adidas: 'Adidas',
     nike: 'Nike',
     'the north face': 'The North Face',
-    carhartt: 'Carhartt',
+    Carhartt: 'Carhartt',
   };
 
   const handleToFavorite = (id: number, size: number | string | null) => {

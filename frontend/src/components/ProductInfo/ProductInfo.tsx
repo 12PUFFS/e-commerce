@@ -10,7 +10,7 @@ export default function ProductInfo() {
   const { id } = useParams();
 
   const [selectedPhoto, setSelectedPhoto] = useState<number>(0);
-  const [openItem, setOpenItem] = useState(false);
+  // const [openItem, setOpenItem] = useState(false);
   const {
     addCart,
     currentSize,
@@ -85,7 +85,7 @@ export default function ProductInfo() {
     }
 
     addCart(product.id, currentSize);
-    setCurrentSize(null);
+    // setCurrentSize(null);
   };
 
   const handleNextPhoto = () => {
@@ -98,13 +98,17 @@ export default function ProductInfo() {
   };
 
   const sameModel = products.filter((model) => {
-    return model.models && model.models === product.models;
+    return (
+      model.models_name &&
+      model.gender === product.gender &&
+      model.models_name === product.models_name
+    );
   });
 
   const getRecomended = () => {
     const category = products.filter(
       (item) =>
-        item.category !== product.category &&
+        item.category === product.category &&
         item.gender === product.gender &&
         item.id !== product.id,
     );
@@ -243,9 +247,12 @@ export default function ProductInfo() {
             </div>
 
             <div className="desc-wrapper">
+              <img src={product.image} alt="" />
+
               <div className="full-desc">
+                <h2>{product.title}</h2>
                 <ul>
-                  <div className="open-lock">
+                  {/* <div className="open-lock">
                     <p>Особенности</p>
                     <button
                       onClick={() => setOpenItem(!openItem)}
@@ -253,13 +260,10 @@ export default function ProductInfo() {
                     >
                       {openItem ? '−' : '+'}
                     </button>
-                  </div>
+                  </div> */}
                   {product.desc?.map((item, index) => {
                     return (
-                      <li
-                        className={`item ${openItem ? 'active' : 'hide'}`}
-                        key={index}
-                      >
+                      <li className="item" key={index}>
                         - {item}
                       </li>
                     );
@@ -273,9 +277,14 @@ export default function ProductInfo() {
 
             <div className="inter">
               <div className="w">
-                <h2 className="section-title">Могут понравиться</h2>
+                <h2 className="section-title">
+                  Могут понравиться{' '}
+                  <span className="cat">
+                    {categoryProductsNames[product.category]}
+                  </span>
+                </h2>
                 <div className="all-sneakers-grid">
-                  {recomended.map((item) => (
+                  {recomended.slice(0, 4).map((item) => (
                     <Link key={item.id} to={`/item/${item.id}`}>
                       <div className="sneaker-card">
                         <div className="sneaker-image">

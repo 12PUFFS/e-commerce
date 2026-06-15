@@ -26,21 +26,14 @@ export default function ProductCard({ product }: TypeOfProduct) {
   const displayedImage =
     isHovered && product.photos?.[1] ? product.photos?.[1] : product.image;
 
-  // const inCart = cart.some((i) => {
-  //   return i.id === product.id && i.selectedSize === selectedSize;
-  // });
-
-  // useEffect(() => {
-  //   const savedSize = localStorage.getItem(`item-${product.id}`);
-  //   if (savedSize) {
-  //     setSelectedSize(savedSize);
-  //   }
-  // }, [product.id]);
-
-  // const handleSavedSize = (size: number)=> {
-  //   setSelectedSize(size)
-  //   localStorage.setItem(``)
-  // }
+  const formattingPrice = (price: number) => {
+    const strPrice = String(price);
+    if (strPrice.length <= 3) {
+      return strPrice;
+    } else {
+      return `${strPrice.slice(0, -3)} ${strPrice.slice(-3)}`;
+    }
+  };
 
   return (
     <>
@@ -99,7 +92,9 @@ export default function ProductCard({ product }: TypeOfProduct) {
                 })}
               </div>
             )}
-            <h2 className="product-card-price">{product.price} ₽</h2>
+            <h2 className="product-card-price">
+              {formattingPrice(parseInt(product.price.replace(/\s/g, '')))} ₽
+            </h2>
             <h3 className="product-card-title">{product.title}</h3>
             <div className="gg">
               <p className="gender">{product.gender}</p>

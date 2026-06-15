@@ -69,7 +69,7 @@
   border: none;
   /* padding: 30px; */
   transition: transform 0.6s ease;
-  padding-left: 20px;
+  /* padding-left: 20px; */
 }
 
 /* .product-card:hover .product-card-img img {
@@ -245,7 +245,7 @@ a {
 }
 
 .product-card-info {
-  margin: 25px;
+  margin: 15px;
   /* background: white; */
   display: flex;
   flex-direction: column;
@@ -484,6 +484,7 @@ a {
   .product-card-price {
     /* width: stretch; */
     text-align: center;
+    width: auto;
   }
 
   .product-card-title {

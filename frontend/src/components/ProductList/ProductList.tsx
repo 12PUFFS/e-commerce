@@ -55,7 +55,7 @@ export default function ProductList() {
 
   const scrollToTop = () => {
     window.scrollTo({
-      top: 0,
+      top: 450,
       behavior: 'smooth',
     });
   };
@@ -229,6 +229,7 @@ export default function ProductList() {
               categoryProductsNames={categoryProductsNames}
               categoryGenderNames={categoryGenderNames}
               categoryBrandNames={categoryBrandNames}
+              // totalCount={filteredItems.length}
             />
           </aside>
 
@@ -242,7 +243,9 @@ export default function ProductList() {
                 placeholder="Поиск по названию..."
               />
             </div>
+
             <div className="active-tags">
+              <p>Всего товаров: {filteredItems.length}</p>
               {active && (
                 <p>
                   <p>

@@ -1,3 +1,6 @@
+// import { useContext } from 'react';
+// import { ProductsContext } from '../App';
+
 // FiltersContent.tsx
 interface FiltersContentProps {
   active: string;
@@ -42,12 +45,14 @@ export default function FiltersContent({
   categoryProductsNames,
   categoryGenderNames,
   categoryBrandNames,
+  // totalCount,
   ActiveNames,
 }: FiltersContentProps) {
   return (
     <>
       {/* Статус */}
       <div className="filter-section">
+        {/* <p>Всего товаров: {totalCount}</p> */}
         <div className="status-buttons">
           <button
             onClick={() => setActive('all')}
@@ -132,6 +137,12 @@ export default function FiltersContent({
               className={`category-item ${selectedCategory === 'T-Shirt' ? 'active' : ''}`}
             >
               Футболки
+            </li>
+            <li
+              onClick={() => setSelectedCategory('hudi')}
+              className={`category-item ${selectedCategory === 'hudi' ? 'active' : ''}`}
+            >
+              Худи
             </li>
           </ul>
         </div>
@@ -218,8 +229,8 @@ export default function FiltersContent({
               The North Face
             </li>
             <li
-              onClick={() => setSelectedBrand('carhartt')}
-              className={`brand-item ${selectedBrand === 'carhartt' ? 'active' : ''}`}
+              onClick={() => setSelectedBrand('Carhartt')}
+              className={`brand-item ${selectedBrand === 'Carhartt' ? 'active' : ''}`}
             >
               Carhartt
             </li>
