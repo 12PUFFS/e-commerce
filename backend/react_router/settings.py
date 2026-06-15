@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",   # 👈 Vite по умолчанию
+    "http://localhost:5173",
     "http://127.0.0.1:5173",
     'https://react-router-three-teal.vercel.app'
 ]
@@ -126,12 +126,13 @@ USE_TZ = True
 
 ALLOWED_HOSTS = ['*']
 
-DEBUG = False
+DEBUG = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_DIRS = [
-    os.path.join(BASE_DIR, '../frontend/dist')
+STATICFILES = [
+    # os.path.join(BASE_DIR, '../frontend/dist')
+    BASE_DIR / 'static',
 ]
 
