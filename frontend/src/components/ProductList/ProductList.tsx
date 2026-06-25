@@ -1,5 +1,5 @@
 // @ts-ignore
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../ProductCard/ProductCard';
 import './ProductList.css';
@@ -35,7 +35,7 @@ export default function ProductList() {
   } = useContext(CartContext);
 
   const [paginator, setPaginotor] = useState(12);
-  const [hasAnyitems, setHasAnyItems] = useState(true);
+  // const [hasAnyItems, setHasAnyItems] = useState(true);
   const [bannerIndex, setBannerIndex] = useState(0);
   const [value, setValue] = useState('');
   const [showUpButton, setShowUpButton] = useState(false);
@@ -53,42 +53,51 @@ export default function ProductList() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({
       top: 450,
       behavior: 'smooth',
     });
-  };
+  }, []);
 
-  const filteredItems = products.filter((item) => {
-    const filterByTag =
-      active === 'all' ||
-      (active === 'hits' && item.status === 'hit') ||
-      (active === 'new' && item.status === 'new');
+  const filteredItems = useMemo(() => {
+    return products.filter((item) => {
+      const filterByTag =
+        active === 'all' ||
+        (active === 'hits' && item.status === 'hit') ||
+        (active === 'new' && item.status === 'new');
 
-    const filterByinput = item.title
-      .toLowerCase()
-      .includes(value.toLowerCase());
+      const filterByinput = item.title
+        .toLowerCase()
+        .includes(value.toLowerCase());
 
-    const filterByCategory =
-      selectedCategory === 'all' || item.category === selectedCategory;
+      const filterByCategory =
+        selectedCategory === 'all' || item.category === selectedCategory;
 
-    const filterByGender =
-      selectedGender === 'all' || item.gender === selectedGender;
+      const filterByGender =
+        selectedGender === 'all' || item.gender === selectedGender;
 
-    const filteredByBrand =
-      selectedBrand === 'all' || item.brand === selectedBrand;
+      const filteredByBrand =
+        selectedBrand === 'all' || item.brand === selectedBrand;
 
-    return (
-      filterByTag &&
-      filterByinput &&
-      filterByCategory &&
-      filterByGender &&
-      filteredByBrand
-    );
-  });
+      return (
+        filterByTag &&
+        filterByinput &&
+        filterByCategory &&
+        filterByGender &&
+        filteredByBrand
+      );
+    });
+  }, [
+    products,
+    active,
+    value,
+    selectedCategory,
+    selectedGender,
+    selectedBrand,
+  ]);
 
-  const getSortedItems = () => {
+  const getSortedItems = useMemo(() => {
     const itemsCopy = [...filteredItems];
 
     if (sortPrice === 'high') {
@@ -108,37 +117,44 @@ export default function ProductList() {
     }
 
     return itemsCopy;
-  };
+  }, [sortPrice, filteredItems]);
 
-  const sortedItems = getSortedItems();
-  const visibleItems = sortedItems.slice(0, paginator);
+  const sortedItems = getSortedItems;
+  const visibleItems = useMemo(() => {
+    return sortedItems.slice(0, paginator);
+  }, [sortedItems, paginator]);
 
-  useEffect(() => {
-    setHasAnyItems(visibleItems.length < sortedItems.length);
-  }, [visibleItems, sortedItems.length]);
+  const hasAnyitems = visibleItems.length < sortedItems.length;
 
-  const loadMore = () => {
+  const loadMore = useCallback(() => {
     setPaginotor((prev) => prev + 15);
-  };
+  }, []);
 
-  const bannerProducts = products.filter((i) => i.status === 'new');
-  const displayBanners =
-    bannerProducts.length > 0 ? bannerProducts : products.slice(0, 3);
-  const currentBanner = displayBanners[bannerIndex];
+  const bannerProducts = useMemo(() => {
+    return products.filter((i) => i.status === 'new');
+  }, [products]);
 
-  const handlePrevBanner = () => {
+  const displayBanners = useMemo(() => {
+    return bannerProducts.length > 0 ? bannerProducts : products.slice(0, 3);
+  }, [bannerProducts, products]);
+
+  const currentBanner = useMemo(() => {
+    return displayBanners[bannerIndex];
+  }, [displayBanners, bannerIndex]);
+
+  const handlePrevBanner = useCallback(() => {
     if (displayBanners.length <= 1) return;
     setBannerIndex((prev) =>
       prev === 0 ? displayBanners.length - 1 : prev - 1,
     );
-  };
+  }, [displayBanners.length]);
 
-  const handleNextBanner = () => {
+  const handleNextBanner = useCallback(() => {
     if (displayBanners.length <= 1) return;
     setBannerIndex((prev) =>
       prev === displayBanners.length - 1 ? 0 : prev + 1,
     );
-  };
+  }, [displayBanners.length]);
 
   useEffect(() => {
     if (displayBanners.length <= 1) return;

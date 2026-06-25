@@ -216,7 +216,6 @@ export default function App() {
     }
   }, []);
 
-  // Сохранение корзины в localStorage
   useEffect(() => {
     if (cart && cart.length > 0) {
       localStorage.setItem('cart', JSON.stringify(cart));

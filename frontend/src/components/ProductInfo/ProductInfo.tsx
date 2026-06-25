@@ -225,7 +225,9 @@ export default function ProductInfo() {
                     <button>{product.price} ₽</button>
                   </div>
                   <button onClick={handleAddToCart} className="to-cart">
-                    В корзину
+                    {sizesInCart.includes(currentSize)
+                      ? 'Товар в корзине'
+                      : 'В корзину'}
                     {currentSize && <p>Размер: {currentSize}</p>}
                   </button>
                   <button
